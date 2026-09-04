@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(cd /Users/ktdung/Downloads/working-with && echo \"=== VI ===\" && find course-lessons/vi -name '*.md' | wc -l && echo \"=== EN ===\" && find course-lessons/en -name '*.md' | wc -l && echo \"=== VI theo chương ===\" && for d in course-lessons/vi/*/; do echo \"$(basename $d): $(ls $d | wc -l)\"; done && echo \"=== EN theo chương ===\" && for d in course-lessons/en/*/; do echo \"$(basename $d): $(ls $d | wc -l)\"; done && echo \"=== Root & hỗ trợ ===\" && ls -1)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}

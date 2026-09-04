@@ -1,0 +1,23 @@
+# Project Context — Highland Hospital
+
+- **Project**: Highland Hospital Web Portal — website bệnh viện đặt lịch khám trực tuyến.
+- **Stack**: HTML5 semantic • CSS3 • Bootstrap 5.3 (CDN) • JavaScript ES6+ thuần — KHÔNG dùng framework, KHÔNG dùng Tailwind.
+- **Files**:
+  - `index.html` — Landing Page (Trang chủ)
+  - `booking.html` — Trang đặt lịch khám
+  - `admin.html` — Admin Dashboard
+  - `css/style.css` — CSS tự viết (nạp SAU Bootstrap)
+  - `js/data.js` — dữ liệu mẫu `doctors`, `appointments`
+  - `js/main.js` — logic Landing Page; `js/admin.js` — logic Dashboard
+- **Design tokens** (CSS Variables trong `:root`):
+  - `--hh-primary: #0f766e` (teal xanh y tế) · `--hh-dark: #0f172a` · `--hh-light: #f0fdfa` · `--hh-border: #e2e8f0` · `--hh-muted: #475569`
+- **Data shapes**:
+  - `doctor = { id, name, specialty, experience, fee, avatar }`
+  - `appointment = { id, patientName, phone, specialty, doctorName, date, time, status }`
+  - `status ∈ { "pending", "confirmed", "completed", "cancelled" }`
+- **Quy tắc**:
+  - Mọi giao diện chuẩn Responsive, mobile-first.
+  - Không inline style; ưu tiên Bootstrap utilities trước, CSS riêng chỉ khi cần.
+  - Ngôn ngữ giao diện: tiếng Việt.
+  - Dữ liệu lịch hẹn lưu vào `localStorage` (key `highland_appointments`).
+- **Note**: Môi trường chạy bằng VS Code + Live Server.
