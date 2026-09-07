@@ -129,20 +129,67 @@
   }
 
   /* ---------------------------------------------------------------- reveal */
+  // Ba lớp an toàn, theo thứ tự ưu tiên:
+  //   1) IntersectionObserver — cách chuẩn, tiết kiệm, cho hiệu ứng vào khung hình;
+  //   2) quét hình học thuần khi load/cuon/thay-doi-kich-thuoc — chạy được cả khi
+  //      observer không phát sinh callback (trình duyệt cũ, chế độ tiết kiệm pin,
+  //      trang bị tracker chặn script làm IO hỏng);
+  //   3) prefers-reduced-motion hoặc không có IO -> hiện toàn bộ ngay, không hiệu ứng.
+  // Nhờ CSS chỉ ẩn khi có html.has-js, nếu hàm này không chạy được thì nội dung
+  // vẫn hiển thị — site không bao giờ trắng.
   function initReveal() {
-    var items = qa('[data-reveal], .reveal');
+    var items = qa('.reveal');
+    document.documentElement.classList.add('has-js');
     if (!items.length) return;
+
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced || !('IntersectionObserver' in window)) {
       items.forEach(function (el) { el.classList.add('is-visible'); });
       return;
     }
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add('is-visible'); io.unobserve(en.target); }
       });
     }, { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
     items.forEach(function (el) { io.observe(el); });
+
+    function show(el) {
+      if (el.classList.contains('is-visible')) return;
+      el.classList.add('is-visible');
+      io.unobserve(el);
+    }
+
+    function sweep() {
+      ticking = false;
+      var vh = window.innerHeight || document.documentElement.clientHeight || 800;
+      var left = [];
+      items.forEach(function (el) {
+        if (el.classList.contains('is-visible')) return;
+        var r = el.getBoundingClientRect();
+        if (r.top < vh * 0.94 && r.bottom > 0) show(el);
+        else left.push(el);
+      });
+      if (!left.length) {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+        window.removeEventListener('load', onScroll);
+      }
+    }
+
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      if (window.requestAnimationFrame) window.requestAnimationFrame(sweep);
+      else sweep();
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('load', onScroll);
+    onScroll();
   }
 
   /* -------------------------------------------------------------- progress */
@@ -664,19 +711,33 @@
   }
 
   /* -------------------------------------------------------------- boot */
+  // Mỗi widget khởi động trong try/catch riêng: một lỗi ở widget này không được
+  // làm chết phần còn lại (đặc biệt không được để .reveal nằm mãi ở opacity:0).
+  function safe(name, fn) {
+    try {
+      fn();
+    } catch (err) {
+      if (name === 'reveal') document.documentElement.classList.remove('has-js');
+      if (window.console && window.console.warn) {
+        window.console.warn('[cse391] ' + name + ': ' + ((err && err.message) || err));
+      }
+    }
+  }
+
   function boot() {
     load();
-    initTheme();
-    initDrawer();
-    initProgressButtons();
-    initTasks();
-    initQuiz();
-    initSearch();
-    initGlossary();
-    initCopy();
-    initToc();
-    renderProgress();
-    renderTasks();
+    safe('reveal', initReveal);
+    safe('theme', initTheme);
+    safe('drawer', initDrawer);
+    safe('progress-buttons', initProgressButtons);
+    safe('tasks', initTasks);
+    safe('quiz', initQuiz);
+    safe('search', initSearch);
+    safe('glossary', initGlossary);
+    safe('copy', initCopy);
+    safe('toc', initToc);
+    safe('render-progress', renderProgress);
+    safe('render-tasks', renderTasks);
 
     var hash = window.location.hash;
     if (hash && hash.length > 1) {
