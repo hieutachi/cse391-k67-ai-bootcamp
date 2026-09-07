@@ -492,7 +492,7 @@ node build/check-live.js https://hieutachi.github.io/cse391-k67-ai-bootcamp/
 |---|---|---|
 | Chuẩn bị | tạo `.gitignore`; `git rm --cached .DS_Store course-lessons/.DS_Store`; đổi `BASE_URL` dòng 24 `build/build.js` | `git ls-files \| Select-String DS_Store` → 0 dòng |
 | Build + QA | `node build/build.js`; `node --check`; `qa-check`; `check-css` | `11 trang · 5 buổi · 0 đầu việc · 49 thuật ngữ`; `search items: 69 \| bad urls: 0`; `pages: 11 \| local hrefs: 264 \| broken: 0`; `classes used: 222 \| styled: 222` |
-| Commit `main` | `git add .gitignore build site README.md DEPLOY-GITHUB-PAGES.md`; `git commit` | `5180f69` → `git ls-files site` = **19**; bản sửa check-live: `78d7ee2` |
+| Commit `main` | `git add .gitignore build site README.md DEPLOY-GITHUB-PAGES.md`; `git commit` | `5180f69` → `git ls-files site` = **19**; fix check-live: `78d7ee2`; các commit tài liệu sau (`107f09f`, `b238c92`) **không đụng `site/`** ⇒ không cần split lại |
 | Repo + push | `gh repo create hieutachi/cse391-k67-ai-bootcamp --public --description 'CSE391 K67 - ...'`; `git remote add deploy ...`; `git push -u deploy main` | `https://github.com/hieutachi/cse391-k67-ai-bootcamp` · PUBLIC · default `main`; `refs/heads/main 78d7ee2` |
 | Split + push | `git subtree split --prefix site -b gh-pages`; `git push deploy gh-pages:gh-pages` | `Created branch 'gh-pages'` → `90f4851`; `git ls-tree --name-only gh-pages` = 12 mục gốc; `git ls-tree -r` = **19 file** |
 | Bật Pages | `POST repos/.../pages` → **409 already enabled** (GitHub tự bật khi push nhánh `gh-pages`); `GET .../pages` | `status: built`, `source: {gh-pages, /}`, `build_type: legacy`, `https_enforced: true`, `html_url: https://hieutachi.github.io/cse391-k67-ai-bootcamp/` |
