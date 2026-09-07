@@ -1,0 +1,17 @@
+{
+  "name": "AI-Accelerated Frontend Developer Bootcamp",
+  "short_name": "CSE391 AI FE",
+  "description": "Học làm frontend hiện đại cùng AI — từ HTML5 tới dự án thật",
+  "lang": "vi",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f7f9fb",
+  "theme_color": "#0f766e",
+  "icons": [
+    {
+      "src": "./assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

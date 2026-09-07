@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Từ điển thuật ngữ — AI-Accelerated Frontend Developer Bootcamp</title>
+<meta name="description" content="49 thuật ngữ frontend và AI có nghĩa tiếng Việt: HTML ngữ nghĩa, Box model, Flexbox, Grid, Prompt, Mock API, localStorage, design token…">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Từ điển thuật ngữ — AI-Accelerated Frontend Developer Bootcamp">
+<meta property="og:description" content="49 thuật ngữ frontend và AI có nghĩa tiếng Việt: HTML ngữ nghĩa, Box model, Flexbox, Grid, Prompt, Mock API, localStorage, design token…">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem('cse391-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body class="tpl-glossary" data-root="" data-total="5">
+<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+<header class="topbar">
+  <button class="icon-btn topbar__menu" type="button" data-menu aria-expanded="false" aria-controls="sidebar" aria-label="Mở thực đơn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <a class="brand" href="index.html">
+    <span class="brand__mark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13"/><path d="M12 8v6M9 11h6"/></svg></span>
+    <span class="brand__text"><strong>CSE391 · K67</strong><small>AI-Accelerated Frontend</small></span>
+  </a>
+  <span class="topbar__spacer"></span>
+  <button class="btn btn--search" type="button" data-open-search><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Tìm kiếm</span><kbd>Ctrl</kbd><kbd>K</kbd></button>
+  <span class="topbar__ring" data-ring title="Tiến độ khoá học">
+    <svg viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-bg" cx="18" cy="18" r="15.5"></circle><circle class="ring-fg" cx="18" cy="18" r="15.5" stroke-dasharray="97.4" data-ring-circle></circle></svg>
+    <span data-ring-label>0%</span>
+  </span>
+  <button class="icon-btn" type="button" data-theme-toggle aria-label="Đổi giao diện sáng / tối">
+    <span class="theme-ico theme-ico--light"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></span><span class="theme-ico theme-ico--dark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14A8 8 0 1 1 10 4a7 7 0 0 0 10 10z"/></svg></span>
+  </button>
+</header>
+<div class="shell">
+<aside class="sidebar" id="sidebar" aria-label="Điều hướng khoá học">
+  <div class="sidebar__inner">
+    <p class="sidebar__eyebrow">CSE391 — Nền tảng phát triển Web</p>
+    <nav class="nav">
+      <p class="nav__title">Bắt đầu</p>
+      <a class="nav__link" href="index.html"><span>Trang chủ</span></a>
+      <a class="nav__link" href="gioi-thieu.html"><span>Giới thiệu khoá học</span></a>
+      <p class="nav__title">Chương 1 · 5 buổi đã phát hành</p>
+      <div class="nav__lessons"><a class="nav__link nav__link--lesson" href="lessons/buoi-01.html" data-lesson-link="1"><span class="nav__dot" data-dot="1"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">01</span><span class="nav__label">Chào mừng — vì sao Frontend cần AI</span></a><a class="nav__link nav__link--lesson" href="lessons/buoi-02.html" data-lesson-link="2"><span class="nav__dot" data-dot="2"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">02</span><span class="nav__label">Bản đồ công cụ AI cho Frontend</span></a><a class="nav__link nav__link--lesson" href="lessons/buoi-03.html" data-lesson-link="3"><span class="nav__dot" data-dot="3"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">03</span><span class="nav__label">AI-Accelerated Workflow 4 bước</span></a><a class="nav__link nav__link--lesson" href="lessons/buoi-04.html" data-lesson-link="4"><span class="nav__dot" data-dot="4"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">04</span><span class="nav__label">Thiết lập môi trường làm việc</span></a><a class="nav__link nav__link--lesson" href="lessons/buoi-05.html" data-lesson-link="5"><span class="nav__dot" data-dot="5"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">05</span><span class="nav__label">Dự án xuyên suốt: Highland Hospital</span></a></div>
+      <p class="nav__title">Tham khảo</p>
+      <a class="nav__link" href="lo-trinh.html"><span>Lộ trình 8 tuần</span></a>
+      <a class="nav__link" href="du-an.html"><span>Dự án tốt nghiệp</span></a>
+      <a class="nav__link is-active" href="tu-dien.html"><span>Từ điển thuật ngữ</span></a>
+    </nav>
+    <div class="sidebar__foot">
+      <div class="progress-card">
+        <div class="progress-card__top">
+          <span class="progress-card__label">Tiến độ của bạn</span>
+          <strong class="progress-card__val" data-progress-count>0/5</strong>
+        </div>
+        <span class="progress-bar" role="progressbar" aria-label="Số buổi đã hoàn thành" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" data-progressbar><i class="progress-bar__fill" data-progress-fill></i></span>
+        <button class="btn btn--ghost btn--sm" type="button" data-reset-progress>Đặt lại tiến độ</button>
+      </div>
+    </div>
+  </div>
+</aside>
+<main class="main" id="main">
+
+<section class="pagehead">
+  <p class="kicker">Glossary · Từ điển</p>
+  <h1>49 thuật ngữ bạn sẽ gặp</h1>
+  <p>Tiếng Anh được giữ nguyên vì đó là ngôn ngữ của tài liệu, của lỗi bạn sẽ đọc trên Stack Overflow. Kèm theo là nghĩa tiếng Việt và nơi thuật ngữ xuất hiện.</p>
+  <div class="glossary__bar">
+    <label class="field"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="sr-only">Lọc thuật ngữ</span>
+      <input type="search" id="glossary-q" placeholder="Lọc: flexbox, prompt, token…" aria-label="Lọc thuật ngữ">
+    </label>
+    <p class="glossary__count" data-glossary-count aria-live="polite">49 thuật ngữ</p>
+  </div>
+</section>
+<section class="band" data-reveal>
+  <div class="alphabet" aria-hidden="true"><a href="#g-A">A</a><a href="#g-B">B</a><a href="#g-C">C</a><a href="#g-D">D</a><a href="#g-E">E</a><a href="#g-F">F</a><a href="#g-I">I</a><a href="#g-J">J</a><a href="#g-L">L</a><a href="#g-M">M</a><a href="#g-N">N</a><a href="#g-P">P</a><a href="#g-R">R</a><a href="#g-S">S</a><a href="#g-T">T</a><a href="#g-V">V</a></div>
+  <div class="letter" id="g-A" data-letter-group="A">
+    <h2 class="letter__h">A</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="accessibility (a11y) khả năng tiếp cận để người dùng bàn phím và trình đọc màn hình vẫn dùng được trang web.">
+        <dt><code>Accessibility (a11y)</code><span class="dict__vi">Khả năng tiếp cận</span></dt>
+        <dd>Để người dùng bàn phím và trình đọc màn hình vẫn dùng được trang web.<span class="dict__src">Buổi 01</span><a class="dict__link" href="lessons/buoi-01.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="accordion bảng xếp tầng nội dung đóng/mở theo từng mục, dùng cho faq.">
+        <dt><code>Accordion</code><span class="dict__vi">Bảng xếp tầng</span></dt>
+        <dd>Nội dung đóng/mở theo từng mục, dùng cho FAQ.<span class="dict__src">Chương 8</span></dd>
+      </div><div class="dict__row" data-term="array methods hàm mảng map / filter / reduce — cách hiện đại thay cho vòng for thủ công.">
+        <dt><code>Array methods</code><span class="dict__vi">Hàm mảng</span></dt>
+        <dd>map / filter / reduce — cách hiện đại thay cho vòng for thủ công.<span class="dict__src">Chương 10</span></dd>
+      </div><div class="dict__row" data-term="arrow function hàm mũi tên cú pháp rút gọn (a, b) =&gt; a + b, phổ biến trong callback.">
+        <dt><code>Arrow function</code><span class="dict__vi">Hàm mũi tên</span></dt>
+        <dd>Cú pháp rút gọn (a, b) =&gt; a + b, phổ biến trong callback.<span class="dict__src">Chương 10</span></dd>
+      </div><div class="dict__row" data-term="async / await bất đồng bộ cú pháp giúp code gọi api đọc như code tuần tự.">
+        <dt><code>Async / await</code><span class="dict__vi">Bất đồng bộ</span></dt>
+        <dd>Cú pháp giúp code gọi API đọc như code tuần tự.<span class="dict__src">Chương 11</span></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-B" data-letter-group="B">
+    <h2 class="letter__h">B</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="bootstrap grid hệ thống cột bootstrap 12 cột với breakpoint sm / md / lg / xl / xxl.">
+        <dt><code>Bootstrap grid</code><span class="dict__vi">Hệ thống cột Bootstrap</span></dt>
+        <dd>12 cột với breakpoint sm / md / lg / xl / xxl.<span class="dict__src">Chương 7</span></dd>
+      </div><div class="dict__row" data-term="box model mô hình hộp cách trình duyệt đóng gói mọi phần tử: content → padding → border → margin.">
+        <dt><code>Box model</code><span class="dict__vi">Mô hình hộp</span></dt>
+        <dd>Cách trình duyệt đóng gói mọi phần tử: content → padding → border → margin.<span class="dict__src">Chương 4</span></dd>
+      </div><div class="dict__row" data-term="breakpoint điểm dừng responsive bề rộng màn hình tại đó layout đổi (576 / 768 / 992 / 1200 / 1400px trong bootstrap).">
+        <dt><code>Breakpoint</code><span class="dict__vi">Điểm dừng responsive</span></dt>
+        <dd>Bề rộng màn hình tại đó layout đổi (576 / 768 / 992 / 1200 / 1400px trong Bootstrap).<span class="dict__src">Buổi 03</span><a class="dict__link" href="lessons/buoi-03.html">đọc bài</a></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-C" data-letter-group="C">
+    <h2 class="letter__h">C</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="code completion gợi ý code ai đoán và chèn phần code tiếp theo khi bạn gõ hoặc viết chú thích.">
+        <dt><code>Code completion</code><span class="dict__vi">Gợi ý code</span></dt>
+        <dd>AI đoán và chèn phần code tiếp theo khi bạn gõ hoặc viết chú thích.<span class="dict__src">Buổi 02</span><a class="dict__link" href="lessons/buoi-02.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="console bảng điều khiển nơi in lỗi javascript và kết quả console.log để thử lệnh trực tiếp.">
+        <dt><code>Console</code><span class="dict__vi">Bảng điều khiển</span></dt>
+        <dd>Nơi in lỗi JavaScript và kết quả console.log để thử lệnh trực tiếp.<span class="dict__src">Buổi 04</span><a class="dict__link" href="lessons/buoi-04.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="crud create / read / update / delete bốn thao tác dữ liệu cơ bản — admin dashboard làm read + update.">
+        <dt><code>CRUD</code><span class="dict__vi">Create / Read / Update / Delete</span></dt>
+        <dd>Bốn thao tác dữ liệu cơ bản — Admin Dashboard làm Read + Update.<span class="dict__src">Chương 12</span></dd>
+      </div><div class="dict__row" data-term="css custom property biến css giá trị đặt tên kiểu --color-mint-500, nền tảng của design token.">
+        <dt><code>CSS custom property</code><span class="dict__vi">Biến CSS</span></dt>
+        <dd>Giá trị đặt tên kiểu --color-mint-500, nền tảng của design token.<span class="dict__src">Chương 4</span></dd>
+      </div><div class="dict__row" data-term="css grid layout hai trục hệ thống hàng và cột cho layout phức tạp của cả trang.">
+        <dt><code>CSS Grid</code><span class="dict__vi">Layout hai trục</span></dt>
+        <dd>Hệ thống hàng và cột cho layout phức tạp của cả trang.<span class="dict__src">Chương 5</span></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-D" data-letter-group="D">
+    <h2 class="letter__h">D</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="dashboard bảng điều khiển trang quản trị có thẻ số liệu (metrics) và bảng dữ liệu để tìm kiếm, lọc, cập nhật.">
+        <dt><code>Dashboard</code><span class="dict__vi">Bảng điều khiển</span></dt>
+        <dd>Trang quản trị có thẻ số liệu (metrics) và bảng dữ liệu để tìm kiếm, lọc, cập nhật.<span class="dict__src">Buổi 05</span><a class="dict__link" href="lessons/buoi-05.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="deployment phát hành đưa website lên internet: github pages, netlify, vercel.">
+        <dt><code>Deployment</code><span class="dict__vi">Phát hành</span></dt>
+        <dd>Đưa website lên internet: GitHub Pages, Netlify, Vercel.<span class="dict__src">Chương 12</span></dd>
+      </div><div class="dict__row" data-term="design token token thiết kế bảng biến màu, font, khoảng cách trích từ thiết kế để code đồng nhất.">
+        <dt><code>Design token</code><span class="dict__vi">Token thiết kế</span></dt>
+        <dd>Bảng biến màu, font, khoảng cách trích từ thiết kế để code đồng nhất.<span class="dict__src">Chương 7</span></dd>
+      </div><div class="dict__row" data-term="design-to-code chuyển thiết kế thành code nhận một frame figma và trả về html/css tương ứng.">
+        <dt><code>Design-to-code</code><span class="dict__vi">Chuyển thiết kế thành code</span></dt>
+        <dd>Nhận một frame Figma và trả về HTML/CSS tương ứng.<span class="dict__src">Buổi 02</span><a class="dict__link" href="lessons/buoi-02.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="devtools công cụ nhà phát triển bảng điều khiển của trình duyệt: elements, console, network, device toolbar.">
+        <dt><code>DevTools</code><span class="dict__vi">Công cụ nhà phát triển</span></dt>
+        <dd>Bảng điều khiển của trình duyệt: Elements, Console, Network, Device Toolbar.<span class="dict__src">Buổi 02</span><a class="dict__link" href="lessons/buoi-02.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="draft bản nháp kết quả ai trả về ở bước draft — chưa phải code cuối cùng.">
+        <dt><code>Draft</code><span class="dict__vi">Bản nháp</span></dt>
+        <dd>Kết quả AI trả về ở bước Draft — chưa phải code cuối cùng.<span class="dict__src">Buổi 03</span><a class="dict__link" href="lessons/buoi-03.html">đọc bài</a></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-E" data-letter-group="E">
+    <h2 class="letter__h">E</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="event delegation ủy quyền sự kiện gắn một listener trên phần tử cha để xử lý nhiều phần tử con.">
+        <dt><code>Event delegation</code><span class="dict__vi">Ủy quyền sự kiện</span></dt>
+        <dd>Gắn một listener trên phần tử cha để xử lý nhiều phần tử con.<span class="dict__src">Chương 10</span></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-F" data-letter-group="F">
+    <h2 class="letter__h">F</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="fetch api gọi api cách chuẩn để trình duyệt xin dữ liệu: fetch(url).then(r =&gt; r.json()).">
+        <dt><code>Fetch API</code><span class="dict__vi">Gọi API</span></dt>
+        <dd>Cách chuẩn để trình duyệt xin dữ liệu: fetch(url).then(r =&gt; r.json()).<span class="dict__src">Chương 11</span></dd>
+      </div><div class="dict__row" data-term="file:// protocol giao thức file cách mở thẳng file trên đĩa; bị trình duyệt chặn khi gọi api.">
+        <dt><code>file:// protocol</code><span class="dict__vi">Giao thức file</span></dt>
+        <dd>Cách mở thẳng file trên đĩa; bị trình duyệt chặn khi gọi API.<span class="dict__src">Buổi 04</span><a class="dict__link" href="lessons/buoi-04.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="flexbox layout một trục model dàn xếp phần tử theo một hàng hoặc một cột, căn chỉnh và chia khoảng cách.">
+        <dt><code>Flexbox</code><span class="dict__vi">Layout một trục</span></dt>
+        <dd>Model dàn xếp phần tử theo một hàng hoặc một cột, căn chỉnh và chia khoảng cách.<span class="dict__src">Chương 5</span></dd>
+      </div><div class="dict__row" data-term="frontend giao diện phía client phần website chạy trong trình duyệt mà người dùng trực tiếp tương tác: html, css, javascript.">
+        <dt><code>Frontend</code><span class="dict__vi">Giao diện phía client</span></dt>
+        <dd>Phần website chạy trong trình duyệt mà người dùng trực tiếp tương tác: HTML, CSS, JavaScript.<span class="dict__src">Buổi 01</span><a class="dict__link" href="lessons/buoi-01.html">đọc bài</a></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-I" data-letter-group="I">
+    <h2 class="letter__h">I</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="in-editor ai ai trong editor công cụ gợi ý code ngay trong file bạn đang mở: github copilot, cursor.">
+        <dt><code>In-editor AI</code><span class="dict__vi">AI trong editor</span></dt>
+        <dd>Công cụ gợi ý code ngay trong file bạn đang mở: GitHub Copilot, Cursor.<span class="dict__src">Buổi 02</span><a class="dict__link" href="lessons/buoi-02.html">đọc bài</a></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-J" data-letter-group="J">
+    <h2 class="letter__h">J</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="json định dạng dữ liệu cách mô tả object/mảng để trao đổi dữ liệu giữa code và api.">
+        <dt><code>JSON</code><span class="dict__vi">Định dạng dữ liệu</span></dt>
+        <dd>Cách mô tả object/mảng để trao đổi dữ liệu giữa code và API.<span class="dict__src">Buổi 05</span><a class="dict__link" href="lessons/buoi-05.html">đọc bài</a></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-L" data-letter-group="L">
+    <h2 class="letter__h">L</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="landing page trang chủ giới thiệu trang chính của website: hero, dịch vụ, bác sĩ, đánh giá, footer.">
+        <dt><code>Landing page</code><span class="dict__vi">Trang chủ giới thiệu</span></dt>
+        <dd>Trang chính của website: hero, dịch vụ, bác sĩ, đánh giá, footer.<span class="dict__src">Buổi 05</span><a class="dict__link" href="lessons/buoi-05.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="live server máy chủ cục bộ khi dev extension vs code chạy http server tại chỗ và tự tải lại trình duyệt khi bạn lưu file.">
+        <dt><code>Live Server</code><span class="dict__vi">Máy chủ cục bộ khi dev</span></dt>
+        <dd>Extension VS Code chạy HTTP server tại chỗ và tự tải lại trình duyệt khi bạn lưu file.<span class="dict__src">Buổi 04</span><a class="dict__link" href="lessons/buoi-04.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="llm (large language model) mô hình ngôn ngữ lớn nền tảng của gemini, claude, chatgpt — sinh văn bản và code theo ngữ cảnh bạn đưa.">
+        <dt><code>LLM (Large Language Model)</code><span class="dict__vi">Mô hình ngôn ngữ lớn</span></dt>
+        <dd>Nền tảng của Gemini, Claude, ChatGPT — sinh văn bản và code theo ngữ cảnh bạn đưa.<span class="dict__src">Buổi 02</span><a class="dict__link" href="lessons/buoi-02.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="loading state trạng thái đang tải skeleton hoặc spinner cho người dùng biết dữ liệu chưa về.">
+        <dt><code>Loading state</code><span class="dict__vi">Trạng thái đang tải</span></dt>
+        <dd>Skeleton hoặc spinner cho người dùng biết dữ liệu chưa về.<span class="dict__src">Chương 11</span></dd>
+      </div><div class="dict__row" data-term="localhost máy chủ cục bộ địa chỉ ngay trên máy bạn, ví dụ http://127.0.0.1:5500.">
+        <dt><code>localhost</code><span class="dict__vi">Máy chủ cục bộ</span></dt>
+        <dd>Địa chỉ ngay trên máy bạn, ví dụ http://127.0.0.1:5500.<span class="dict__src">Buổi 04</span><a class="dict__link" href="lessons/buoi-04.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="localstorage lưu trữ cục bộ lưu dữ liệu ngay trong trình duyệt theo từng origin, không cần server.">
+        <dt><code>localStorage</code><span class="dict__vi">Lưu trữ cục bộ</span></dt>
+        <dd>Lưu dữ liệu ngay trong trình duyệt theo từng origin, không cần server.<span class="dict__src">Buổi 05</span><a class="dict__link" href="lessons/buoi-05.html">đọc bài</a></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-M" data-letter-group="M">
+    <h2 class="letter__h">M</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="media query truy vấn phương tiện áp dụng css theo điều kiện màn hình, ví dụ (max-width: 767.98px).">
+        <dt><code>Media query</code><span class="dict__vi">Truy vấn phương tiện</span></dt>
+        <dd>Áp dụng CSS theo điều kiện màn hình, ví dụ (max-width: 767.98px).<span class="dict__src">Chương 6</span></dd>
+      </div><div class="dict__row" data-term="mock api api giả lập nguồn dữ liệu giả để thử luồng gọi api như hệ thống thật.">
+        <dt><code>Mock API</code><span class="dict__vi">API giả lập</span></dt>
+        <dd>Nguồn dữ liệu giả để thử luồng gọi API như hệ thống thật.<span class="dict__src">Buổi 05</span><a class="dict__link" href="lessons/buoi-05.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="modal hộp thoại lớp phủ chiếm sự chú ý, đóng bằng escape và aria-label theo bài 08.">
+        <dt><code>Modal</code><span class="dict__vi">Hộp thoại</span></dt>
+        <dd>Lớp phủ chiếm sự chú ý, đóng bằng Escape và aria-label theo bài 08.<span class="dict__src">Chương 8</span></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-N" data-letter-group="N">
+    <h2 class="letter__h">N</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="navbar / offcanvas thanh điều hướng component điều hướng của bootstrap; offcanvas là menu trượt trên mobile.">
+        <dt><code>Navbar / Offcanvas</code><span class="dict__vi">Thanh điều hướng</span></dt>
+        <dd>Component điều hướng của Bootstrap; Offcanvas là menu trượt trên mobile.<span class="dict__src">Chương 7</span></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-P" data-letter-group="P">
+    <h2 class="letter__h">P</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="preventdefault chặn hành vi mặc định ngăn form tự submit hoặc link tự điều hướng.">
+        <dt><code>preventDefault</code><span class="dict__vi">Chặn hành vi mặc định</span></dt>
+        <dd>Ngăn form tự submit hoặc link tự điều hướng.<span class="dict__src">Chương 10</span></dd>
+      </div><div class="dict__row" data-term="prompt câu lệnh gửi cho ai mô tả bằng lời nhiệm vụ bạn đưa cho ai, kèm bối cảnh và ràng buộc.">
+        <dt><code>Prompt</code><span class="dict__vi">Câu lệnh gửi cho AI</span></dt>
+        <dd>Mô tả bằng lời nhiệm vụ bạn đưa cho AI, kèm bối cảnh và ràng buộc.<span class="dict__src">Buổi 03</span><a class="dict__link" href="lessons/buoi-03.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="pseudo-class lớp giả :hover, :focus, :active, :first-child — chọn trạng thái của phần tử.">
+        <dt><code>Pseudo-class</code><span class="dict__vi">Lớp giả</span></dt>
+        <dd>:hover, :focus, :active, :first-child — chọn trạng thái của phần tử.<span class="dict__src">Chương 4</span></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-R" data-letter-group="R">
+    <h2 class="letter__h">R</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="refactor tái cấu trúc sửa code cho dễ đọc, dễ bảo trì mà không đổi hành vi.">
+        <dt><code>Refactor</code><span class="dict__vi">Tái cấu trúc</span></dt>
+        <dd>Sửa code cho dễ đọc, dễ bảo trì mà không đổi hành vi.<span class="dict__src">Buổi 03</span><a class="dict__link" href="lessons/buoi-03.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="rem / em đơn vị tương đối rem neo theo cỡ gốc, em neo theo cỡ chữ của phần tử — ưu tiên hơn px.">
+        <dt><code>rem / em</code><span class="dict__vi">Đơn vị tương đối</span></dt>
+        <dd>rem neo theo cỡ gốc, em neo theo cỡ chữ của phần tử — ưu tiên hơn px.<span class="dict__src">Chương 4</span></dd>
+      </div><div class="dict__row" data-term="responsive thiết kế thích ứng giao diện tự sắp xếp đẹp ở mọi cỡ màn hình, từ 320px tới desktop.">
+        <dt><code>Responsive</code><span class="dict__vi">Thiết kế thích ứng</span></dt>
+        <dd>Giao diện tự sắp xếp đẹp ở mọi cỡ màn hình, từ 320px tới desktop.<span class="dict__src">Buổi 01</span><a class="dict__link" href="lessons/buoi-01.html">đọc bài</a></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-S" data-letter-group="S">
+    <h2 class="letter__h">S</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="semantic html html ngữ nghĩa dùng đúng thẻ theo ý nghĩa nội dung (&lt;nav&gt;, &lt;article&gt;) thay vì đổ mọi thứ vào &lt;div&gt;.">
+        <dt><code>Semantic HTML</code><span class="dict__vi">HTML ngữ nghĩa</span></dt>
+        <dd>Dùng đúng thẻ theo ý nghĩa nội dung (&lt;nav&gt;, &lt;article&gt;) thay vì đổ mọi thứ vào &lt;div&gt;.<span class="dict__src">Buổi 01</span><a class="dict__link" href="lessons/buoi-01.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="spec đặc tả bản mô tả yêu cầu (layout, component, trạng thái) viết ra trước khi đụng đến ai.">
+        <dt><code>Spec</code><span class="dict__vi">Đặc tả</span></dt>
+        <dd>Bản mô tả yêu cầu (layout, component, trạng thái) viết ra trước khi đụng đến AI.<span class="dict__src">Buổi 03</span><a class="dict__link" href="lessons/buoi-03.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="specificity độ đặc hiệu quy tắc quyết định selector nào thắng khi hai luật xung đột.">
+        <dt><code>Specificity</code><span class="dict__vi">Độ đặc hiệu</span></dt>
+        <dd>Quy tắc quyết định selector nào thắng khi hai luật xung đột.<span class="dict__src">Chương 4</span></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-T" data-letter-group="T">
+    <h2 class="letter__h">T</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="technical debt nợ kỹ thuật code bạn giữ mà không giải thích được — thứ phải trả giá ở lần sửa sau.">
+        <dt><code>Technical debt</code><span class="dict__vi">Nợ kỹ thuật</span></dt>
+        <dd>Code bạn giữ mà không giải thích được — thứ phải trả giá ở lần sửa sau.<span class="dict__src">Buổi 01</span><a class="dict__link" href="lessons/buoi-01.html">đọc bài</a></dd>
+      </div><div class="dict__row" data-term="template literal chuỗi mẫu chuỗi trong cặp backtick cho phép nhúng biến và xuống dòng.">
+        <dt><code>Template literal</code><span class="dict__vi">Chuỗi mẫu</span></dt>
+        <dd>Chuỗi trong cặp backtick cho phép nhúng biến và xuống dòng.<span class="dict__src">Chương 10</span></dd>
+      </div><div class="dict__row" data-term="transition / keyframes chuyển động transition cho phản hồi nhỏ, @keyframes cho chuyển động có chủ ý.">
+        <dt><code>Transition / Keyframes</code><span class="dict__vi">Chuyển động</span></dt>
+        <dd>transition cho phản hồi nhỏ, @keyframes cho chuyển động có chủ ý.<span class="dict__src">Chương 6</span></dd>
+      </div>
+    </dl>
+  </div>
+<div class="letter" id="g-V" data-letter-group="V">
+    <h2 class="letter__h">V</h2>
+    <dl class="dict">
+      <div class="dict__row" data-term="viewport vùng hiển thị phần trang web nhìn thấy được trên màn hình; khai báo bằng &lt;meta name=&quot;viewport&quot;&gt;.">
+        <dt><code>Viewport</code><span class="dict__vi">Vùng hiển thị</span></dt>
+        <dd>Phần trang web nhìn thấy được trên màn hình; khai báo bằng &lt;meta name=&quot;viewport&quot;&gt;.<span class="dict__src">Buổi 04</span><a class="dict__link" href="lessons/buoi-04.html">đọc bài</a></dd>
+      </div>
+    </dl>
+  </div>
+  <p class="band__note" data-glossary-empty hidden>Không tìm thấy thuật ngữ nào khớp. Thử từ khoá ngắn hơn.</p>
+</section>
+</main>
+</div>
+<footer class="site-footer"><div class="site-footer__inner">
+  <p><strong>AI-Accelerated Frontend Developer Bootcamp</strong> · CSE391 — Nền tảng phát triển Web — K67 · Dự án: Highland Hospital Web Portal</p>
+  <p class="muted">Tiến độ và bài làm của bạn được lưu ngay trên máy — không tài khoản, không server.</p>
+  <p class="site-footer__links"><a href="index.html">Trang chủ</a> · <a href="lo-trinh.html">Lộ trình</a> · <a href="tu-dien.html">Từ điển</a> · <a href="https://github.com/ktzung/working-with-ai-course-for-frontend-dev" target="_blank" rel="noopener noreferrer">Mã nguồn khoá học</a></p>
+</div></footer>
+<span class="scrim" data-scrim hidden></span>
+<div class="search" id="search" hidden>
+  <div class="search__panel" role="dialog" aria-modal="true" aria-label="Tìm kiếm trong khoá học">
+    <div class="search__bar"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="search-q" placeholder="Tìm theo thuật ngữ, khái niệm, buổi học…" autocomplete="off" aria-label="Từ khoá tìm kiếm">
+      <button class="icon-btn" type="button" data-close-search aria-label="Đóng tìm kiếm"><span aria-hidden="true">✕</span></button>
+    </div>
+    <ul class="search__results" id="search-results" aria-live="polite"></ul>
+    <p class="search__hint">Thử ngay: <button class="chip chip--btn" data-try="flexbox">flexbox</button> <button class="chip chip--btn" data-try="prompt">prompt</button> <button class="chip chip--btn" data-try="Live Server">Live Server</button> <button class="chip chip--btn" data-try="localStorage">localStorage</button></p>
+  </div>
+</div>
+<script src="assets/js/search-index.js"></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

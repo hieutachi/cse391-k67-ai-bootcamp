@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hieutachi.github.io/cse391-k67-ai-bootcamp/sitemap.xml
