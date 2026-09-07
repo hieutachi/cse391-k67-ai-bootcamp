@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dự án xuyên suốt: Highland Hospital · Buổi 05 — AI-Accelerated Frontend Developer Bootcamp</title>
+<meta name="description" content="Ba trang bạn sẽ xây (Landing Page, đặt lịch, Admin Dashboard), bộ dữ liệu dùng chung và bảng phân công &quot;chương nào làm phần nào&quot; của dự án Highland Hospital.">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dự án xuyên suốt: Highland Hospital · Buổi 05 — AI-Accelerated Frontend Developer Bootcamp">
+<meta property="og:description" content="Ba trang bạn sẽ xây (Landing Page, đặt lịch, Admin Dashboard), bộ dữ liệu dùng chung và bảng phân công &quot;chương nào làm phần nào&quot; của dự án Highland Hospital.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem('cse391-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body class="tpl-lesson" data-root="../" data-total="5">
+<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+<header class="topbar">
+  <button class="icon-btn topbar__menu" type="button" data-menu aria-expanded="false" aria-controls="sidebar" aria-label="Mở thực đơn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <a class="brand" href="../index.html">
+    <span class="brand__mark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13"/><path d="M12 8v6M9 11h6"/></svg></span>
+    <span class="brand__text"><strong>CSE391 · K67</strong><small>AI-Accelerated Frontend</small></span>
+  </a>
+  <span class="topbar__spacer"></span>
+  <button class="btn btn--search" type="button" data-open-search><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Tìm kiếm</span><kbd>Ctrl</kbd><kbd>K</kbd></button>
+  <span class="topbar__ring" data-ring title="Tiến độ khoá học">
+    <svg viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-bg" cx="18" cy="18" r="15.5"></circle><circle class="ring-fg" cx="18" cy="18" r="15.5" stroke-dasharray="97.4" data-ring-circle></circle></svg>
+    <span data-ring-label>0%</span>
+  </span>
+  <button class="icon-btn" type="button" data-theme-toggle aria-label="Đổi giao diện sáng / tối">
+    <span class="theme-ico theme-ico--light"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></span><span class="theme-ico theme-ico--dark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14A8 8 0 1 1 10 4a7 7 0 0 0 10 10z"/></svg></span>
+  </button>
+</header>
+<div class="shell">
+<aside class="sidebar" id="sidebar" aria-label="Điều hướng khoá học">
+  <div class="sidebar__inner">
+    <p class="sidebar__eyebrow">CSE391 — Nền tảng phát triển Web</p>
+    <nav class="nav">
+      <p class="nav__title">Bắt đầu</p>
+      <a class="nav__link" href="../index.html"><span>Trang chủ</span></a>
+      <a class="nav__link" href="../gioi-thieu.html"><span>Giới thiệu khoá học</span></a>
+      <p class="nav__title">Chương 1 · 5 buổi đã phát hành</p>
+      <div class="nav__lessons"><a class="nav__link nav__link--lesson" href="../lessons/buoi-01.html" data-lesson-link="1"><span class="nav__dot" data-dot="1"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">01</span><span class="nav__label">Chào mừng — vì sao Frontend cần AI</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-02.html" data-lesson-link="2"><span class="nav__dot" data-dot="2"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">02</span><span class="nav__label">Bản đồ công cụ AI cho Frontend</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-03.html" data-lesson-link="3"><span class="nav__dot" data-dot="3"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">03</span><span class="nav__label">AI-Accelerated Workflow 4 bước</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-04.html" data-lesson-link="4"><span class="nav__dot" data-dot="4"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">04</span><span class="nav__label">Thiết lập môi trường làm việc</span></a><a class="nav__link nav__link--lesson is-active" href="../lessons/buoi-05.html" data-lesson-link="5"><span class="nav__dot" data-dot="5"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">05</span><span class="nav__label">Dự án xuyên suốt: Highland Hospital</span></a></div>
+      <p class="nav__title">Tham khảo</p>
+      <a class="nav__link" href="../lo-trinh.html"><span>Lộ trình 8 tuần</span></a>
+      <a class="nav__link" href="../du-an.html"><span>Dự án tốt nghiệp</span></a>
+      <a class="nav__link" href="../tu-dien.html"><span>Từ điển thuật ngữ</span></a>
+    </nav>
+    <div class="sidebar__foot">
+      <div class="progress-card">
+        <div class="progress-card__top">
+          <span class="progress-card__label">Tiến độ của bạn</span>
+          <strong class="progress-card__val" data-progress-count>0/5</strong>
+        </div>
+        <span class="progress-bar" role="progressbar" aria-label="Số buổi đã hoàn thành" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" data-progressbar><i class="progress-bar__fill" data-progress-fill></i></span>
+        <button class="btn btn--ghost btn--sm" type="button" data-reset-progress>Đặt lại tiến độ</button>
+      </div>
+    </div>
+  </div>
+</aside>
+<main class="main" id="main">
+
+<article class="lesson" data-session="5">
+  <header class="lesson__head" data-reveal>
+    <nav class="crumbs" aria-label="Vị trí trang">
+      <a href="../index.html">Trang chủ</a><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      <a href="../lo-trinh.html#ch-1">Chương 1</a><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      <span aria-current="page">Buổi 05</span>
+    </nav>
+    <p class="lesson__kicker">Buổi 05 · Chào mừng &amp; AI-Accelerated Workflow</p>
+    <h1 class="lesson__title">Dự án xuyên suốt: Highland Hospital</h1>
+    <p class="lesson__en">The main project: Highland Hospital</p>
+    <ul class="lesson__meta">
+      <li><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>50 phút trên lớp</span></li>
+      <li><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M8 3v18"/></svg><span>~7 phút đọc</span></li>
+      <li><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg><span>Tổng quan dự án + khởi động</span></li>
+    </ul>
+    <p class="lesson__sum">Ba trang bạn sẽ xây (Landing Page, đặt lịch, Admin Dashboard), bộ dữ liệu dùng chung và bảng phân công &quot;chương nào làm phần nào&quot; của dự án Highland Hospital.</p>
+    <div class="lesson__actions">
+      <button class="btn btn--primary" type="button" data-mark-done="5" aria-pressed="false">
+        <svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span data-mark-label>Đánh dấu đã hoàn thành</span>
+      </button>
+      <a class="btn btn--ghost" href="https://github.com/ktzung/working-with-ai-course-for-frontend-dev/blob/main/course-lessons/vi/01-welcome-and-ai-workflow/05-the-main-project-highland-hospital.md" target="_blank" rel="noopener noreferrer"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 13v6H5V6h6"/></svg><span>Mở bản Markdown gốc</span></a>
+    </div>
+  </header>
+
+  <div class="lesson__grid">
+    <div class="lesson__body">
+      <aside class="goals" data-reveal>
+    <h2 class="goals__title"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg><span>Mục tiêu bài học</span></h2>
+    <ul class="goals__list"><li>Hiểu rõ ba trang web bạn sẽ xây trong khoá học</li><li>Nắm dữ liệu mẫu dùng chung giữa các trang</li><li>Biết mỗi chương đóng góp phần nào vào dự án cuối cùng</li></ul>
+  </aside>
+      
+      <section class="prose" id="benh-vien-highland-la-ai" data-reveal style="--d:0ms">
+    <h2 class="section__title"><span class="section__idx">01</span><span>Bệnh viện Highland là ai?</span><a class="anchor" href="#benh-vien-highland-la-ai" aria-label="Liên kết tới mục Bệnh viện Highland là ai?">#</a></h2>
+    <p>Highland Hospital là một bệnh viện đa khoa hư cấu. Trang web của bệnh viện cần giải quyết ba việc thật:</p>
+<ol>
+<li><strong>Giới thiệu</strong> — bệnh nhân tiềm năng xem bệnh viện cung cấp dịch vụ gì, có những bác sĩ nào, người khác đánh giá ra sao.</li>
+<li><strong>Đặt lịch</strong> — bệnh nhân chọn chuyên khoa, chọn bác sĩ, chọn ngày giờ và điền thông tin liên hệ.</li>
+<li><strong>Quản lý</strong> — nhân viên bệnh viện xem danh sách lịch hẹn, tìm kiếm, lọc theo trạng thái, xác nhận hoặc huỷ lịch.</li>
+</ol>
+  </section>
+<section class="prose" id="ba-trang-ban-se-xay" data-reveal style="--d:40ms">
+    <h2 class="section__title"><span class="section__idx">02</span><span>Ba trang bạn sẽ xây</span><a class="anchor" href="#ba-trang-ban-se-xay" aria-label="Liên kết tới mục Ba trang bạn sẽ xây">#</a></h2>
+    <div class="table-wrap"><table class="table"><thead><tr><th scope="col">Trang</th><th scope="col">File</th><th scope="col">Xây ở chương</th><th scope="col">Nội dung chính</th></tr></thead><tbody><tr><td>Landing Page</td><td><code class="inline inline--path">index.html</code></td><td>3–8 (tĩnh), 9–10 (động)</td><td>Navbar, Hero, dịch vụ, danh sách bác sĩ có bộ lọc, đánh giá, footer</td></tr>
+<tr><td>Trang đặt lịch</td><td><code class="inline inline--path">booking.html</code></td><td>8 (form tĩnh), 11 (luồng đa bước)</td><td>Form 3 bước: chọn dịch vụ/bác sĩ → thông tin bệnh nhân → xác nhận</td></tr>
+<tr><td>Admin Dashboard</td><td><code class="inline inline--path">admin.html</code></td><td>12</td><td>4 thẻ thống kê, bảng lịch hẹn có tìm kiếm + lọc trạng thái + cập nhật</td></tr></tbody></table></div>
+  </section>
+<section class="prose" id="du-lieu-mau-dung-chung" data-reveal style="--d:80ms">
+    <h2 class="section__title"><span class="section__idx">03</span><span>Dữ liệu mẫu dùng chung</span><a class="anchor" href="#du-lieu-mau-dung-chung" aria-label="Liên kết tới mục Dữ liệu mẫu dùng chung">#</a></h2>
+    <p>Cả ba trang làm việc trên cùng một bộ dữ liệu. Ở chương 9 bạn sẽ đưa nó vào <code class="inline inline--path">js/data.js</code>:</p>
+<figure class="code code--multi" data-lang="js">
+  <figcaption class="code__bar"><span class="code__lang">JS</span>
+  <button class="btn-copy" type="button" data-copy aria-label="Sao chép đoạn code">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    <span>Sao chép</span></button></figcaption>
+  <pre><code><span class="tok tok--com">// js/data.js</span>
+<span class="tok tok--plain">const</span> <span class="tok tok--plain">doctors</span> <span class="tok tok--punc">=</span> <span class="tok tok--punc">[</span>
+  <span class="tok tok--punc">{</span> <span class="tok tok--prop">id</span><span class="tok tok--punc">:</span> <span class="tok tok--num">1</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">name</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;BS. Nguyễn Văn An&quot;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">specialty</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;Nội tổng hợp&quot;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">experience</span><span class="tok tok--punc">:</span> <span class="tok tok--num">12</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">fee</span><span class="tok tok--punc">:</span> <span class="tok tok--num">300000</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">avatar</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;assets/images/doctor-1.jpg&quot;</span> <span class="tok tok--punc">}</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--punc">{</span> <span class="tok tok--prop">id</span><span class="tok tok--punc">:</span> <span class="tok tok--num">2</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">name</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;BS. Trần Thị Bình&quot;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">specialty</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;Nhi khoa&quot;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">experience</span><span class="tok tok--punc">:</span> <span class="tok tok--num">9</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">fee</span><span class="tok tok--punc">:</span> <span class="tok tok--num">250000</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">avatar</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;assets/images/doctor-2.jpg&quot;</span> <span class="tok tok--punc">}</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--punc">{</span> <span class="tok tok--prop">id</span><span class="tok tok--punc">:</span> <span class="tok tok--num">3</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">name</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;BS. Lê Hoàng Cường&quot;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">specialty</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;Tim mạch&quot;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">experience</span><span class="tok tok--punc">:</span> <span class="tok tok--num">15</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">fee</span><span class="tok tok--punc">:</span> <span class="tok tok--num">400000</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">avatar</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;assets/images/doctor-3.jpg&quot;</span> <span class="tok tok--punc">}</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--punc">{</span> <span class="tok tok--prop">id</span><span class="tok tok--punc">:</span> <span class="tok tok--num">4</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">name</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;BS. Phạm Minh Dung&quot;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">specialty</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;Da liễu&quot;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">experience</span><span class="tok tok--punc">:</span> <span class="tok tok--num">7</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">fee</span><span class="tok tok--punc">:</span> <span class="tok tok--num">220000</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">avatar</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;assets/images/doctor-4.jpg&quot;</span> <span class="tok tok--punc">}</span>
+<span class="tok tok--punc">]</span><span class="tok tok--punc">;</span>
+
+<span class="tok tok--plain">const</span> <span class="tok tok--plain">appointments</span> <span class="tok tok--punc">=</span> <span class="tok tok--punc">[</span><span class="tok tok--punc">]</span><span class="tok tok--punc">;</span> <span class="tok tok--com">// { id, patientName, phone, specialty, doctorName, date, time, status }</span></code></pre>
+</figure>
+<p>Trạng thái lịch hẹn dùng bốn giá trị xuyên suốt: <code class="inline">chờ xác nhận</code>, <code class="inline">đã xác nhận</code>, <code class="inline">đã hoàn thành</code>, <code class="inline">đã huỷ</code>. Ở chương 10–11, <code class="inline">appointments</code> chuyển từ mảng trong bộ nhớ sang <code class="inline">localStorage</code> và mock API.</p>
+  </section>
+<section class="prose" id="moi-chuong-dong-gop-gi" data-reveal style="--d:120ms">
+    <h2 class="section__title"><span class="section__idx">04</span><span>Mỗi chương đóng góp gì</span><a class="anchor" href="#moi-chuong-dong-gop-gi" aria-label="Liên kết tới mục Mỗi chương đóng góp gì">#</a></h2>
+    <ul>
+<li><strong>Chương 3–4</strong>: khung HTML semantic và CSS cho Hero + Services.</li>
+<li><strong>Chương 5–6</strong>: lưới Doctor Cards và responsive toàn trang.</li>
+<li><strong>Chương 7–8</strong>: dựng lại Landing bằng Bootstrap, form đặt lịch tĩnh.</li>
+<li><strong>Chương 9–10</strong>: render bác sĩ từ dữ liệu, bộ lọc chuyên khoa, lưu lịch hẹn.</li>
+<li><strong>Chương 11</strong>: gọi mock API, luồng đặt lịch đa bước.</li>
+<li><strong>Chương 12</strong>: lắp ráp Landing + Admin Dashboard hoàn chỉnh và deploy.</li>
+</ul>
+  </section>
+<section class="prose" id="mot-prompt-khoi-dong-du-an" data-reveal style="--d:160ms">
+    <h2 class="section__title"><span class="section__idx">05</span><span>Một prompt khởi động dự án</span><a class="anchor" href="#mot-prompt-khoi-dong-du-an" aria-label="Liên kết tới mục Một prompt khởi động dự án">#</a><span class="section__badge section__badge--prompt">Prompt</span></h2>
+    <figure class="code code--prompt code--multi" data-lang="text">
+  <figcaption class="code__bar"><span class="code__lang">Prompt mẫu</span>
+  <button class="btn-copy" type="button" data-copy aria-label="Sao chép đoạn code">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    <span>Sao chép</span></button></figcaption>
+  <pre><code>Tôi bắt đầu dự án frontend <span class="tok tok--str">&quot;Highland Hospital&quot;</span> — website bệnh viện đặt lịch khám.
+Dùng HTML5 semantic + CSS3 + Bootstrap <span class="tok tok--num">5</span> CDN + JavaScript ES6+ thuần, không framework.
+Tôi cần tạo index.html với cấu trúc rỗng gồm navbar, hero, services, doctors, testimonials,
+booking CTA và footer — mỗi vùng là một &lt;section&gt; có id và comment HTML đánh dấu.
+Hãy trả về toàn bộ nội dung file index.html, chưa cần nội dung chi tiết, chỉ khung + class Bootstrap hợp lệ.</code></pre>
+</figure>
+  </section>
+<section class="prose prose--practice" id="thuc-hanh" data-reveal style="--d:200ms">
+    <h2 class="section__title"><span class="section__idx">06</span><span>Thực hành</span><a class="anchor" href="#thuc-hanh" aria-label="Liên kết tới mục Thực hành">#</a><span class="section__badge">Thực hành</span></h2>
+    <ol>
+<li>Tạo thư mục <code class="inline">highland-hospital/</code> (nếu chưa có từ bài trước) và file <code class="inline inline--path">js/data.js</code> với mảng <code class="inline">doctors</code> 6 bác sĩ và <code class="inline">appointments</code> rỗng.</li>
+<li>Chạy prompt khởi động ở trên, dán kết quả vào <code class="inline inline--path">index.html</code>, mở Live Server và xem khung trang.</li>
+<li>Mở bài tiếp theo để bắt đầu chương 2 — nơi bạn học viết những prompt tốt hơn prompt vừa dùng.</li>
+</ol>
+  </section>
+      <aside class="takeaway" data-reveal>
+        <p class="takeaway__label"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg>Điểm chốt</p>
+        <p>Mọi chương đều góp phần vào một ứng dụng duy nhất — đó là lý do bạn không học lý thuyết rời rạc.</p>
+      </aside>
+      <section class="prose" id="thuat-ngu" data-reveal>
+  <h2 class="section__title"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M8 3v18"/></svg><span>Thuật ngữ trong bài</span></h2>
+  <dl class="terms">
+    <div class="term"><dt><code>Landing page</code><span>Trang chủ giới thiệu</span></dt><dd>Trang chính của website: hero, dịch vụ, bác sĩ, đánh giá, footer.</dd></div><div class="term"><dt><code>Dashboard</code><span>Bảng điều khiển</span></dt><dd>Trang quản trị có thẻ số liệu (metrics) và bảng dữ liệu để tìm kiếm, lọc, cập nhật.</dd></div><div class="term"><dt><code>JSON</code><span>Định dạng dữ liệu</span></dt><dd>Cách mô tả object/mảng để trao đổi dữ liệu giữa code và API.</dd></div><div class="term"><dt><code>Mock API</code><span>API giả lập</span></dt><dd>Nguồn dữ liệu giả để thử luồng gọi API như hệ thống thật.</dd></div><div class="term"><dt><code>localStorage</code><span>Lưu trữ cục bộ</span></dt><dd>Lưu dữ liệu ngay trong trình duyệt theo từng origin, không cần server.</dd></div>
+  </dl>
+  <p class="section__foot"><a class="btn btn--ghost btn--sm" href="../tu-dien.html">Xem toàn bộ từ điển<svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></p>
+</section>
+      <section class="prose" id="kiem-tra" data-reveal>
+  <h2 class="section__title"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7"/><path d="M12 17h.01"/></svg><span>Kiểm tra nhanh</span></h2>
+  <p class="section__lead">Bốn câu hỏi lấy trực tiếp từ nội dung buổi học. Chọn đáp án rồi bấm <em>Kiểm tra</em> — kết quả chỉ lưu trên máy bạn.</p>
+  <form class="quiz" data-quiz="5">
+    <fieldset class="quiz__q" data-q="0">
+      <legend><span class="quiz__qn">1</span>Ba trang của dự án tương ứng với ba file nào?</legend>
+      <div class="quiz__opts">
+        <label class="quiz__opt"><input type="radio" name="q5-0" value="0" data-opt="0" data-correct="1"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">index.html, booking.html, admin.html</span></label><label class="quiz__opt"><input type="radio" name="q5-0" value="1" data-opt="1" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">home.html, form.html, dashboard.html</span></label><label class="quiz__opt"><input type="radio" name="q5-0" value="2" data-opt="2" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">index.php, booking.php, admin.php</span></label><label class="quiz__opt"><input type="radio" name="q5-0" value="3" data-opt="3" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">main.html, doctors.html, login.html</span></label>
+      </div>
+      <p class="quiz__why" hidden><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg><span>Landing Page ở index.html, luồng đặt lịch ở booking.html, bảng quản lý lịch hẹn ở admin.html.</span></p>
+    </fieldset><fieldset class="quiz__q" data-q="1">
+      <legend><span class="quiz__qn">2</span>Bốn trạng thái lịch hẹn dùng xuyên suốt dự án là?</legend>
+      <div class="quiz__opts">
+        <label class="quiz__opt"><input type="radio" name="q5-1" value="0" data-opt="0" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">open / pending / closed / archived</span></label><label class="quiz__opt"><input type="radio" name="q5-1" value="1" data-opt="1" data-correct="1"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">chờ xác nhận, đã xác nhận, đã hoàn thành, đã huỷ</span></label><label class="quiz__opt"><input type="radio" name="q5-1" value="2" data-opt="2" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">mới, đang khám, xong, huỷ</span></label><label class="quiz__opt"><input type="radio" name="q5-1" value="3" data-opt="3" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">1 / 2 / 3 / 4</span></label>
+      </div>
+      <p class="quiz__why" hidden><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg><span>Trạng thái này quyết định badge màu trên Admin Dashboard và nội dung email xác nhận ở luồng đặt lịch.</span></p>
+    </fieldset><fieldset class="quiz__q" data-q="2">
+      <legend><span class="quiz__qn">3</span>Chương 9–10 đóng góp phần nào cho dự án?</legend>
+      <div class="quiz__opts">
+        <label class="quiz__opt"><input type="radio" name="q5-2" value="0" data-opt="0" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Dựng lại Landing Page bằng Bootstrap</span></label><label class="quiz__opt"><input type="radio" name="q5-2" value="1" data-opt="1" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Deploy website lên GitHub Pages</span></label><label class="quiz__opt"><input type="radio" name="q5-2" value="2" data-opt="2" data-correct="1"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Render danh sách bác sĩ từ dữ liệu, bộ lọc chuyên khoa, lưu lịch hẹn</span></label><label class="quiz__opt"><input type="radio" name="q5-2" value="3" data-opt="3" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Phân tích thiết kế Figma</span></label>
+      </div>
+      <p class="quiz__why" hidden><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg><span>Chương 9–10 biến trang tĩnh thành trang động: dữ liệu → DOM → sự kiện → localStorage.</span></p>
+    </fieldset><fieldset class="quiz__q" data-q="3">
+      <legend><span class="quiz__qn">4</span>Ở chương 10–11, mảng appointments chuyển từ bộ nhớ sang đâu?</legend>
+      <div class="quiz__opts">
+        <label class="quiz__opt"><input type="radio" name="q5-3" value="0" data-opt="0" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Cookie và sessionStorage</span></label><label class="quiz__opt"><input type="radio" name="q5-3" value="1" data-opt="1" data-correct="1"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">localStorage và mock API</span></label><label class="quiz__opt"><input type="radio" name="q5-3" value="2" data-opt="2" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Database MySQL trên server</span></label><label class="quiz__opt"><input type="radio" name="q5-3" value="3" data-opt="3" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Một file Excel chia sẻ</span></label>
+      </div>
+      <p class="quiz__why" hidden><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg><span>Đó là cách mô phỏng vòng đời dữ liệu thật mà vẫn không cần backend.</span></p>
+    </fieldset>
+    <div class="quiz__foot">
+      <button class="btn btn--primary" type="button" data-quiz-check>Kiểm tra đáp án</button>
+      <button class="btn btn--ghost" type="reset" data-quiz-reset>Làm lại</button>
+      <p class="quiz__score" data-quiz-score aria-live="polite"></p>
+    </div>
+  </form>
+</section>
+      <section class="prose" id="bai-tiep-theo" data-reveal><h2 class="section__title"><span>Bài tiếp theo</span></h2><p>Khung trang đầu tiên đã hiện trên trình duyệt — chương 2 dạy bạn viết prompt đủ tốt để biến khung đó thành giao diện thật, bắt đầu từ giải phẫu một prompt.</p></section>
+      <nav class="pn-wrap" aria-label="Điều hướng giữa các buổi học"><a class="pn pn--prev" href="../lessons/buoi-04.html"><span class="pn__label">Buổi trước</span><span class="pn__title">Thiết lập môi trường làm việc</span></a><span class="pn pn--next pn--empty"><span class="pn__label">Buổi tiếp theo</span><span class="pn__title">Sắp phát hành</span></span></nav>
+    </div>
+    <aside class="rail" aria-label="Công cụ hỗ trợ bài học">
+      <div class="rail__inner">
+        <nav class="rail__nav" aria-label="Mục lục bài học">
+  <p class="rail__title">Nội dung bài</p>
+  <ol class="toc">
+    <li><a href="#muc-tieu-bai-hoc" data-toc="muc-tieu-bai-hoc">Mục tiêu bài học</a></li><li><a href="#benh-vien-highland-la-ai" data-toc="benh-vien-highland-la-ai">Bệnh viện Highland là ai?</a></li><li><a href="#ba-trang-ban-se-xay" data-toc="ba-trang-ban-se-xay">Ba trang bạn sẽ xây</a></li><li><a href="#du-lieu-mau-dung-chung" data-toc="du-lieu-mau-dung-chung">Dữ liệu mẫu dùng chung</a></li><li><a href="#moi-chuong-dong-gop-gi" data-toc="moi-chuong-dong-gop-gi">Mỗi chương đóng góp gì</a></li><li><a href="#mot-prompt-khoi-dong-du-an" data-toc="mot-prompt-khoi-dong-du-an">Một prompt khởi động dự án</a></li><li><a href="#thuc-hanh" data-toc="thuc-hanh">Thực hành</a></li>
+  </ol>
+</nav>
+        
+        <div class="rail__box">
+          <p class="rail__title">Cần giúp đỡ?</p>
+          <p class="rail__hint">Dán prompt mẫu trong bài vào chat AI bạn đã chọn, hoặc hỏi giảng viên trên lớp.</p>
+          <a class="btn btn--ghost btn--sm" href="../gioi-thieu.html#faq">Xem câu hỏi thường gặp</a>
+        </div>
+        <button class="btn btn--ghost btn--sm" type="button" data-to-top>Về đầu trang <svg class="ico ico--sm to-top-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+      </div>
+    </aside>
+  </div>
+</article>
+</main>
+</div>
+<footer class="site-footer"><div class="site-footer__inner">
+  <p><strong>AI-Accelerated Frontend Developer Bootcamp</strong> · CSE391 — Nền tảng phát triển Web — K67 · Dự án: Highland Hospital Web Portal</p>
+  <p class="muted">Tiến độ và bài làm của bạn được lưu ngay trên máy — không tài khoản, không server.</p>
+  <p class="site-footer__links"><a href="../index.html">Trang chủ</a> · <a href="../lo-trinh.html">Lộ trình</a> · <a href="../tu-dien.html">Từ điển</a> · <a href="https://github.com/ktzung/working-with-ai-course-for-frontend-dev" target="_blank" rel="noopener noreferrer">Mã nguồn khoá học</a></p>
+</div></footer>
+<span class="scrim" data-scrim hidden></span>
+<div class="search" id="search" hidden>
+  <div class="search__panel" role="dialog" aria-modal="true" aria-label="Tìm kiếm trong khoá học">
+    <div class="search__bar"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="search-q" placeholder="Tìm theo thuật ngữ, khái niệm, buổi học…" autocomplete="off" aria-label="Từ khoá tìm kiếm">
+      <button class="icon-btn" type="button" data-close-search aria-label="Đóng tìm kiếm"><span aria-hidden="true">✕</span></button>
+    </div>
+    <ul class="search__results" id="search-results" aria-live="polite"></ul>
+    <p class="search__hint">Thử ngay: <button class="chip chip--btn" data-try="flexbox">flexbox</button> <button class="chip chip--btn" data-try="prompt">prompt</button> <button class="chip chip--btn" data-try="Live Server">Live Server</button> <button class="chip chip--btn" data-try="localStorage">localStorage</button></p>
+  </div>
+</div>
+<script src="../assets/js/search-index.js"></script>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

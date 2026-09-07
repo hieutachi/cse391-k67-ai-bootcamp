@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thiết lập môi trường làm việc · Buổi 04 — AI-Accelerated Frontend Developer Bootcamp</title>
+<meta name="description" content="Cài VS Code cùng Live Server, tạo cấu trúc thư mục chuẩn cho Highland Hospital và làm quen bốn tab Chrome DevTools bạn sẽ dùng trong mọi bài sau.">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Thiết lập môi trường làm việc · Buổi 04 — AI-Accelerated Frontend Developer Bootcamp">
+<meta property="og:description" content="Cài VS Code cùng Live Server, tạo cấu trúc thư mục chuẩn cho Highland Hospital và làm quen bốn tab Chrome DevTools bạn sẽ dùng trong mọi bài sau.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem('cse391-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body class="tpl-lesson" data-root="../" data-total="5">
+<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+<header class="topbar">
+  <button class="icon-btn topbar__menu" type="button" data-menu aria-expanded="false" aria-controls="sidebar" aria-label="Mở thực đơn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <a class="brand" href="../index.html">
+    <span class="brand__mark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13"/><path d="M12 8v6M9 11h6"/></svg></span>
+    <span class="brand__text"><strong>CSE391 · K67</strong><small>AI-Accelerated Frontend</small></span>
+  </a>
+  <span class="topbar__spacer"></span>
+  <button class="btn btn--search" type="button" data-open-search><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Tìm kiếm</span><kbd>Ctrl</kbd><kbd>K</kbd></button>
+  <span class="topbar__ring" data-ring title="Tiến độ khoá học">
+    <svg viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-bg" cx="18" cy="18" r="15.5"></circle><circle class="ring-fg" cx="18" cy="18" r="15.5" stroke-dasharray="97.4" data-ring-circle></circle></svg>
+    <span data-ring-label>0%</span>
+  </span>
+  <button class="icon-btn" type="button" data-theme-toggle aria-label="Đổi giao diện sáng / tối">
+    <span class="theme-ico theme-ico--light"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></span><span class="theme-ico theme-ico--dark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14A8 8 0 1 1 10 4a7 7 0 0 0 10 10z"/></svg></span>
+  </button>
+</header>
+<div class="shell">
+<aside class="sidebar" id="sidebar" aria-label="Điều hướng khoá học">
+  <div class="sidebar__inner">
+    <p class="sidebar__eyebrow">CSE391 — Nền tảng phát triển Web</p>
+    <nav class="nav">
+      <p class="nav__title">Bắt đầu</p>
+      <a class="nav__link" href="../index.html"><span>Trang chủ</span></a>
+      <a class="nav__link" href="../gioi-thieu.html"><span>Giới thiệu khoá học</span></a>
+      <p class="nav__title">Chương 1 · 5 buổi đã phát hành</p>
+      <div class="nav__lessons"><a class="nav__link nav__link--lesson" href="../lessons/buoi-01.html" data-lesson-link="1"><span class="nav__dot" data-dot="1"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">01</span><span class="nav__label">Chào mừng — vì sao Frontend cần AI</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-02.html" data-lesson-link="2"><span class="nav__dot" data-dot="2"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">02</span><span class="nav__label">Bản đồ công cụ AI cho Frontend</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-03.html" data-lesson-link="3"><span class="nav__dot" data-dot="3"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">03</span><span class="nav__label">AI-Accelerated Workflow 4 bước</span></a><a class="nav__link nav__link--lesson is-active" href="../lessons/buoi-04.html" data-lesson-link="4"><span class="nav__dot" data-dot="4"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">04</span><span class="nav__label">Thiết lập môi trường làm việc</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-05.html" data-lesson-link="5"><span class="nav__dot" data-dot="5"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">05</span><span class="nav__label">Dự án xuyên suốt: Highland Hospital</span></a></div>
+      <p class="nav__title">Tham khảo</p>
+      <a class="nav__link" href="../lo-trinh.html"><span>Lộ trình 8 tuần</span></a>
+      <a class="nav__link" href="../du-an.html"><span>Dự án tốt nghiệp</span></a>
+      <a class="nav__link" href="../tu-dien.html"><span>Từ điển thuật ngữ</span></a>
+    </nav>
+    <div class="sidebar__foot">
+      <div class="progress-card">
+        <div class="progress-card__top">
+          <span class="progress-card__label">Tiến độ của bạn</span>
+          <strong class="progress-card__val" data-progress-count>0/5</strong>
+        </div>
+        <span class="progress-bar" role="progressbar" aria-label="Số buổi đã hoàn thành" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" data-progressbar><i class="progress-bar__fill" data-progress-fill></i></span>
+        <button class="btn btn--ghost btn--sm" type="button" data-reset-progress>Đặt lại tiến độ</button>
+      </div>
+    </div>
+  </div>
+</aside>
+<main class="main" id="main">
+
+<article class="lesson" data-session="4">
+  <header class="lesson__head" data-reveal>
+    <nav class="crumbs" aria-label="Vị trí trang">
+      <a href="../index.html">Trang chủ</a><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      <a href="../lo-trinh.html#ch-1">Chương 1</a><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      <span aria-current="page">Buổi 04</span>
+    </nav>
+    <p class="lesson__kicker">Buổi 04 · Chào mừng &amp; AI-Accelerated Workflow</p>
+    <h1 class="lesson__title">Thiết lập môi trường làm việc</h1>
+    <p class="lesson__en">Setting up your workspace</p>
+    <ul class="lesson__meta">
+      <li><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>45 phút trên lớp</span></li>
+      <li><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M8 3v18"/></svg><span>~6 phút đọc</span></li>
+      <li><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg><span>Thực hành cài đặt</span></li>
+    </ul>
+    <p class="lesson__sum">Cài VS Code cùng Live Server, tạo cấu trúc thư mục chuẩn cho Highland Hospital và làm quen bốn tab Chrome DevTools bạn sẽ dùng trong mọi bài sau.</p>
+    <div class="lesson__actions">
+      <button class="btn btn--primary" type="button" data-mark-done="4" aria-pressed="false">
+        <svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span data-mark-label>Đánh dấu đã hoàn thành</span>
+      </button>
+      <a class="btn btn--ghost" href="https://github.com/ktzung/working-with-ai-course-for-frontend-dev/blob/main/course-lessons/vi/01-welcome-and-ai-workflow/04-setting-up-your-workspace.md" target="_blank" rel="noopener noreferrer"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 13v6H5V6h6"/></svg><span>Mở bản Markdown gốc</span></a>
+    </div>
+  </header>
+
+  <div class="lesson__grid">
+    <div class="lesson__body">
+      <aside class="goals" data-reveal>
+    <h2 class="goals__title"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg><span>Mục tiêu bài học</span></h2>
+    <ul class="goals__list"><li>Cài đặt và cấu hình VS Code với Live Server</li><li>Tạo cấu trúc thư mục chuẩn cho dự án Highland Hospital</li><li>Làm quen với Chrome DevTools — người bạn đồng hành của mọi bài sau</li></ul>
+  </aside>
+      
+      <section class="prose" id="buoc-1-cai-vs-code-va-live-server" data-reveal style="--d:0ms">
+    <h2 class="section__title"><span class="section__idx">01</span><span>Bước 1: Cài VS Code và Live Server</span><a class="anchor" href="#buoc-1-cai-vs-code-va-live-server" aria-label="Liên kết tới mục Bước 1: Cài VS Code và Live Server">#</a></h2>
+    <ol>
+<li>Tải VS Code từ trang chủ và cài đặt như ứng dụng thông thường.</li>
+<li>Mở VS Code, vào tab <strong>Extensions</strong> (⌘⇧X), tìm <strong>Live Server</strong> (tác giả Ritwick Dey), cài đặt.</li>
+<li>Mở một thư mục trống qua <strong>File → Open Folder</strong>. Đây sẽ là nơi chứa dự án.</li>
+</ol>
+<p>Live Server làm một việc rất quan trọng: nó chạy một máy chủ nhỏ ngay trên máy bạn và <strong>tự tải lại trình duyệt mỗi khi bạn lưu file</strong>. Khi đến chương 11 học Fetch API, bạn sẽ hiểu vì sao không thể mở file HTML bằng cách double-click (giao thức <code class="inline">file://</code> chặn gọi API) — Live Server giải quyết việc đó từ bây giờ.</p>
+  </section>
+<section class="prose" id="buoc-2-cau-truc-thu-muc-du-an" data-reveal style="--d:40ms">
+    <h2 class="section__title"><span class="section__idx">02</span><span>Bước 2: Cấu trúc thư mục dự án</span><a class="anchor" href="#buoc-2-cau-truc-thu-muc-du-an" aria-label="Liên kết tới mục Bước 2: Cấu trúc thư mục dự án">#</a></h2>
+    <p>Tạo cấu trúc sau (dùng nút New Folder trong VS Code hoặc terminal):</p>
+<figure class="code code--multi" data-lang="text">
+  <figcaption class="code__bar"><span class="code__lang">CODE</span>
+  <button class="btn-copy" type="button" data-copy aria-label="Sao chép đoạn code">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    <span>Sao chép</span></button></figcaption>
+  <pre><code>highland-hospital/
+├── index.html          # Trang chủ — Landing Page
+├── booking.html        # Trang đặt lịch (xây từ chương 8)
+├── admin.html          # Admin Dashboard (xây từ chương 12)
+├── css/
+│   └── style.css       # CSS tự viết, nạp sau Bootstrap
+├── js/
+│   ├── data.js         # Dữ liệu mẫu bác sĩ, dịch vụ
+│   ├── main.js         # Logic trang chủ
+│   └── admin.js        # Logic dashboard
+└── assets/
+    └── images/         # Ảnh bác sĩ, banner</code></pre>
+</figure>
+<p>Mỗi bài học từ giờ sẽ nói rõ &quot;thêm vào file nào&quot; — hãy giữ cấu trúc này nhất quán để prompt AI của bạn luôn chỉ đúng đường dẫn.</p>
+  </section>
+<section class="prose" id="buoc-3-file-html-toi-thieu-va-chay-thu" data-reveal style="--d:80ms">
+    <h2 class="section__title"><span class="section__idx">03</span><span>Bước 3: File HTML tối thiểu và chạy thử</span><a class="anchor" href="#buoc-3-file-html-toi-thieu-va-chay-thu" aria-label="Liên kết tới mục Bước 3: File HTML tối thiểu và chạy thử">#</a></h2>
+    <p>Tạo <code class="inline inline--path">index.html</code> với nội dung tối thiểu, sau đó <strong>click chuột phải vào file → Open with Live Server</strong>. Trình duyệt sẽ mở <code class="inline inline--path">http://127.0.0.1:5500/index.html</code>.</p>
+  </section>
+<section class="prose" id="buoc-4-lam-quen-chrome-devtools" data-reveal style="--d:120ms">
+    <h2 class="section__title"><span class="section__idx">04</span><span>Bước 4: Làm quen Chrome DevTools</span><a class="anchor" href="#buoc-4-lam-quen-chrome-devtools" aria-label="Liên kết tới mục Bước 4: Làm quen Chrome DevTools">#</a></h2>
+    <p>Mở DevTools bằng <strong>⌥⌘I</strong> (hoặc click phải → Inspect). Bốn tab bạn dùng nhiều nhất:</p>
+<ul>
+<li><strong>Elements</strong> — xem cây DOM và CSS đang áp dụng; tắt/bật style để thử nghiệm trước khi sửa file.</li>
+<li><strong>Console</strong> — nơi in lỗi JavaScript và lệnh <code class="inline">console.log</code>; thử gõ JavaScript trực tiếp.</li>
+<li><strong>Network</strong> — xem trình duyệt tải file nào, request API nào đang chạy; mở tab này khi học Fetch API.</li>
+<li><strong>Device Toolbar</strong> (⌘⇧M) — mô phỏng màn hình điện thoại/máy tính bảng để kiểm tra responsive.</li>
+</ul>
+  </section>
+<section class="prose prose--practice" id="thuc-hanh" data-reveal style="--d:160ms">
+    <h2 class="section__title"><span class="section__idx">05</span><span>Thực hành</span><a class="anchor" href="#thuc-hanh" aria-label="Liên kết tới mục Thực hành">#</a><span class="section__badge">Thực hành</span></h2>
+    <ol>
+<li>Tạo đủ cấu trúc thư mục <code class="inline">highland-hospital/</code> như trên.</li>
+<li>Viết <code class="inline inline--path">index.html</code> tối thiểu gồm <code class="inline">&lt;!DOCTYPE html&gt;</code>, thẻ <code class="inline">head</code> (có <code class="inline">meta viewport</code>) và một câu &quot;Highland Hospital — đang xây dựng&quot;.</li>
+<li>Mở bằng Live Server, rồi dùng Device Toolbar xem trang ở kích thước 375px và 1440px.</li>
+<li>Hỏi AI: <em>&quot;Tôi dùng VS Code + Live Server, chưa cài gì thêm. Extension nào giúp tự động format HTML/CSS khi lưu file?&quot;</em> — cài extension được gợi ý và kiểm tra.</li>
+</ol>
+  </section>
+      <aside class="takeaway" data-reveal>
+        <p class="takeaway__label"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg>Điểm chốt</p>
+        <p>Đừng mở file HTML bằng double-click khi học tới Fetch API — giao thức file:// sẽ chặn gọi API.</p>
+      </aside>
+      <section class="prose" id="thuat-ngu" data-reveal>
+  <h2 class="section__title"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M8 3v18"/></svg><span>Thuật ngữ trong bài</span></h2>
+  <dl class="terms">
+    <div class="term"><dt><code>Live Server</code><span>Máy chủ cục bộ khi dev</span></dt><dd>Extension VS Code chạy HTTP server tại chỗ và tự tải lại trình duyệt khi bạn lưu file.</dd></div><div class="term"><dt><code>localhost</code><span>Máy chủ cục bộ</span></dt><dd>Địa chỉ ngay trên máy bạn, ví dụ http://127.0.0.1:5500.</dd></div><div class="term"><dt><code>file:// protocol</code><span>Giao thức file</span></dt><dd>Cách mở thẳng file trên đĩa; bị trình duyệt chặn khi gọi API.</dd></div><div class="term"><dt><code>Viewport</code><span>Vùng hiển thị</span></dt><dd>Phần trang web nhìn thấy được trên màn hình; khai báo bằng &lt;meta name=&quot;viewport&quot;&gt;.</dd></div><div class="term"><dt><code>Console</code><span>Bảng điều khiển</span></dt><dd>Nơi in lỗi JavaScript và kết quả console.log để thử lệnh trực tiếp.</dd></div>
+  </dl>
+  <p class="section__foot"><a class="btn btn--ghost btn--sm" href="../tu-dien.html">Xem toàn bộ từ điển<svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></p>
+</section>
+      <section class="prose" id="kiem-tra" data-reveal>
+  <h2 class="section__title"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1 .9-1 1.7"/><path d="M12 17h.01"/></svg><span>Kiểm tra nhanh</span></h2>
+  <p class="section__lead">Bốn câu hỏi lấy trực tiếp từ nội dung buổi học. Chọn đáp án rồi bấm <em>Kiểm tra</em> — kết quả chỉ lưu trên máy bạn.</p>
+  <form class="quiz" data-quiz="4">
+    <fieldset class="quiz__q" data-q="0">
+      <legend><span class="quiz__qn">1</span>Vì sao KHÔNG nên mở file HTML bằng double-click (file://) khi học tới Fetch API?</legend>
+      <div class="quiz__opts">
+        <label class="quiz__opt"><input type="radio" name="q4-0" value="0" data-opt="0" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Vì trình duyệt không hiển thị được CSS khi mở bằng file://</span></label><label class="quiz__opt"><input type="radio" name="q4-0" value="1" data-opt="1" data-correct="1"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Vì giao thức file:// chặn gọi API; Live Server chạy HTTP cục bộ nên gọi API mới hoạt động</span></label><label class="quiz__opt"><input type="radio" name="q4-0" value="2" data-opt="2" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Vì cách đó làm hỏng file HTML</span></label><label class="quiz__opt"><input type="radio" name="q4-0" value="3" data-opt="3" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Vì VS Code không hỗ trợ mở file bằng double-click</span></label>
+      </div>
+      <p class="quiz__why" hidden><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg><span>Bài 04 nói rõ: Live Server giải quyết vấn đề này ngay từ đầu, tới chương 11 bạn sẽ thấy rõ lý do.</span></p>
+    </fieldset><fieldset class="quiz__q" data-q="1">
+      <legend><span class="quiz__qn">2</span>Live Server làm một việc rất quan trọng là gì?</legend>
+      <div class="quiz__opts">
+        <label class="quiz__opt"><input type="radio" name="q4-1" value="0" data-opt="0" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Tự động commit code lên GitHub</span></label><label class="quiz__opt"><input type="radio" name="q4-1" value="1" data-opt="1" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Tối ưu dung lượng ảnh</span></label><label class="quiz__opt"><input type="radio" name="q4-1" value="2" data-opt="2" data-correct="1"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Chạy một máy chủ nhỏ trên máy bạn và tự tải lại trình duyệt mỗi khi bạn lưu file</span></label><label class="quiz__opt"><input type="radio" name="q4-1" value="3" data-opt="3" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Biên dịch Sass thành CSS</span></label>
+      </div>
+      <p class="quiz__why" hidden><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg><span>Vòng lặp &quot;sửa — lưu — thấy kết quả&quot; nhanh chính là thứ khiến bạn học được nhiều hơn mỗi buổi.</span></p>
+    </fieldset><fieldset class="quiz__q" data-q="2">
+      <legend><span class="quiz__qn">3</span>Tab DevTools nào cho biết trình duyệt đang chạy request API nào?</legend>
+      <div class="quiz__opts">
+        <label class="quiz__opt"><input type="radio" name="q4-2" value="0" data-opt="0" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Elements</span></label><label class="quiz__opt"><input type="radio" name="q4-2" value="1" data-opt="1" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Console</span></label><label class="quiz__opt"><input type="radio" name="q4-2" value="2" data-opt="2" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Sources</span></label><label class="quiz__opt"><input type="radio" name="q4-2" value="3" data-opt="3" data-correct="1"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">Network</span></label>
+      </div>
+      <p class="quiz__why" hidden><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg><span>Network liệt kê mọi file và request API — bạn sẽ mở tab này rất thường xuyên ở chương 11.</span></p>
+    </fieldset><fieldset class="quiz__q" data-q="3">
+      <legend><span class="quiz__qn">4</span>Trong cấu trúc thư mục chuẩn của dự án, dữ liệu mẫu bác sĩ nằm ở đâu?</legend>
+      <div class="quiz__opts">
+        <label class="quiz__opt"><input type="radio" name="q4-3" value="0" data-opt="0" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">css/data.css</span></label><label class="quiz__opt"><input type="radio" name="q4-3" value="1" data-opt="1" data-correct="1"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">js/data.js</span></label><label class="quiz__opt"><input type="radio" name="q4-3" value="2" data-opt="2" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">assets/data.json</span></label><label class="quiz__opt"><input type="radio" name="q4-3" value="3" data-opt="3" data-correct="0"><span class="quiz__mark" aria-hidden="true"></span><span class="quiz__text">docs/data.md</span></label>
+      </div>
+      <p class="quiz__why" hidden><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg><span>js/data.js chứa mảng bác sĩ, dịch vụ; js/main.js và js/admin.js giữ logic của từng trang.</span></p>
+    </fieldset>
+    <div class="quiz__foot">
+      <button class="btn btn--primary" type="button" data-quiz-check>Kiểm tra đáp án</button>
+      <button class="btn btn--ghost" type="reset" data-quiz-reset>Làm lại</button>
+      <p class="quiz__score" data-quiz-score aria-live="polite"></p>
+    </div>
+  </form>
+</section>
+      <section class="prose" id="bai-tiep-theo" data-reveal><h2 class="section__title"><span>Bài tiếp theo</span></h2><p>Môi trường đã sẵn sàng — bài cuối chương này giới thiệu dự án xuyên suốt Highland Hospital: ba trang web bạn sẽ xây và dữ liệu chúng dùng chung.</p></section>
+      <nav class="pn-wrap" aria-label="Điều hướng giữa các buổi học"><a class="pn pn--prev" href="../lessons/buoi-03.html"><span class="pn__label">Buổi trước</span><span class="pn__title">AI-Accelerated Workflow 4 bước</span></a><a class="pn pn--next" href="../lessons/buoi-05.html"><span class="pn__label">Buổi tiếp theo</span><span class="pn__title">Dự án xuyên suốt: Highland Hospital</span></a></nav>
+    </div>
+    <aside class="rail" aria-label="Công cụ hỗ trợ bài học">
+      <div class="rail__inner">
+        <nav class="rail__nav" aria-label="Mục lục bài học">
+  <p class="rail__title">Nội dung bài</p>
+  <ol class="toc">
+    <li><a href="#muc-tieu-bai-hoc" data-toc="muc-tieu-bai-hoc">Mục tiêu bài học</a></li><li><a href="#buoc-1-cai-vs-code-va-live-server" data-toc="buoc-1-cai-vs-code-va-live-server">Bước 1: Cài VS Code và Live Server</a></li><li><a href="#buoc-2-cau-truc-thu-muc-du-an" data-toc="buoc-2-cau-truc-thu-muc-du-an">Bước 2: Cấu trúc thư mục dự án</a></li><li><a href="#buoc-3-file-html-toi-thieu-va-chay-thu" data-toc="buoc-3-file-html-toi-thieu-va-chay-thu">Bước 3: File HTML tối thiểu và chạy thử</a></li><li><a href="#buoc-4-lam-quen-chrome-devtools" data-toc="buoc-4-lam-quen-chrome-devtools">Bước 4: Làm quen Chrome DevTools</a></li><li><a href="#thuc-hanh" data-toc="thuc-hanh">Thực hành</a></li>
+  </ol>
+</nav>
+        
+        <div class="rail__box">
+          <p class="rail__title">Cần giúp đỡ?</p>
+          <p class="rail__hint">Dán prompt mẫu trong bài vào chat AI bạn đã chọn, hoặc hỏi giảng viên trên lớp.</p>
+          <a class="btn btn--ghost btn--sm" href="../gioi-thieu.html#faq">Xem câu hỏi thường gặp</a>
+        </div>
+        <button class="btn btn--ghost btn--sm" type="button" data-to-top>Về đầu trang <svg class="ico ico--sm to-top-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+      </div>
+    </aside>
+  </div>
+</article>
+</main>
+</div>
+<footer class="site-footer"><div class="site-footer__inner">
+  <p><strong>AI-Accelerated Frontend Developer Bootcamp</strong> · CSE391 — Nền tảng phát triển Web — K67 · Dự án: Highland Hospital Web Portal</p>
+  <p class="muted">Tiến độ và bài làm của bạn được lưu ngay trên máy — không tài khoản, không server.</p>
+  <p class="site-footer__links"><a href="../index.html">Trang chủ</a> · <a href="../lo-trinh.html">Lộ trình</a> · <a href="../tu-dien.html">Từ điển</a> · <a href="https://github.com/ktzung/working-with-ai-course-for-frontend-dev" target="_blank" rel="noopener noreferrer">Mã nguồn khoá học</a></p>
+</div></footer>
+<span class="scrim" data-scrim hidden></span>
+<div class="search" id="search" hidden>
+  <div class="search__panel" role="dialog" aria-modal="true" aria-label="Tìm kiếm trong khoá học">
+    <div class="search__bar"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="search-q" placeholder="Tìm theo thuật ngữ, khái niệm, buổi học…" autocomplete="off" aria-label="Từ khoá tìm kiếm">
+      <button class="icon-btn" type="button" data-close-search aria-label="Đóng tìm kiếm"><span aria-hidden="true">✕</span></button>
+    </div>
+    <ul class="search__results" id="search-results" aria-live="polite"></ul>
+    <p class="search__hint">Thử ngay: <button class="chip chip--btn" data-try="flexbox">flexbox</button> <button class="chip chip--btn" data-try="prompt">prompt</button> <button class="chip chip--btn" data-try="Live Server">Live Server</button> <button class="chip chip--btn" data-try="localStorage">localStorage</button></p>
+  </div>
+</div>
+<script src="../assets/js/search-index.js"></script>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

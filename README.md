@@ -1,5 +1,12 @@
 # 🎓 AI-Accelerated Frontend Developer Bootcamp
 
+> **Bản dựng site CSE391 K67 (tiếng Việt)** — nội dung giáo trình gốc lấy từ kho công khai
+> [ktzung/working-with-ai-course-for-frontend-dev](https://github.com/ktzung/working-with-ai-course-for-frontend-dev).
+> Bài giảng thuộc tác giả gốc; `build/` + `site/` là sản phẩm xây dựng cho lớp K67.
+> Trang demo: <https://hieutachi.github.io/cse391-k67-ai-bootcamp/> · quy trình deploy: [DEPLOY-GITHUB-PAGES.md](DEPLOY-GITHUB-PAGES.md)
+
+
+
 > **(HTML5 • CSS3 • JavaScript ES6+ • Bootstrap 5)** — Học Frontend theo phương pháp Just-in-Time Learning, dùng AI (Gemini / Claude / ChatGPT) làm trợ lý để cắt giao diện nhanh gấp 3–5 lần mà vẫn hiểu từng dòng code.
 
 ## 📖 Giới thiệu

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI-Accelerated Frontend Developer Bootcamp — Học làm frontend hiện đại cùng AI — từ HTML5 tới dự án thật</title>
+<meta name="description" content="Khoá học frontend hiện đại dùng AI cho sinh viên CSE391 K67: 5 buổi đầu của Chương 1 đã phát hành, dự án Highland Hospital, HTML5 · CSS3 · JavaScript ES6+ · Bootstrap 5.">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI-Accelerated Frontend Developer Bootcamp — Học làm frontend hiện đại cùng AI — từ HTML5 tới dự án thật">
+<meta property="og:description" content="Khoá học frontend hiện đại dùng AI cho sinh viên CSE391 K67: 5 buổi đầu của Chương 1 đã phát hành, dự án Highland Hospital, HTML5 · CSS3 · JavaScript ES6+ · Bootstrap 5.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem('cse391-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body class="tpl-home" data-root="" data-total="5">
+<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+<header class="topbar">
+  <button class="icon-btn topbar__menu" type="button" data-menu aria-expanded="false" aria-controls="sidebar" aria-label="Mở thực đơn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <a class="brand" href="index.html">
+    <span class="brand__mark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13"/><path d="M12 8v6M9 11h6"/></svg></span>
+    <span class="brand__text"><strong>CSE391 · K67</strong><small>AI-Accelerated Frontend</small></span>
+  </a>
+  <span class="topbar__spacer"></span>
+  <button class="btn btn--search" type="button" data-open-search><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Tìm kiếm</span><kbd>Ctrl</kbd><kbd>K</kbd></button>
+  <span class="topbar__ring" data-ring title="Tiến độ khoá học">
+    <svg viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-bg" cx="18" cy="18" r="15.5"></circle><circle class="ring-fg" cx="18" cy="18" r="15.5" stroke-dasharray="97.4" data-ring-circle></circle></svg>
+    <span data-ring-label>0%</span>
+  </span>
+  <button class="icon-btn" type="button" data-theme-toggle aria-label="Đổi giao diện sáng / tối">
+    <span class="theme-ico theme-ico--light"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></span><span class="theme-ico theme-ico--dark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14A8 8 0 1 1 10 4a7 7 0 0 0 10 10z"/></svg></span>
+  </button>
+</header>
+<div class="shell">
+<aside class="sidebar" id="sidebar" aria-label="Điều hướng khoá học">
+  <div class="sidebar__inner">
+    <p class="sidebar__eyebrow">CSE391 — Nền tảng phát triển Web</p>
+    <nav class="nav">
+      <p class="nav__title">Bắt đầu</p>
+      <a class="nav__link is-active" href="index.html"><span>Trang chủ</span></a>
+      <a class="nav__link" href="gioi-thieu.html"><span>Giới thiệu khoá học</span></a>
+      <p class="nav__title">Chương 1 · 5 buổi đã phát hành</p>
+      <div class="nav__lessons"><a class="nav__link nav__link--lesson" href="lessons/buoi-01.html" data-lesson-link="1"><span class="nav__dot" data-dot="1"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">01</span><span class="nav__label">Chào mừng — vì sao Frontend cần AI</span></a><a class="nav__link nav__link--lesson" href="lessons/buoi-02.html" data-lesson-link="2"><span class="nav__dot" data-dot="2"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">02</span><span class="nav__label">Bản đồ công cụ AI cho Frontend</span></a><a class="nav__link nav__link--lesson" href="lessons/buoi-03.html" data-lesson-link="3"><span class="nav__dot" data-dot="3"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">03</span><span class="nav__label">AI-Accelerated Workflow 4 bước</span></a><a class="nav__link nav__link--lesson" href="lessons/buoi-04.html" data-lesson-link="4"><span class="nav__dot" data-dot="4"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">04</span><span class="nav__label">Thiết lập môi trường làm việc</span></a><a class="nav__link nav__link--lesson" href="lessons/buoi-05.html" data-lesson-link="5"><span class="nav__dot" data-dot="5"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">05</span><span class="nav__label">Dự án xuyên suốt: Highland Hospital</span></a></div>
+      <p class="nav__title">Tham khảo</p>
+      <a class="nav__link" href="lo-trinh.html"><span>Lộ trình 8 tuần</span></a>
+      <a class="nav__link" href="du-an.html"><span>Dự án tốt nghiệp</span></a>
+      <a class="nav__link" href="tu-dien.html"><span>Từ điển thuật ngữ</span></a>
+    </nav>
+    <div class="sidebar__foot">
+      <div class="progress-card">
+        <div class="progress-card__top">
+          <span class="progress-card__label">Tiến độ của bạn</span>
+          <strong class="progress-card__val" data-progress-count>0/5</strong>
+        </div>
+        <span class="progress-bar" role="progressbar" aria-label="Số buổi đã hoàn thành" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" data-progressbar><i class="progress-bar__fill" data-progress-fill></i></span>
+        <button class="btn btn--ghost btn--sm" type="button" data-reset-progress>Đặt lại tiến độ</button>
+      </div>
+    </div>
+  </div>
+</aside>
+<main class="main" id="main">
+
+<section class="hero">
+  <p class="hero__badge">K67 · CSE391 — Nền tảng phát triển Web · học trên lớp + tự học ở nhà</p>
+  <h1>AI-Accelerated Frontend Developer Bootcamp</h1>
+  <p class="hero__tag">Học làm frontend hiện đại cùng AI — từ HTML5 tới dự án thật</p>
+  <p class="hero__sub">HTML5 • CSS3 • JavaScript ES6+ • Bootstrap 5</p>
+  <div class="hero__actions">
+    <a class="btn btn--primary btn--lg" href="lessons/buoi-01.html" data-cta-start><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg><span data-cta-label>Bắt đầu buổi 01</span></a>
+    <a class="btn btn--lg" href="gioi-thieu.html">Giới thiệu khoá học</a>
+  </div>
+  <dl class="stats"><div class="stat"><dt>tuần học</dt><dd>8</dd></div><div class="stat"><dt>chương trình</dt><dd>13</dd></div><div class="stat"><dt>bài học</dt><dd>64</dd></div><div class="stat"><dt>buổi đã phát hành</dt><dd>5</dd></div></dl>
+</section>
+
+<section class="band" id="workflow">
+  <div class="section-head">
+  <p class="kicker">Cách khoá học vận hành</p>
+  <h2>Bốn bước của quy trình tăng tốc bằng AI</h2>
+  <p class="section-head__text">Mọi bài học, mọi component trong dự án đều đi qua đúng vòng lặp này.</p>
+</div>
+  <ol class="steps"><li class="step reveal" style="--d:0ms">
+    <span class="step__n">1</span>
+    <h3>Phân tích yêu cầu <span class="step__en">Define</span></h3>
+    <p>Đọc thiết kế Figma hoặc mô tả, bóc tách cấu trúc khối, liệt kê component và trạng thái tương tác. Viết ra 3–5 câu đặc tả trước khi đụng đến AI.</p>
+  </li><li class="step reveal" style="--d:80ms">
+    <span class="step__n">2</span>
+    <h3>Soạn thảo với AI <span class="step__en">Draft</span></h3>
+    <p>Viết prompt chính xác từ đặc tả: bối cảnh dự án, ràng buộc công nghệ, giá trị thiết kế và định dạng đầu ra. Nhận bản nháp HTML/CSS/JS.</p>
+  </li><li class="step reveal" style="--d:160ms">
+    <span class="step__n">3</span>
+    <h3>Phân tích &amp; thấu hiểu <span class="step__en">Analyze</span></h3>
+    <p>Đọc từng dòng code và trả lời: vì sao dùng thẻ/class này, layout vận hành thế nào, luồng dữ liệu và sự kiện ra sao. Không giải thích được thì không giữ.</p>
+  </li><li class="step reveal" style="--d:240ms">
+    <span class="step__n">4</span>
+    <h3>Tinh chỉnh &amp; tối ưu <span class="step__en">Refine</span></h3>
+    <p>Chỉnh breakpoint, sửa lỗi hiển thị, chuẩn hoá class theo Bootstrap utilities, tách hàm tái sử dụng. Kiểm tra nhiều cỡ màn hình rồi mới coi là xong.</p>
+  </li></ol>
+  <p class="band__note">Quy trình này được dùng lại ở 100% bài thực hành trong khoá — đó là kỹ năng bạn mang theo chứ không phải syntax.</p>
+</section>
+
+<section class="band band--alt" id="buoi-hoc">
+  <div class="section-head">
+  <p class="kicker">Đã phát hành</p>
+  <h2>Năm buổi đầu tiên — Chương 1</h2>
+  <p class="section-head__text">Nền móng: công cụ AI, quy trình làm việc, môi trường và dự án xuyên suốt.</p>
+</div>
+  <div class="grid grid--lessons"><article class="card card--lesson reveal" style="--d:0ms" data-lesson-card="1">
+  <a class="card__hit" href="lessons/buoi-01.html" aria-label="Mở buổi 01: Chào mừng — vì sao Frontend cần AI"></a>
+  <header class="card__head">
+    <span class="card__num">01</span>
+    <span class="card__meta"><span class="chip">Lý thuyết + định hướng</span><span class="card__time"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>45 phút</span></span>
+  </header>
+  <h3 class="card__title">Chào mừng — vì sao Frontend cần AI</h3>
+  <p class="card__en">Welcome — why Frontend needs AI</p>
+  <p class="card__sum">Nghề frontend gồm hai việc rất khác nhau: phán đoán và sản xuất. AI đang cực giỏi ở việc thứ hai. Bài mở màn xác lập ranh giới &quot;bạn giữ — AI làm&quot; và cho bạn thấy mình sẽ xây gì.</p>
+  <span class="card__done" data-card-done="1"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span>Đã hoàn thành</span></span>
+  <footer class="card__foot"><span data-card-cta="1">Học buổi này</span><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></footer>
+</article><article class="card card--lesson reveal" style="--d:70ms" data-lesson-card="2">
+  <a class="card__hit" href="lessons/buoi-02.html" aria-label="Mở buổi 02: Bản đồ công cụ AI cho Frontend"></a>
+  <header class="card__head">
+    <span class="card__num">02</span>
+    <span class="card__meta"><span class="chip">Lý thuyết + chọn công cụ</span><span class="card__time"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>40 phút</span></span>
+  </header>
+  <h3 class="card__title">Bản đồ công cụ AI cho Frontend</h3>
+  <p class="card__en">The AI tool landscape for Frontend</p>
+  <p class="card__sum">Bốn nhóm công cụ AI mà frontend developer dùng hằng ngày — chat tổng quát, AI trong editor, design-to-code và AI tìm kiếm — cùng bộ công cụ tối thiểu cho cả khoá.</p>
+  <span class="card__done" data-card-done="2"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span>Đã hoàn thành</span></span>
+  <footer class="card__foot"><span data-card-cta="2">Học buổi này</span><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></footer>
+</article><article class="card card--lesson reveal" style="--d:140ms" data-lesson-card="3">
+  <a class="card__hit" href="lessons/buoi-03.html" aria-label="Mở buổi 03: AI-Accelerated Workflow 4 bước"></a>
+  <header class="card__head">
+    <span class="card__num">03</span>
+    <span class="card__meta"><span class="chip">Lý thuyết + áp dụng thử</span><span class="card__time"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>50 phút</span></span>
+  </header>
+  <h3 class="card__title">AI-Accelerated Workflow 4 bước</h3>
+  <p class="card__en">The 4-step AI-Accelerated Workflow</p>
+  <p class="card__sum">Vòng lặp Define → Draft → Analyze → Refine được dùng cho mọi bài của khoá học. Bài này chỉ rõ vì sao bước 3 mới là bước quyết định chất lượng.</p>
+  <span class="card__done" data-card-done="3"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span>Đã hoàn thành</span></span>
+  <footer class="card__foot"><span data-card-cta="3">Học buổi này</span><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></footer>
+</article><article class="card card--lesson reveal" style="--d:210ms" data-lesson-card="4">
+  <a class="card__hit" href="lessons/buoi-04.html" aria-label="Mở buổi 04: Thiết lập môi trường làm việc"></a>
+  <header class="card__head">
+    <span class="card__num">04</span>
+    <span class="card__meta"><span class="chip">Thực hành cài đặt</span><span class="card__time"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>45 phút</span></span>
+  </header>
+  <h3 class="card__title">Thiết lập môi trường làm việc</h3>
+  <p class="card__en">Setting up your workspace</p>
+  <p class="card__sum">Cài VS Code cùng Live Server, tạo cấu trúc thư mục chuẩn cho Highland Hospital và làm quen bốn tab Chrome DevTools bạn sẽ dùng trong mọi bài sau.</p>
+  <span class="card__done" data-card-done="4"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span>Đã hoàn thành</span></span>
+  <footer class="card__foot"><span data-card-cta="4">Học buổi này</span><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></footer>
+</article><article class="card card--lesson reveal" style="--d:280ms" data-lesson-card="5">
+  <a class="card__hit" href="lessons/buoi-05.html" aria-label="Mở buổi 05: Dự án xuyên suốt: Highland Hospital"></a>
+  <header class="card__head">
+    <span class="card__num">05</span>
+    <span class="card__meta"><span class="chip">Tổng quan dự án + khởi động</span><span class="card__time"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>50 phút</span></span>
+  </header>
+  <h3 class="card__title">Dự án xuyên suốt: Highland Hospital</h3>
+  <p class="card__en">The main project: Highland Hospital</p>
+  <p class="card__sum">Ba trang bạn sẽ xây (Landing Page, đặt lịch, Admin Dashboard), bộ dữ liệu dùng chung và bảng phân công &quot;chương nào làm phần nào&quot; của dự án Highland Hospital.</p>
+  <span class="card__done" data-card-done="5"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span>Đã hoàn thành</span></span>
+  <footer class="card__foot"><span data-card-cta="5">Học buổi này</span><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></footer>
+</article></div>
+</section>
+
+<section class="band" id="du-an">
+  <div class="section-head">
+  <p class="kicker">Dự án tốt nghiệp</p>
+  <h2>Highland Hospital Web Portal</h2>
+  <p class="section-head__text">Một bệnh viện quốc tế giả định với 3 trang: giới thiệu, đặt lịch khám và bảng quản lý.</p>
+</div>
+  <div class="proj">
+  <div class="proj__mock" aria-hidden="true">
+    <span class="mock mock--0"><b>Landing Page</b><i></i><i></i><i></i></span><span class="mock mock--1"><b>Đặt lịch khám</b><i></i><i></i><i></i></span><span class="mock mock--2"><b>Admin Dashboard</b><i></i><i></i><i></i></span>
+  </div>
+  <ul class="proj__list"><li><code>index.html</code><div><strong>Landing Page</strong><p>Hero, 6 dịch vụ, 8 bác sĩ, 6 đánh giá, lịch sử khám — dựng bằng Bootstrap 5.</p></div></li><li><code>booking.html</code><div><strong>Đặt lịch khám</strong><p>Form đa bước: chọn khoa → bác sĩ → ngày giờ → thông tin → xác nhận.</p></div></li><li><code>admin.html</code><div><strong>Admin Dashboard</strong><p>Thẻ số liệu, bảng lịch hẹn, tìm kiếm, lọc và đổi trạng thái.</p></div></li></ul>
+  <a class="btn btn--ghost" href="du-an.html">Xem chi tiết dự án<svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
+</div>
+</section>
+
+<section class="band band--alt" id="doi-tuong">
+  <div class="section-head">
+  <p class="kicker">For whom</p>
+  <h2>Khoá học dành cho ai</h2>
+  
+</div>
+  <div class="grid grid--3"><article class="card card--soft reveal" style="--d:0ms">
+    <span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M8 3v18"/></svg></span><h3>Người mới bắt đầu</h3><p>Chưa từng lập trình hoặc muốn học bài bản từ nền tảng cốt lõi của Web (HTML/CSS/JS), có AI kèm cặp từng bước.</p></article><article class="card card--soft reveal" style="--d:70ms">
+    <span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 12a15 15 0 0 1 8-9c2 0 4 2 4 4a15 15 0 0 1-9 8z"/><path d="m9 12 3 3"/></svg></span><h3>Sinh viên CNTT</h3><p>Củng cố tư duy dàn trang, DOM, Event Loop, Async/Await và Responsive trước khi bước lên framework.</p></article><article class="card card--soft reveal" style="--d:140ms">
+    <span class="card__icon"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg></span><h3>Dev muốn tăng tốc với AI</h3><p>Rèn kỹ năng giao tiếp với AI để cắt giao diện Figma thành mã nguồn thật nhanh gấp 3–5 lần.</p></article></div>
+</section>
+
+<section class="band" id="cach-hoc">
+  <div class="section-head">
+  <p class="kicker">Cách học hiệu quả</p>
+  <h2>Bốn nguyên tắc của khoá</h2>
+  
+</div>
+  <ul class="tips"><li class="reveal" style="--d:0ms"><span class="tips__n"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><div><h3>Gõ lại code, đừng chỉ đọc</h3><p>Mỗi bài có prompt mẫu và phần thực hành — chạy thử ngay trên máy của bạn, đó mới là phần tạo ra kỹ năng.</p></div></li><li class="reveal" style="--d:60ms"><span class="tips__n"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><div><h3>Tự làm trước 10 phút rồi mới hỏi AI</h3><p>Khoảng cách giữa bản bạn viết và bản AI sinh ra là bài học nhanh nhất bạn nhận được.</p></div></li><li class="reveal" style="--d:120ms"><span class="tips__n"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><div><h3>Đọc từng dòng AI sinh ra</h3><p>Nếu không giải thích được một dòng, đừng commit dòng đó. Bước Analyze quyết định chất lượng.</p></div></li><li class="reveal" style="--d:180ms"><span class="tips__n"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><div><h3>Lưu lại prompt tốt</h3><p>Prompt nào cho kết quả dùng được ngay thì ghi lại và tái sử dụng — đó là tài sản nghề nghiệp của bạn.</p></div></li></ul>
+</section>
+
+<section class="band band--alt" id="lo-trinh">
+  <div class="section-head">
+  <p class="kicker">8 tuần · 12 chương</p>
+  <h2>Lộ trình toàn khoá</h2>
+  <p class="section-head__text">Năm buổi đang xem nằm ở tuần 1. Các chương còn lại sẽ mở dần theo tiến độ lớp.</p>
+</div>
+  <ol class="weeks"><li class="week reveal" style="--d:0ms"><span class="week__label">Tuần 1</span><span class="week__ch">Chương 1, 2</span><p>Môi trường chạy được (Live Server), viết được prompt có cấu trúc.</p></li><li class="week reveal" style="--d:50ms"><span class="week__label">Tuần 2</span><span class="week__ch">Chương 3</span><p>Trang HTML semantic đầu tiên: Hero + Services dàn layout thô.</p></li><li class="week reveal" style="--d:100ms"><span class="week__label">Tuần 3</span><span class="week__ch">Chương 4, 5</span><p>Hero dùng Flexbox/Grid, lưới Doctor Cards hoàn chỉnh.</p></li><li class="week reveal" style="--d:150ms"><span class="week__label">Tuần 4</span><span class="week__ch">Chương 6</span><p>Trang chủ responsive trên mobile / tablet / desktop.</p></li><li class="week reveal" style="--d:200ms"><span class="week__label">Tuần 5</span><span class="week__ch">Chương 7, 8</span><p>Dựng lại toàn bộ Landing Page bằng Bootstrap 5.</p></li><li class="week reveal" style="--d:250ms"><span class="week__label">Tuần 6</span><span class="week__ch">Chương 9, 10</span><p>Render bác sĩ từ dữ liệu, bộ lọc chuyên khoa chạy được.</p></li><li class="week reveal" style="--d:300ms"><span class="week__label">Tuần 7</span><span class="week__ch">Chương 11</span><p>Luồng đặt lịch đa bước + validate hoàn chỉnh.</p></li><li class="week reveal" style="--d:350ms"><span class="week__label">Tuần 8</span><span class="week__ch">Chương 12</span><p>Admin Dashboard + deploy Highland Hospital lên GitHub Pages / Vercel.</p></li></ol>
+  <p class="band__more"><a class="btn btn--ghost" href="lo-trinh.html">Mở lộ trình chi tiết<svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></p>
+</section>
+
+<section class="cta reveal">
+  <div class="cta__box">
+    <h2>Sẵn sàng bắt đầu?</h2>
+    <p>Năm buổi đầu đã có đầy đủ bài giảng, prompt mẫu và checklist. Chỉ cần một trình duyệt, một chat AI và VS Code.</p>
+    <div class="cta__actions">
+      <a class="btn btn--primary" href="lessons/buoi-01.html" data-cta-start>Bắt đầu buổi 01</a>
+      <a class="btn" href="lo-trinh.html">Xem lộ trình 8 tuần</a>
+    </div>
+  </div>
+</section>
+
+</main>
+</div>
+<footer class="site-footer"><div class="site-footer__inner">
+  <p><strong>AI-Accelerated Frontend Developer Bootcamp</strong> · CSE391 — Nền tảng phát triển Web — K67 · Dự án: Highland Hospital Web Portal</p>
+  <p class="muted">Tiến độ và bài làm của bạn được lưu ngay trên máy — không tài khoản, không server.</p>
+  <p class="site-footer__links"><a href="index.html">Trang chủ</a> · <a href="lo-trinh.html">Lộ trình</a> · <a href="tu-dien.html">Từ điển</a> · <a href="https://github.com/ktzung/working-with-ai-course-for-frontend-dev" target="_blank" rel="noopener noreferrer">Mã nguồn khoá học</a></p>
+</div></footer>
+<span class="scrim" data-scrim hidden></span>
+<div class="search" id="search" hidden>
+  <div class="search__panel" role="dialog" aria-modal="true" aria-label="Tìm kiếm trong khoá học">
+    <div class="search__bar"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="search-q" placeholder="Tìm theo thuật ngữ, khái niệm, buổi học…" autocomplete="off" aria-label="Từ khoá tìm kiếm">
+      <button class="icon-btn" type="button" data-close-search aria-label="Đóng tìm kiếm"><span aria-hidden="true">✕</span></button>
+    </div>
+    <ul class="search__results" id="search-results" aria-live="polite"></ul>
+    <p class="search__hint">Thử ngay: <button class="chip chip--btn" data-try="flexbox">flexbox</button> <button class="chip chip--btn" data-try="prompt">prompt</button> <button class="chip chip--btn" data-try="Live Server">Live Server</button> <button class="chip chip--btn" data-try="localStorage">localStorage</button></p>
+  </div>
+</div>
+<script src="assets/js/search-index.js"></script>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
