@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Objects &amp; JSON · Buổi 44 — AI-Accelerated Frontend Developer Bootcamp</title>
+<meta name="description" content="Tạo object, truy cập và sửa thuộc tính, thêm phương thức · Hiểu JSON là gì và chuyển đổi với JSON.stringify / JSON.parse">
+<meta name="theme-color" content="#0f766e">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Objects &amp; JSON · Buổi 44 — AI-Accelerated Frontend Developer Bootcamp">
+<meta property="og:description" content="Tạo object, truy cập và sửa thuộc tính, thêm phương thức · Hiểu JSON là gì và chuyển đổi với JSON.stringify / JSON.parse">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="manifest" href="../site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/css/main.css">
+<script>(function(){try{var t=localStorage.getItem('cse391-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+</head>
+<body class="tpl-lesson" data-root="../" data-total="64">
+<a class="skip-link" href="#main">Bỏ qua tới nội dung chính</a>
+<header class="topbar">
+  <button class="icon-btn topbar__menu" type="button" data-menu aria-expanded="false" aria-controls="sidebar" aria-label="Mở thực đơn"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  <a class="brand" href="../index.html">
+    <span class="brand__mark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V8l9-5 9 5v13"/><path d="M12 8v6M9 11h6"/></svg></span>
+    <span class="brand__text"><strong>CSE391 · K67</strong><small>AI-Accelerated Frontend</small></span>
+  </a>
+  <span class="topbar__spacer"></span>
+  <button class="btn btn--search" type="button" data-open-search><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Tìm kiếm</span><kbd>Ctrl</kbd><kbd>K</kbd></button>
+  <span class="topbar__ring" data-ring title="Tiến độ khoá học">
+    <svg viewBox="0 0 36 36" aria-hidden="true"><circle class="ring-bg" cx="18" cy="18" r="15.5"></circle><circle class="ring-fg" cx="18" cy="18" r="15.5" stroke-dasharray="97.4" data-ring-circle></circle></svg>
+    <span data-ring-label>0%</span>
+  </span>
+  <button class="icon-btn" type="button" data-theme-toggle aria-label="Đổi giao diện sáng / tối">
+    <span class="theme-ico theme-ico--light"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"/></svg></span><span class="theme-ico theme-ico--dark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14A8 8 0 1 1 10 4a7 7 0 0 0 10 10z"/></svg></span>
+  </button>
+</header>
+<div class="shell">
+<aside class="sidebar" id="sidebar" aria-label="Điều hướng khoá học">
+  <div class="sidebar__inner">
+    <p class="sidebar__eyebrow">CSE391 — Nền tảng phát triển Web</p>
+    <nav class="nav">
+      <p class="nav__title">Bắt đầu</p>
+      <a class="nav__link" href="../index.html"><span>Trang chủ</span></a>
+      <a class="nav__link" href="../gioi-thieu.html"><span>Giới thiệu khoá học</span></a>
+      <p class="nav__title">64 bài · 13 chương</p>
+      <div class="nav__lessons"><details class="nav__chapter"><summary>Chương 1 · Chào mừng &amp; AI-Accelerated Workflow</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-01.html" data-lesson-link="1"><span class="nav__dot" data-dot="1"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">01</span><span class="nav__label">Chào mừng — vì sao Frontend cần AI</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-02.html" data-lesson-link="2"><span class="nav__dot" data-dot="2"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">02</span><span class="nav__label">Bản đồ công cụ AI cho Frontend</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-03.html" data-lesson-link="3"><span class="nav__dot" data-dot="3"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">03</span><span class="nav__label">AI-Accelerated Workflow 4 bước</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-04.html" data-lesson-link="4"><span class="nav__dot" data-dot="4"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">04</span><span class="nav__label">Thiết lập môi trường làm việc</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-05.html" data-lesson-link="5"><span class="nav__dot" data-dot="5"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">05</span><span class="nav__label">Dự án xuyên suốt: Highland Hospital</span></a></details><details class="nav__chapter"><summary>Chương 2 · Prompt Engineering cho Frontend</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-06.html" data-lesson-link="6"><span class="nav__dot" data-dot="6"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">06</span><span class="nav__label">Giải phẫu một prompt tốt</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-07.html" data-lesson-link="7"><span class="nav__dot" data-dot="7"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">07</span><span class="nav__label">Prompt cho HTML &amp; CSS</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-08.html" data-lesson-link="8"><span class="nav__dot" data-dot="8"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">08</span><span class="nav__label">Prompt cho JavaScript</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-09.html" data-lesson-link="9"><span class="nav__dot" data-dot="9"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">09</span><span class="nav__label">Prompt cho Debug</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-10.html" data-lesson-link="10"><span class="nav__dot" data-dot="10"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">10</span><span class="nav__label">Workshop: viết prompt cắt giao diện</span></a></details><details class="nav__chapter"><summary>Chương 3 · HTML5 — Chuẩn ngữ nghĩa &amp; Cấu trúc trang</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-11.html" data-lesson-link="11"><span class="nav__dot" data-dot="11"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">11</span><span class="nav__label">Cấu trúc tài liệu web chuẩn</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-12.html" data-lesson-link="12"><span class="nav__dot" data-dot="12"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">12</span><span class="nav__label">Thẻ ngữ nghĩa &amp; SEO</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-13.html" data-lesson-link="13"><span class="nav__dot" data-dot="13"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">13</span><span class="nav__label">Forms &amp; các kiểu Input hiện đại</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-14.html" data-lesson-link="14"><span class="nav__dot" data-dot="14"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">14</span><span class="nav__label">Bảng biểu &amp; đa phương tiện</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-15.html" data-lesson-link="15"><span class="nav__dot" data-dot="15"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">15</span><span class="nav__label">Lab: Landing Page semantic</span></a></details><details class="nav__chapter"><summary>Chương 4 · CSS3 — Nền tảng &amp; Tư duy dàn trang</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-16.html" data-lesson-link="16"><span class="nav__dot" data-dot="16"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">16</span><span class="nav__label">CSS Selectors &amp; Specificity</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-17.html" data-lesson-link="17"><span class="nav__dot" data-dot="17"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">17</span><span class="nav__label">The Box Model</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-18.html" data-lesson-link="18"><span class="nav__dot" data-dot="18"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">18</span><span class="nav__label">Màu sắc, Typography &amp; CSS Variables</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-19.html" data-lesson-link="19"><span class="nav__dot" data-dot="19"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">19</span><span class="nav__label">Đơn vị đo trong CSS</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-20.html" data-lesson-link="20"><span class="nav__dot" data-dot="20"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">20</span><span class="nav__label">Lab: dựng Hero section</span></a></details><details class="nav__chapter"><summary>Chương 5 · CSS Layout — Flexbox &amp; Grid</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-21.html" data-lesson-link="21"><span class="nav__dot" data-dot="21"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">21</span><span class="nav__label">Flexbox căn bản</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-22.html" data-lesson-link="22"><span class="nav__dot" data-dot="22"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">22</span><span class="nav__label">Flexbox nâng cao</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-23.html" data-lesson-link="23"><span class="nav__dot" data-dot="23"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">23</span><span class="nav__label">CSS Grid căn bản</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-24.html" data-lesson-link="24"><span class="nav__dot" data-dot="24"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">24</span><span class="nav__label">Chọn Flexbox hay Grid</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-25.html" data-lesson-link="25"><span class="nav__dot" data-dot="25"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">25</span><span class="nav__label">Lab: lưới Doctor Cards</span></a></details><details class="nav__chapter"><summary>Chương 6 · Responsive Web Design &amp; Animation</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-26.html" data-lesson-link="26"><span class="nav__dot" data-dot="26"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">26</span><span class="nav__label">Media Queries &amp; Breakpoints</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-27.html" data-lesson-link="27"><span class="nav__dot" data-dot="27"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">27</span><span class="nav__label">Mobile-First Workflow</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-28.html" data-lesson-link="28"><span class="nav__dot" data-dot="28"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">28</span><span class="nav__label">Hình ảnh &amp; Typography linh hoạt</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-29.html" data-lesson-link="29"><span class="nav__dot" data-dot="29"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">29</span><span class="nav__label">Transitions &amp; Animations</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-30.html" data-lesson-link="30"><span class="nav__dot" data-dot="30"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">30</span><span class="nav__label">Lab: Hero responsive</span></a></details><details class="nav__chapter"><summary>Chương 7 · Bootstrap 5 — Grid &amp; Utilities</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-31.html" data-lesson-link="31"><span class="nav__dot" data-dot="31"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">31</span><span class="nav__label">Cài đặt Bootstrap 5</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-32.html" data-lesson-link="32"><span class="nav__dot" data-dot="32"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">32</span><span class="nav__label">Hệ thống lưới 12 cột</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-33.html" data-lesson-link="33"><span class="nav__dot" data-dot="33"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">33</span><span class="nav__label">Spacing, Colors &amp; Typography utilities</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-34.html" data-lesson-link="34"><span class="nav__dot" data-dot="34"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">34</span><span class="nav__label">Buttons, Badges &amp; Alerts</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-35.html" data-lesson-link="35"><span class="nav__dot" data-dot="35"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">35</span><span class="nav__label">Lab: Services section</span></a></details><details class="nav__chapter"><summary>Chương 8 · Bootstrap 5 — Components</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-36.html" data-lesson-link="36"><span class="nav__dot" data-dot="36"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">36</span><span class="nav__label">Navbar &amp; Navigation</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-37.html" data-lesson-link="37"><span class="nav__dot" data-dot="37"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">37</span><span class="nav__label">Cards &amp; List groups</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-38.html" data-lesson-link="38"><span class="nav__dot" data-dot="38"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">38</span><span class="nav__label">Bootstrap Forms &amp; Validation</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-39.html" data-lesson-link="39"><span class="nav__dot" data-dot="39"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">39</span><span class="nav__label">Modal, Offcanvas &amp; Accordion</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-40.html" data-lesson-link="40"><span class="nav__dot" data-dot="40"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">40</span><span class="nav__label">Lab: FAQ &amp; đặt lịch tĩnh</span></a></details><details class="nav__chapter" open><summary>Chương 9 · JavaScript ES6+ — Cú pháp &amp; Dữ liệu</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-41.html" data-lesson-link="41"><span class="nav__dot" data-dot="41"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">41</span><span class="nav__label">let/const &amp; Template Literals</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-42.html" data-lesson-link="42"><span class="nav__dot" data-dot="42"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">42</span><span class="nav__label">Arrow functions &amp; Destructuring</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-43.html" data-lesson-link="43"><span class="nav__dot" data-dot="43"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">43</span><span class="nav__label">Array Methods cốt lõi</span></a><a class="nav__link nav__link--lesson is-active" href="../lessons/buoi-44.html" data-lesson-link="44"><span class="nav__dot" data-dot="44"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">44</span><span class="nav__label">Objects &amp; JSON</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-45.html" data-lesson-link="45"><span class="nav__dot" data-dot="45"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">45</span><span class="nav__label">Lab: render danh sách bác sĩ</span></a></details><details class="nav__chapter"><summary>Chương 10 · DOM &amp; Event Handling</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-46.html" data-lesson-link="46"><span class="nav__dot" data-dot="46"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">46</span><span class="nav__label">Truy vấn &amp; thao tác DOM</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-47.html" data-lesson-link="47"><span class="nav__dot" data-dot="47"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">47</span><span class="nav__label">Event Handling &amp; Delegation</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-48.html" data-lesson-link="48"><span class="nav__dot" data-dot="48"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">48</span><span class="nav__label">Form Validation phía client</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-49.html" data-lesson-link="49"><span class="nav__dot" data-dot="49"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">49</span><span class="nav__label">Lưu trữ với localStorage</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-50.html" data-lesson-link="50"><span class="nav__dot" data-dot="50"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">50</span><span class="nav__label">Lab: bộ lọc bác sĩ theo chuyên khoa</span></a></details><details class="nav__chapter"><summary>Chương 11 · Async JavaScript &amp; API</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-51.html" data-lesson-link="51"><span class="nav__dot" data-dot="51"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">51</span><span class="nav__label">Fetch API &amp; Async/Await</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-52.html" data-lesson-link="52"><span class="nav__dot" data-dot="52"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">52</span><span class="nav__label">Mock REST API</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-53.html" data-lesson-link="53"><span class="nav__dot" data-dot="53"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">53</span><span class="nav__label">Loading &amp; Error states</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-54.html" data-lesson-link="54"><span class="nav__dot" data-dot="54"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">54</span><span class="nav__label">Luồng đặt lịch đa bước</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-55.html" data-lesson-link="55"><span class="nav__dot" data-dot="55"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">55</span><span class="nav__label">Lab: đặt lịch khám hoàn chỉnh</span></a></details><details class="nav__chapter"><summary>Chương 12 · Dự án Highland Hospital &amp; Component Thinking</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-56.html" data-lesson-link="56"><span class="nav__dot" data-dot="56"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">56</span><span class="nav__label">Tổng quan dự án &amp; phân tích Figma</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-57.html" data-lesson-link="57"><span class="nav__dot" data-dot="57"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">57</span><span class="nav__label">Dựng Landing Page bằng Bootstrap</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-58.html" data-lesson-link="58"><span class="nav__dot" data-dot="58"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">58</span><span class="nav__label">Tương tác JavaScript trên Landing Page</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-59.html" data-lesson-link="59"><span class="nav__dot" data-dot="59"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">59</span><span class="nav__label">Xây Admin Dashboard</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-60.html" data-lesson-link="60"><span class="nav__dot" data-dot="60"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">60</span><span class="nav__label">Tối ưu hiệu năng &amp; Responsive</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-61.html" data-lesson-link="61"><span class="nav__dot" data-dot="61"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">61</span><span class="nav__label">Tư duy component &amp; hướng đi tiếp theo</span></a></details><details class="nav__chapter"><summary>Chương 13 · Module bổ trợ — Prompt Engineering cho Frontend</summary><a class="nav__link nav__link--lesson" href="../lessons/buoi-62.html" data-lesson-link="62"><span class="nav__dot" data-dot="62"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">62</span><span class="nav__label">Bonus — Phân tích giao diện Figma bằng Prompt chuẩn</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-63.html" data-lesson-link="63"><span class="nav__dot" data-dot="63"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">63</span><span class="nav__label">Bonus — Sinh code Bootstrap 5 từ đặc tả Figma</span></a><a class="nav__link nav__link--lesson" href="../lessons/buoi-64.html" data-lesson-link="64"><span class="nav__dot" data-dot="64"><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg></span><span class="nav__num">64</span><span class="nav__label">Bonus — Lab: Từ Figma đến Bootstrap trong một phiên làm việc</span></a></details></div>
+      <p class="nav__title">Tham khảo</p>
+      <a class="nav__link" href="../lo-trinh.html"><span>Lộ trình 8 tuần</span></a>
+      <a class="nav__link" href="../du-an.html"><span>Dự án tốt nghiệp</span></a>
+      <a class="nav__link" href="../tu-dien.html"><span>Từ điển thuật ngữ</span></a>
+    </nav>
+    <div class="sidebar__foot">
+      <div class="progress-card">
+        <div class="progress-card__top">
+          <span class="progress-card__label">Tiến độ của bạn</span>
+          <strong class="progress-card__val" data-progress-count>0/64</strong>
+        </div>
+        <span class="progress-bar" role="progressbar" aria-label="Số buổi đã hoàn thành" aria-valuemin="0" aria-valuemax="64" aria-valuenow="0" data-progressbar><i class="progress-bar__fill" data-progress-fill></i></span>
+        <button class="btn btn--ghost btn--sm" type="button" data-reset-progress>Đặt lại tiến độ</button>
+      </div>
+    </div>
+  </div>
+</aside>
+<main class="main" id="main">
+
+<article class="lesson" data-session="44">
+  <header class="lesson__head" data-reveal>
+    <nav class="crumbs" aria-label="Vị trí trang">
+      <a href="../index.html">Trang chủ</a><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      <a href="../lo-trinh.html#ch-9">Chương 9</a><svg class="ico ico--xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+      <span aria-current="page">Buổi 44</span>
+    </nav>
+    <p class="lesson__kicker">Buổi 44 · JavaScript ES6+ — Cú pháp &amp; Dữ liệu</p>
+    <h1 class="lesson__title">Objects &amp; JSON</h1>
+    <p class="lesson__en">JavaScript ES6+ Syntax &amp; Data</p>
+    <ul class="lesson__meta">
+      
+      <li><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M8 3v18"/></svg><span>~5 phút đọc</span></li>
+      <li><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg><span>Bài học</span></li>
+    </ul>
+    <p class="lesson__sum">Tạo object, truy cập và sửa thuộc tính, thêm phương thức · Hiểu JSON là gì và chuyển đổi với JSON.stringify / JSON.parse</p>
+    <div class="lesson__actions">
+      <button class="btn btn--primary" type="button" data-mark-done="44" aria-pressed="false">
+        <svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg><span data-mark-label>Đánh dấu đã hoàn thành</span>
+      </button>
+      <a class="btn btn--ghost" href="https://github.com/ktzung/working-with-ai-course-for-frontend-dev/blob/main/course-lessons/vi/09-javascript-basics/04-objects-and-json.md" target="_blank" rel="noopener noreferrer"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 13v6H5V6h6"/></svg><span>Mở bản Markdown gốc</span></a>
+    </div>
+  </header>
+
+  <div class="lesson__grid">
+    <div class="lesson__body">
+      <aside class="goals" id="muc-tieu-bai-hoc" data-reveal>
+    <h2 class="goals__title"><svg class="ico ico--sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg><span>Mục tiêu bài học</span></h2>
+    <ul class="goals__list"><li>Tạo object, truy cập và sửa thuộc tính, thêm phương thức</li><li>Hiểu JSON là gì và chuyển đổi với JSON.stringify / JSON.parse</li><li>Làm việc với mảng lịch hẹn mẫu dạng JSON của bệnh viện</li><li>Phân biệt object trong code (JavaScript) và JSON (định dạng văn bản)</li></ul>
+  </aside>
+      <section class="visual-lab" id="hoc-truc-quan" aria-labelledby="visual-title">
+  <p class="kicker">Học bằng cách nhìn & thử</p><h2 id="visual-title">Bản đồ bài học</h2>
+  <ol class="visual-map"><li><a href="#tao-va-thao-tac-object"><b>01</b><span>Tạo và thao tác object</span></a></li><li><a href="#mang-lich-hen-du-lieu-goc-cua-benh-vien"><b>02</b><span>Mảng lịch hẹn — dữ liệu gốc của bệnh viện</span></a></li><li><a href="#json-dinh-dang-trao-doi-du-lieu"><b>03</b><span>JSON — định dạng trao đổi dữ liệu</span></a></li><li><a href="#json-hop-le-kiem-tra-nhanh"><b>04</b><span>JSON hợp lệ — kiểm tra nhanh</span></a></li><li><a href="#prompt-mau"><b>05</b><span>Prompt mẫu</span></a></li><li><a href="#thuc-hanh"><b>06</b><span>Thực hành</span></a></li></ol>
+  <h3>Dữ liệu → kết quả</h3>
+  <p>Ví dụ bổ trợ dùng chung cho Chương 9. Nội dung và code riêng của bài nằm bên dưới. Không gọi API bên ngoài, không gửi dữ liệu thật.</p>
+  <div class="visual-lab__tools" role="group" aria-label="Cỡ màn hình xem trước"><button class="btn btn--sm" type="button" data-preview-width="360" aria-pressed="false">Mobile · 360px</button><button class="btn btn--sm" type="button" data-preview-width="full" aria-pressed="true">Desktop · vừa khung</button></div>
+  <iframe class="visual-lab__frame" title="Xem trước: Dữ liệu → kết quả" sandbox="allow-scripts allow-forms" referrerpolicy="no-referrer" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;vi&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Dữ liệu → kết quả&lt;/title&gt;
+&lt;style&gt;
+body {
+  font: 16px/1.6 system-ui, sans-serif;
+  margin: 24px;
+  color: #12312c;
+  background: #fff;
+}
+* { box-sizing: border-box; }
+h1 { font-size: clamp(1.4rem, 4vw, 2rem); }
+button, input, select {
+  font: inherit;
+  max-width: 100%;
+  padding: 10px 16px;
+  border: 1px solid #0f766e;
+  border-radius: 8px;
+}
+button { background: #0f766e; color: white; cursor: pointer; }
+a { color: #0f766e; }
+p {
+  padding: 24px;
+  background: #ccfbf1;
+  font-size: 1.3rem;
+
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Tính phí khám&lt;/h1&gt;
+&lt;p id=&quot;result&quot;&gt;
+&lt;/p&gt;
+&lt;script&gt;
+const services = [{ name: &quot;Khám tổng quát&quot;, fee: 200000 }, { name: &quot;Tư vấn&quot;, fee: 100000 }];
+const total = services.reduce((sum, service) =&gt; sum + service.fee, 0);
+document.querySelector(&quot;#result&quot;).textContent = &quot;Tổng: &quot; + total.toLocaleString(&quot;vi-VN&quot;) + &quot; đồng&quot;;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+  <details class="visual-lab__source"><summary>Xem code có tô màu & sao chép</summary><figure class="code code--multi" data-lang="html">
+  <figcaption class="code__bar"><span class="code__lang">HTML</span>
+  <button class="btn-copy" type="button" data-copy aria-label="Sao chép đoạn code">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    <span>Sao chép</span></button></figcaption>
+  <pre><code><span class="tok tok--tag">&lt;!DOCTYPE html&gt;</span>
+&lt;<span class="tok tok--tag">html</span> <span class="tok tok--tag">lang</span><span class="tok tok--punc">=</span><span class="tok tok--str">&quot;vi&quot;</span><span class="tok tok--punc">&gt;</span>
+&lt;<span class="tok tok--tag">head</span><span class="tok tok--punc">&gt;</span>
+&lt;<span class="tok tok--tag">meta</span> <span class="tok tok--tag">charset</span><span class="tok tok--punc">=</span><span class="tok tok--str">&quot;UTF-8&quot;</span><span class="tok tok--punc">&gt;</span>
+&lt;<span class="tok tok--tag">meta</span> <span class="tok tok--tag">name</span><span class="tok tok--punc">=</span><span class="tok tok--str">&quot;viewport&quot;</span> <span class="tok tok--tag">content</span><span class="tok tok--punc">=</span><span class="tok tok--str">&quot;width=device-width, initial-scale=1&quot;</span><span class="tok tok--punc">&gt;</span>
+&lt;<span class="tok tok--tag">title</span><span class="tok tok--punc">&gt;</span>Dữ liệu → kết quả<span class="tok tok--punc">&lt;/</span><span class="tok tok--tag">title</span><span class="tok tok--punc">&gt;</span>
+&lt;<span class="tok tok--tag">style</span><span class="tok tok--punc">&gt;</span>
+body {
+  font: 16px/1.6 system-ui, sans-serif;
+  margin: 24px;
+  color: #12312c;
+  background: #fff;
+}
+* { box-sizing: border-box; }
+h1 { font-size: clamp(1.4rem, 4vw, 2rem); }
+button, input, select {
+  font: inherit;
+  max-width: 100%;
+  padding: 10px 16px;
+  border: 1px solid #0f766e;
+  border-radius: 8px;
+}
+button { background: #0f766e; color: white; cursor: pointer; }
+a { color: #0f766e; }
+p {
+  padding: 24px;
+  background: #ccfbf1;
+  font-size: 1.3rem;
+
+}
+<span class="tok tok--punc">&lt;/</span><span class="tok tok--tag">style</span><span class="tok tok--punc">&gt;</span>
+<span class="tok tok--punc">&lt;/</span><span class="tok tok--tag">head</span><span class="tok tok--punc">&gt;</span>
+&lt;<span class="tok tok--tag">body</span><span class="tok tok--punc">&gt;</span>
+&lt;<span class="tok tok--tag">h1</span><span class="tok tok--punc">&gt;</span>Tính phí khám<span class="tok tok--punc">&lt;/</span><span class="tok tok--tag">h1</span><span class="tok tok--punc">&gt;</span>
+&lt;<span class="tok tok--tag">p</span> <span class="tok tok--tag">id</span><span class="tok tok--punc">=</span><span class="tok tok--str">&quot;result&quot;</span><span class="tok tok--punc">&gt;</span>
+<span class="tok tok--punc">&lt;/</span><span class="tok tok--tag">p</span><span class="tok tok--punc">&gt;</span>
+&lt;<span class="tok tok--tag">script</span><span class="tok tok--punc">&gt;</span>
+const services = [{ name: &quot;Khám tổng quát&quot;, fee: 200000 }, { name: &quot;Tư vấn&quot;, fee: 100000 }];
+const total = services.reduce((sum, service) =&gt; sum + service.fee, 0);
+document.querySelector(&quot;#result&quot;).textContent = &quot;Tổng: &quot; + total.toLocaleString(&quot;vi-VN&quot;) + &quot; đồng&quot;;
+<span class="tok tok--punc">&lt;/</span><span class="tok tok--tag">script</span><span class="tok tok--punc">&gt;</span>
+<span class="tok tok--punc">&lt;/</span><span class="tok tok--tag">body</span><span class="tok tok--punc">&gt;</span>
+<span class="tok tok--punc">&lt;/</span><span class="tok tok--tag">html</span><span class="tok tok--punc">&gt;</span></code></pre>
+</figure></details>
+  <details class="visual-lab__editor"><summary>Sửa code và chạy thử trong khung</summary><label for="demo-code">HTML, CSS và JavaScript (chạy cách ly)</label><textarea id="demo-code" spellcheck="false" rows="16">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;vi&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Dữ liệu → kết quả&lt;/title&gt;
+&lt;style&gt;
+body {
+  font: 16px/1.6 system-ui, sans-serif;
+  margin: 24px;
+  color: #12312c;
+  background: #fff;
+}
+* { box-sizing: border-box; }
+h1 { font-size: clamp(1.4rem, 4vw, 2rem); }
+button, input, select {
+  font: inherit;
+  max-width: 100%;
+  padding: 10px 16px;
+  border: 1px solid #0f766e;
+  border-radius: 8px;
+}
+button { background: #0f766e; color: white; cursor: pointer; }
+a { color: #0f766e; }
+p {
+  padding: 24px;
+  background: #ccfbf1;
+  font-size: 1.3rem;
+
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;Tính phí khám&lt;/h1&gt;
+&lt;p id=&quot;result&quot;&gt;
+&lt;/p&gt;
+&lt;script&gt;
+const services = [{ name: &quot;Khám tổng quát&quot;, fee: 200000 }, { name: &quot;Tư vấn&quot;, fee: 100000 }];
+const total = services.reduce((sum, service) =&gt; sum + service.fee, 0);
+document.querySelector(&quot;#result&quot;).textContent = &quot;Tổng: &quot; + total.toLocaleString(&quot;vi-VN&quot;) + &quot; đồng&quot;;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea><button class="btn btn--primary" type="button" data-preview-run>Chạy code</button> <button class="btn" type="button" data-preview-reset>Khôi phục ví dụ</button><p data-preview-status role="status"></p></details>
+  </section>
+      
+      <section class="prose" id="tao-va-thao-tac-object" data-reveal style="--d:0ms">
+    <h2 class="section__title"><span class="section__idx">01</span><span>Tạo và thao tác object</span><a class="anchor" href="#tao-va-thao-tac-object" aria-label="Liên kết tới mục Tạo và thao tác object">#</a></h2>
+    <figure class="code code--multi" data-lang="js">
+  <figcaption class="code__bar"><span class="code__lang">JS</span>
+  <button class="btn-copy" type="button" data-copy aria-label="Sao chép đoạn code">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    <span>Sao chép</span></button></figcaption>
+  <pre><code><span class="tok tok--com">// Object literal</span>
+<span class="tok tok--kw">const</span> <span class="tok tok--plain">appointment</span> <span class="tok tok--punc">=</span> <span class="tok tok--punc">{</span>
+  <span class="tok tok--prop">id</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;A001&#39;</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--prop">patientName</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;Nguyễn Văn An&#39;</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--prop">specialty</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;Tim mạch&#39;</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--prop">doctorId</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;D002&#39;</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--prop">date</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;2025-12-12&#39;</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--prop">time</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;09:00&#39;</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--prop">status</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;pending&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--com">// pending | confirmed | done | cancelled</span>
+<span class="tok tok--punc">}</span><span class="tok tok--punc">;</span>
+
+<span class="tok tok--com">// Truy cập — hai cách tương đương</span>
+<span class="tok tok--plain">console</span><span class="tok tok--punc">.</span><span class="tok tok--fn">log</span><span class="tok tok--punc">(</span><span class="tok tok--plain">appointment</span><span class="tok tok--punc">.</span><span class="tok tok--prop">patientName</span><span class="tok tok--punc">)</span><span class="tok tok--punc">;</span> <span class="tok tok--com">// Nguyễn Văn An</span>
+<span class="tok tok--plain">console</span><span class="tok tok--punc">.</span><span class="tok tok--fn">log</span><span class="tok tok--punc">(</span><span class="tok tok--plain">appointment</span><span class="tok tok--punc">[</span><span class="tok tok--str">&#39;specialty&#39;</span><span class="tok tok--punc">]</span><span class="tok tok--punc">)</span><span class="tok tok--punc">;</span> <span class="tok tok--com">// Tim mạch — dùng khi tên thuộc tính là biến</span>
+
+<span class="tok tok--com">// Sửa thuộc tính</span>
+<span class="tok tok--plain">appointment</span><span class="tok tok--punc">.</span><span class="tok tok--prop">status</span> <span class="tok tok--punc">=</span> <span class="tok tok--str">&#39;confirmed&#39;</span><span class="tok tok--punc">;</span>
+<span class="tok tok--plain">appointment</span><span class="tok tok--punc">.</span><span class="tok tok--prop">doctorId</span> <span class="tok tok--punc">=</span> <span class="tok tok--str">&#39;D005&#39;</span><span class="tok tok--punc">;</span> <span class="tok tok--com">// đổi bác sĩ</span>
+
+<span class="tok tok--com">// Thêm thuộc tính mới</span>
+<span class="tok tok--plain">appointment</span><span class="tok tok--punc">.</span><span class="tok tok--prop">note</span> <span class="tok tok--punc">=</span> <span class="tok tok--str">&#39;Cần khám lúc chiều&#39;</span><span class="tok tok--punc">;</span>
+
+<span class="tok tok--com">// Xoá thuộc tính</span>
+<span class="tok tok--kw">delete</span> <span class="tok tok--plain">appointment</span><span class="tok tok--punc">.</span><span class="tok tok--prop">note</span><span class="tok tok--punc">;</span>
+
+<span class="tok tok--com">// Phương thức — hàm nằm trong object, dùng this để trỏ vào chính object</span>
+<span class="tok tok--kw">const</span> <span class="tok tok--plain">bookingService</span> <span class="tok tok--punc">=</span> <span class="tok tok--punc">{</span>
+  <span class="tok tok--fn">confirm</span><span class="tok tok--punc">(</span><span class="tok tok--plain">appt</span><span class="tok tok--punc">)</span> <span class="tok tok--punc">{</span>
+    <span class="tok tok--plain">appt</span><span class="tok tok--punc">.</span><span class="tok tok--prop">status</span> <span class="tok tok--punc">=</span> <span class="tok tok--str">&#39;confirmed&#39;</span><span class="tok tok--punc">;</span>
+    <span class="tok tok--kw">return</span> <span class="tok tok--str">`Lịch ${appt.id} đã xác nhận cho ${appt.patientName}.`</span><span class="tok tok--punc">;</span>
+  <span class="tok tok--punc">}</span><span class="tok tok--punc">,</span>
+<span class="tok tok--punc">}</span><span class="tok tok--punc">;</span>
+<span class="tok tok--plain">console</span><span class="tok tok--punc">.</span><span class="tok tok--fn">log</span><span class="tok tok--punc">(</span><span class="tok tok--plain">bookingService</span><span class="tok tok--punc">.</span><span class="tok tok--fn">confirm</span><span class="tok tok--punc">(</span><span class="tok tok--plain">appointment</span><span class="tok tok--punc">)</span><span class="tok tok--punc">)</span><span class="tok tok--punc">;</span></code></pre>
+</figure>
+<p>Dấu ngoặc vuông <code class="inline">appointment[&#39;date&#39;]</code> hữu ích khi tên thuộc tính nằm trong biến hoặc chứa ký tự đặc biệt (<code class="inline">&#39;thời-gian-khám&#39;</code> thì phải dùng ngoặc vuông).</p>
+  </section>
+<section class="prose" id="mang-lich-hen-du-lieu-goc-cua-benh-vien" data-reveal style="--d:40ms">
+    <h2 class="section__title"><span class="section__idx">02</span><span>Mảng lịch hẹn — dữ liệu gốc của bệnh viện</span><a class="anchor" href="#mang-lich-hen-du-lieu-goc-cua-benh-vien" aria-label="Liên kết tới mục Mảng lịch hẹn — dữ liệu gốc của bệnh viện">#</a></h2>
+    <figure class="code code--multi" data-lang="js">
+  <figcaption class="code__bar"><span class="code__lang">JS</span>
+  <button class="btn-copy" type="button" data-copy aria-label="Sao chép đoạn code">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    <span>Sao chép</span></button></figcaption>
+  <pre><code><span class="tok tok--kw">const</span> <span class="tok tok--plain">appointments</span> <span class="tok tok--punc">=</span> <span class="tok tok--punc">[</span>
+  <span class="tok tok--punc">{</span> <span class="tok tok--prop">id</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;A001&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">patientName</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;Nguyễn Văn An&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">specialty</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;Tim mạch&#39;</span><span class="tok tok--punc">,</span>     <span class="tok tok--prop">date</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;2025-12-12&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">time</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;09:00&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">status</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;pending&#39;</span>   <span class="tok tok--punc">}</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--punc">{</span> <span class="tok tok--prop">id</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;A002&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">patientName</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;Trần Thu Hà&#39;</span><span class="tok tok--punc">,</span>   <span class="tok tok--prop">specialty</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;Nhi khoa&#39;</span><span class="tok tok--punc">,</span>     <span class="tok tok--prop">date</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;2025-12-12&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">time</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;10:30&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">status</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;confirmed&#39;</span> <span class="tok tok--punc">}</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--punc">{</span> <span class="tok tok--prop">id</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;A003&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">patientName</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;Phạm Quốc Bảo&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">specialty</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;Nội tổng hợp&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">date</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;2025-12-13&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">time</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;14:00&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">status</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;done&#39;</span>      <span class="tok tok--punc">}</span><span class="tok tok--punc">,</span>
+<span class="tok tok--punc">]</span><span class="tok tok--punc">;</span>
+
+<span class="tok tok--com">// Kết hợp mọi thứ bài 03 đã học</span>
+<span class="tok tok--kw">const</span> <span class="tok tok--plain">pendingCount</span> <span class="tok tok--punc">=</span> <span class="tok tok--plain">appointments</span><span class="tok tok--punc">.</span><span class="tok tok--fn">filter</span><span class="tok tok--punc">(</span><span class="tok tok--punc">(</span><span class="tok tok--plain">a</span><span class="tok tok--punc">)</span> <span class="tok tok--punc">=&gt;</span> <span class="tok tok--plain">a</span><span class="tok tok--punc">.</span><span class="tok tok--prop">status</span> <span class="tok tok--punc">===</span> <span class="tok tok--str">&#39;pending&#39;</span><span class="tok tok--punc">)</span><span class="tok tok--punc">.</span><span class="tok tok--prop">length</span><span class="tok tok--punc">;</span>
+<span class="tok tok--plain">console</span><span class="tok tok--punc">.</span><span class="tok tok--fn">log</span><span class="tok tok--punc">(</span><span class="tok tok--str">`Có ${pendingCount} lịch hẹn đang chờ xác nhận.`</span><span class="tok tok--punc">)</span><span class="tok tok--punc">;</span>
+
+<span class="tok tok--kw">const</span> <span class="tok tok--plain">tomorrow</span> <span class="tok tok--punc">=</span> <span class="tok tok--plain">appointments</span>
+  <span class="tok tok--punc">.</span><span class="tok tok--fn">filter</span><span class="tok tok--punc">(</span><span class="tok tok--punc">(</span><span class="tok tok--plain">a</span><span class="tok tok--punc">)</span> <span class="tok tok--punc">=&gt;</span> <span class="tok tok--plain">a</span><span class="tok tok--punc">.</span><span class="tok tok--prop">date</span> <span class="tok tok--punc">===</span> <span class="tok tok--str">&#39;2025-12-13&#39;</span><span class="tok tok--punc">)</span>
+  <span class="tok tok--punc">.</span><span class="tok tok--fn">map</span><span class="tok tok--punc">(</span><span class="tok tok--punc">(</span><span class="tok tok--plain">a</span><span class="tok tok--punc">)</span> <span class="tok tok--punc">=&gt;</span> <span class="tok tok--str">`${a.time} — ${a.patientName} (${a.specialty})`</span><span class="tok tok--punc">)</span><span class="tok tok--punc">;</span>
+<span class="tok tok--plain">console</span><span class="tok tok--punc">.</span><span class="tok tok--fn">log</span><span class="tok tok--punc">(</span><span class="tok tok--plain">tomorrow</span><span class="tok tok--punc">)</span><span class="tok tok--punc">;</span></code></pre>
+</figure>
+<p>Một object là &quot;một lịch hẹn&quot;; một mảng object là &quot;toàn bộ sổ lịch&quot; — cấu trúc này sẽ chạy xuyên suốt phần Admin Dashboard ở chương 12.</p>
+  </section>
+<section class="prose" id="json-dinh-dang-trao-doi-du-lieu" data-reveal style="--d:80ms">
+    <h2 class="section__title"><span class="section__idx">03</span><span>JSON — định dạng trao đổi dữ liệu</span><a class="anchor" href="#json-dinh-dang-trao-doi-du-lieu" aria-label="Liên kết tới mục JSON — định dạng trao đổi dữ liệu">#</a></h2>
+    <p>JSON (JavaScript Object Notation) là <strong>văn bản</strong> để truyền dữ liệu giữa trình duyệt và server. Nó trông giống object JavaScript nhưng khác ba điểm: mọi key phải bọc nháy kép, chuỗi dùng nháy kép, không chứa hàm hay <code class="inline">undefined</code>.</p>
+<figure class="code code--multi" data-lang="js">
+  <figcaption class="code__bar"><span class="code__lang">JS</span>
+  <button class="btn-copy" type="button" data-copy aria-label="Sao chép đoạn code">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    <span>Sao chép</span></button></figcaption>
+  <pre><code><span class="tok tok--com">// Object trong bộ nhớ</span>
+<span class="tok tok--kw">const</span> <span class="tok tok--plain">appointment</span> <span class="tok tok--punc">=</span> <span class="tok tok--punc">{</span>
+  <span class="tok tok--prop">patientName</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;Nguyễn Văn An&#39;</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--prop">specialty</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;Tim mạch&#39;</span><span class="tok tok--punc">,</span>
+  <span class="tok tok--prop">fee</span><span class="tok tok--punc">:</span> <span class="tok tok--num">650000</span><span class="tok tok--punc">,</span>
+<span class="tok tok--punc">}</span><span class="tok tok--punc">;</span>
+
+<span class="tok tok--com">// Object → chuỗi JSON (để gửi lên server / lưu localStorage)</span>
+<span class="tok tok--kw">const</span> <span class="tok tok--plain">json</span> <span class="tok tok--punc">=</span> <span class="tok tok--cls">JSON</span><span class="tok tok--punc">.</span><span class="tok tok--fn">stringify</span><span class="tok tok--punc">(</span><span class="tok tok--plain">appointment</span><span class="tok tok--punc">)</span><span class="tok tok--punc">;</span>
+<span class="tok tok--plain">console</span><span class="tok tok--punc">.</span><span class="tok tok--fn">log</span><span class="tok tok--punc">(</span><span class="tok tok--plain">json</span><span class="tok tok--punc">)</span><span class="tok tok--punc">;</span>
+<span class="tok tok--com">// {&quot;patientName&quot;:&quot;Nguyễn Văn An&quot;,&quot;specialty&quot;:&quot;Tim mạch&quot;,&quot;fee&quot;:650000}</span>
+
+<span class="tok tok--com">// Chuỗi JSON → object (khi nhận từ server)</span>
+<span class="tok tok--kw">const</span> <span class="tok tok--plain">restored</span> <span class="tok tok--punc">=</span> <span class="tok tok--cls">JSON</span><span class="tok tok--punc">.</span><span class="tok tok--fn">parse</span><span class="tok tok--punc">(</span><span class="tok tok--plain">json</span><span class="tok tok--punc">)</span><span class="tok tok--punc">;</span>
+<span class="tok tok--plain">console</span><span class="tok tok--punc">.</span><span class="tok tok--fn">log</span><span class="tok tok--punc">(</span><span class="tok tok--plain">restored</span><span class="tok tok--punc">.</span><span class="tok tok--prop">patientName</span><span class="tok tok--punc">)</span><span class="tok tok--punc">;</span> <span class="tok tok--com">// Nguyễn Văn An</span></code></pre>
+</figure>
+<p>Tham số thứ ba của <code class="inline">stringify</code> thêm khoảng trắng cho dễ đọc khi debug: <code class="inline">JSON.stringify(appointments, null, 2)</code> in toàn bộ sổ lịch dạng cây.</p>
+  </section>
+<section class="prose" id="json-hop-le-kiem-tra-nhanh" data-reveal style="--d:120ms">
+    <h2 class="section__title"><span class="section__idx">04</span><span>JSON hợp lệ — kiểm tra nhanh</span><a class="anchor" href="#json-hop-le-kiem-tra-nhanh" aria-label="Liên kết tới mục JSON hợp lệ — kiểm tra nhanh">#</a></h2>
+    <p>Lỗi thường gặp: key thiếu nháy kép, dư dấu phẩy cuối, hoặc dùng nháy đơn.</p>
+<figure class="code code--multi" data-lang="json">
+  <figcaption class="code__bar"><span class="code__lang">JSON</span>
+  <button class="btn-copy" type="button" data-copy aria-label="Sao chép đoạn code">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 9h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    <span>Sao chép</span></button></figcaption>
+  <pre><code><span class="tok tok--com">// ❌ Không phải JSON hợp lệ</span>
+<span class="tok tok--punc">{</span> <span class="tok tok--str">&quot;patientName&quot;</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&#39;Nguyễn Văn An&#39;</span><span class="tok tok--punc">,</span> <span class="tok tok--prop">specialty</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;Tim mạch&quot;</span><span class="tok tok--punc">,</span> <span class="tok tok--punc">}</span>
+
+<span class="tok tok--com">// ✅ JSON hợp lệ</span>
+<span class="tok tok--punc">{</span> <span class="tok tok--str">&quot;patientName&quot;</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;Nguyễn Văn An&quot;</span><span class="tok tok--punc">,</span> <span class="tok tok--str">&quot;specialty&quot;</span><span class="tok tok--punc">:</span> <span class="tok tok--str">&quot;Tim mạch&quot;</span> <span class="tok tok--punc">}</span></code></pre>
+</figure>
+<p>Khi bị <code class="inline">JSON.parse</code> báo <code class="inline">Unexpected token</code>, dán chuỗi vào validator trực tuyến hoặc hỏi AI sửa — nhưng bạn phải đọc được lỗi ở dòng nào.</p>
+  </section>
+<section class="prose" id="prompt-mau" data-reveal style="--d:160ms">
+    <h2 class="section__title"><span class="section__idx">05</span><span>Prompt mẫu</span><a class="anchor" href="#prompt-mau" aria-label="Liên kết tới mục Prompt mẫu">#</a><span class="section__badge section__badge--prompt">Prompt</span></h2>
+    <blockquote class="callout callout--tip"><p><strong>Prompt gửi Gemini/Claude/ChatGPT:</strong> Tôi đang xây Admin Dashboard cho Highland Hospital, dữ liệu là mảng lịch hẹn JSON dạng <code class="inline">[{ id, patientName, specialty, doctorId, date, time, status }]</code>. Hãy viết code: (1) <code class="inline">JSON.stringify</code> một lịch hẹn mẫu rồi <code class="inline">JSON.parse</code> lại, in ra console; (2) dùng <code class="inline">filter</code> lấy các lịch <code class="inline">confirmed</code> vào ngày <code class="inline">2025-12-12</code>; (3) viết JSON thủ công cho 3 lịch hẹn và cho tôi biết nếu tôi gõ sai cú pháp thì lỗi trông thế nào. Giải thích khác biệt giữa object JavaScript và JSON.</p></blockquote>
+  </section>
+<section class="prose prose--practice" id="thuc-hanh" data-reveal style="--d:200ms">
+    <h2 class="section__title"><span class="section__idx">06</span><span>Thực hành</span><a class="anchor" href="#thuc-hanh" aria-label="Liên kết tới mục Thực hành">#</a><span class="section__badge">Thực hành</span></h2>
+    <ol>
+<li>Tạo <code class="inline inline--path">appointments.js</code> chứa mảng 3 lịch hẹn; mở Console và in <code class="inline">JSON.stringify(appointments, null, 2)</code>.</li>
+<li>Dùng <code class="inline">filter</code> đếm lịch theo từng trạng thái (pending/confirmed/done).</li>
+<li>Tạo object <code class="inline">appointment</code> mới, thêm thuộc tính <code class="inline">note</code>, rồi xoá nó bằng <code class="inline">delete</code> — quan sát kết quả in ra.</li>
+<li>Mở một API bất kỳ trả JSON (ví dụ <code class="inline">jsonplaceholder.typicode.com/todos/1</code>) trong trình duyệt và nhận xét điểm giống/khác với object bạn viết.</li>
+<li>Chạy prompt mẫu với AI, tự sửa JSON lỗi trước khi nhờ nó.</li>
+</ol>
+  </section>
+      
+      
+      
+      <section class="prose" id="bai-tiep-theo" data-reveal><h2 class="section__title"><span>Bài tiếp theo</span></h2><p>Dữ liệu đã sẵn ở dạng object/array; bài Lab cuối chương gom toàn bộ — map + template literal — để render sáu bác sĩ thành lưới card thật sự.</p></section>
+      <nav class="pn-wrap" aria-label="Điều hướng giữa các buổi học"><a class="pn pn--prev" href="../lessons/buoi-43.html"><span class="pn__label">Buổi trước</span><span class="pn__title">Array Methods cốt lõi</span></a><a class="pn pn--next" href="../lessons/buoi-45.html"><span class="pn__label">Buổi tiếp theo</span><span class="pn__title">Lab: render danh sách bác sĩ</span></a></nav>
+    </div>
+    <aside class="rail" aria-label="Công cụ hỗ trợ bài học">
+      <div class="rail__inner">
+        <nav class="rail__nav" aria-label="Mục lục bài học">
+  <p class="rail__title">Nội dung bài</p>
+  <ol class="toc">
+    <li><a href="#hoc-truc-quan" data-toc="hoc-truc-quan">Bản đồ &amp; code trực quan</a></li><li><a href="#muc-tieu-bai-hoc" data-toc="muc-tieu-bai-hoc">Mục tiêu bài học</a></li><li><a href="#tao-va-thao-tac-object" data-toc="tao-va-thao-tac-object">Tạo và thao tác object</a></li><li><a href="#mang-lich-hen-du-lieu-goc-cua-benh-vien" data-toc="mang-lich-hen-du-lieu-goc-cua-benh-vien">Mảng lịch hẹn — dữ liệu gốc của bệnh viện</a></li><li><a href="#json-dinh-dang-trao-doi-du-lieu" data-toc="json-dinh-dang-trao-doi-du-lieu">JSON — định dạng trao đổi dữ liệu</a></li><li><a href="#json-hop-le-kiem-tra-nhanh" data-toc="json-hop-le-kiem-tra-nhanh">JSON hợp lệ — kiểm tra nhanh</a></li><li><a href="#prompt-mau" data-toc="prompt-mau">Prompt mẫu</a></li><li><a href="#thuc-hanh" data-toc="thuc-hanh">Thực hành</a></li>
+  </ol>
+</nav>
+        
+        <div class="rail__box">
+          <p class="rail__title">Cần giúp đỡ?</p>
+          <p class="rail__hint">Dán prompt mẫu trong bài vào chat AI bạn đã chọn, hoặc hỏi giảng viên trên lớp.</p>
+          <a class="btn btn--ghost btn--sm" href="../gioi-thieu.html#faq">Xem câu hỏi thường gặp</a>
+        </div>
+        <button class="btn btn--ghost btn--sm" type="button" data-to-top>Về đầu trang <svg class="ico ico--sm to-top-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+      </div>
+    </aside>
+  </div>
+</article>
+</main>
+</div>
+<footer class="site-footer"><div class="site-footer__inner">
+  <p><strong>AI-Accelerated Frontend Developer Bootcamp</strong> · CSE391 — Nền tảng phát triển Web — K67 · Dự án: Highland Hospital Web Portal</p>
+  <p class="muted">Tiến độ và bài làm của bạn được lưu ngay trên máy — không tài khoản, không server.</p>
+  <p class="site-footer__links"><a href="../index.html">Trang chủ</a> · <a href="../lo-trinh.html">Lộ trình</a> · <a href="../tu-dien.html">Từ điển</a> · <a href="https://github.com/ktzung/working-with-ai-course-for-frontend-dev" target="_blank" rel="noopener noreferrer">Mã nguồn khoá học</a></p>
+</div></footer>
+<span class="scrim" data-scrim hidden></span>
+<div class="search" id="search" hidden>
+  <div class="search__panel" role="dialog" aria-modal="true" aria-label="Tìm kiếm trong khoá học">
+    <div class="search__bar"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="search-q" placeholder="Tìm theo thuật ngữ, khái niệm, buổi học…" autocomplete="off" aria-label="Từ khoá tìm kiếm">
+      <button class="icon-btn" type="button" data-close-search aria-label="Đóng tìm kiếm"><span aria-hidden="true">✕</span></button>
+    </div>
+    <ul class="search__results" id="search-results" aria-live="polite"></ul>
+    <p class="search__hint">Thử ngay: <button class="chip chip--btn" data-try="flexbox">flexbox</button> <button class="chip chip--btn" data-try="prompt">prompt</button> <button class="chip chip--btn" data-try="Live Server">Live Server</button> <button class="chip chip--btn" data-try="localStorage">localStorage</button></p>
+  </div>
+</div>
+<script src="../assets/js/search-index.js"></script>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

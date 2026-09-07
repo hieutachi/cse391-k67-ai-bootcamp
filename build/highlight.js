@@ -161,6 +161,10 @@ function renderPrompt(raw) {
 /** Entry point: trả về HTML đã escape + gắn class tok--*. */
 function highlight(code, lang) {
   const raw = String(code).replace(/\s+$/, '');
+  // Sticky regex đã neo tại lastIndex; dấu ^ khiến keyword/attribute sau token đầu mất màu.
+  [TAG_PATTERNS, JS_PATTERNS].forEach((patterns) => patterns.forEach((p) => {
+    if (p.re.source.startsWith('^')) p.re = new RegExp(p.re.source.slice(1), p.re.flags);
+  }));
   const key = (lang || '').toLowerCase();
   if (key === 'text' || key === 'prompt') return { html: renderPrompt(raw), isPrompt: true };
   const patterns = LANGUAGE_MAP[key];

@@ -63,3 +63,22 @@ const norm = (s) => String(s).toLowerCase().split('').map((c) => (c in map ? map
   if (n.length !== word.length) console.log('   ĐỘ DÀI LỆCH: ' + word);
 });
 console.log('norm sample: ' + norm('Đường dẫn “Thuật ngữ”'));
+// Không chỉ in lỗi rồi vẫn exit 0: chặn phát hành khi link/id thực sự hỏng.
+const assert = require('assert/strict');
+const { highlight } = require('./highlight');
+assert.match(highlight('const x = 1; return x;', 'js').html, /tok--kw">return/);
+assert.match(highlight('<a class="link">x<\/a>', 'html').html, /tok--str/);
+const { parseLesson } = require('./markdown');
+const parsed = parseLesson('# Test\n\n## Mục tiêu\n- Đọc được code\n\n## Nội dung\nHello');
+assert.equal(parsed.objectives.length, 1);
+assert.equal(parsed.sections.length, 1);
+const lessonFiles = pages.filter((p) => p.startsWith('lessons/'));
+assert.equal(lessonFiles.length, 64, 'Every Vietnamese lesson must be published');
+for (const file of lessonFiles) {
+  const html = fs.readFileSync(path.join(site, file), 'utf8');
+  assert.ok(html.includes('id="hoc-truc-quan"'), file + ': missing visual lab');
+  assert.ok(html.includes('sandbox="allow-scripts allow-forms"'), file + ': unsafe preview');
+  assert.ok(!/href="[^"#]*\.md"/.test(html.replace(/href="https?:[^\"]*"/g, '')), file + ': raw markdown link');
+}
+process.exitCode = broken || badIndex.length || problems.length || undef.length ? 1 : 0;
+console.log('Catalog, visual labs, Markdown and syntax highlighting: PASS');

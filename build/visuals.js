@@ -1,0 +1,46 @@
+'use strict';
+const { esc } = require('./highlight');
+const { renderBlock } = require('./markdown');
+
+// Ví dụ tự chứa theo chương; không chạy các đoạn Markdown chưa được kiểm chứng.
+const DEMOS = {
+  1: ['Từ yêu cầu đến giao diện', '<h1>Highland Hospital</h1><p>Chăm sóc sức khoẻ, bắt đầu từ bạn.</p><a href="#services">Khám phá dịch vụ ↓</a><section id="services"><h2>Dịch vụ</h2><p>Khám tổng quát · Tim mạch · Nhi khoa</p></section>', 'section { margin-top: 2rem; padding: 1.5rem; border-left: 4px solid teal; background: #e6fffa; }'],
+  2: ['Prompt có ràng buộc rõ ràng', '<h1>Đặc tả trước khi viết code</h1><ol><li>Bối cảnh: cổng bệnh viện</li><li>Mục tiêu: hiển thị bác sĩ</li><li>Ràng buộc: HTML/CSS thuần</li><li>Kiểm tra: responsive, dễ đọc</li></ol>', 'li { margin: .6rem 0; padding: .8rem; background: #e6fffa; border-radius: .6rem; }'],
+  3: ['HTML ngữ nghĩa & biểu mẫu', '<header><strong>Highland Hospital</strong></header><main><h1>Đăng ký tư vấn</h1><form><label>Email của bạn <input type="email" required placeholder="ban@example.com"></label><button>Kiểm tra thông tin</button></form></main><footer>Ví dụ trên trình duyệt, không gửi dữ liệu.</footer>', 'label, input { display: block; margin: 1rem 0; }', 'document.querySelector("form").addEventListener("submit", event => { event.preventDefault(); document.querySelector("footer").textContent = "Email hợp lệ. Không gửi dữ liệu."; });'],
+  4: ['Box model & CSS Variables', '<h1>Quan sát Box Model</h1><div class="box">Content<br><small>Nội dung bên trong</small></div><p>Viền nét đứt là outline, không chiếm diện tích layout.</p>', ':root { --brand: #0f766e; } .box { margin: 24px; border: 8px solid var(--brand); padding: 24px; background: #ccfbf1; outline: 2px dashed #d97706; outline-offset: 12px; }'],
+  5: ['Grid tự thích ứng', '<h1>Đội ngũ bác sĩ</h1><div class="doctors"><article><h2>BS. An</h2><p>Nội khoa</p></article><article><h2>BS. Bình</h2><p>Tim mạch</p></article><article><h2>BS. Chi</h2><p>Nhi khoa</p></article></div>', '.doctors { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 16px; } article { padding: 16px; border: 1px solid #99f6e4; border-radius: 12px; background: #f0fdfa; }'],
+  6: ['Responsive & chuyển động an toàn', '<h1>Thử nút Mobile / Desktop</h1><div class="layout"><article>Khám tổng quát</article><article>Chăm sóc chuyên sâu</article></div>', '.layout { display: grid; gap: 16px; } article { background: #ccfbf1; padding: 24px; border-radius: 12px; transition: transform .2s; } article:hover { transform: translateY(-4px); } @media (min-width: 500px) { .layout { grid-template-columns: 1fr 1fr; } } @media (prefers-reduced-motion: reduce) { article { transition: none; } }'],
+  7: ['Mô hình cột responsive', '<h1>Minh hoạ nguyên lý lưới</h1><p>Demo CSS thuần; xem cú pháp Bootstrap trong bài phía trên.</p><div class="row"><article>Cột A</article><article>Cột B</article><article>Cột C</article></div>', '.row { display: flex; flex-wrap: wrap; gap: 16px; } article { flex: 1 1 180px; padding: 24px; background: #e0f2fe; border-radius: 10px; }'],
+  8: ['Component mở rộng nội dung', '<h1>Câu hỏi thường gặp</h1><p>Demo HTML thuần; đối chiếu component Bootstrap trong bài.</p><details open><summary>Đặt lịch như thế nào?</summary><p>Chọn chuyên khoa → bác sĩ → giờ khám.</p></details><details><summary>Cần mang theo gì?</summary><p>Giấy tờ tuỳ thân và kết quả khám trước đó.</p></details>', 'details { margin: 12px 0; padding: 18px; border: 1px solid #99f6e4; border-radius: 12px; } summary { cursor: pointer; font-weight: bold; }'],
+};
+
+DEMOS[9] = ['Dữ liệu → kết quả', '<h1>Tính phí khám</h1><p id="result"></p>', 'p { padding: 24px; background: #ccfbf1; font-size: 1.3rem; }', 'const services = [{ name: "Khám tổng quát", fee: 200000 }, { name: "Tư vấn", fee: 100000 }];\nconst total = services.reduce((sum, service) => sum + service.fee, 0);\ndocument.querySelector("#result").textContent = "Tổng: " + total.toLocaleString("vi-VN") + " đồng";'];
+DEMOS[10] = ['DOM & sự kiện lọc', '<h1>Tìm bác sĩ</h1><label>Tên bác sĩ <input type="search" id="filter"></label><ul><li>BS. An — Nội khoa</li><li>BS. Bình — Tim mạch</li><li>BS. Chi — Nhi khoa</li></ul>', 'li { padding: 12px; border-bottom: 1px solid #ccc; }', 'document.querySelector("#filter").addEventListener("input", event => {\n  const query = event.target.value.toLocaleLowerCase("vi");\n  document.querySelectorAll("li").forEach(item => {\n    item.hidden = !item.textContent.toLocaleLowerCase("vi").includes(query);\n  });\n});'];
+DEMOS[11] = ['Async: loading → dữ liệu', '<h1>Lịch khám</h1><button id="load">Tải dữ liệu mô phỏng</button><p id="status" role="status">Chưa tải</p>', '', 'const button = document.querySelector("#load");\nbutton.addEventListener("click", async () => {\n  button.disabled = true;\n  const status = document.querySelector("#status");\n  status.textContent = "Đang tải…";\n  try {\n    const slots = await new Promise(resolve => setTimeout(() => resolve(["08:00", "09:30", "14:00"]), 600));\n    status.textContent = "Giờ trống: " + slots.join(" · ");\n  } catch (error) {\n    status.textContent = "Không tải được lịch. Hãy thử lại.";\n  } finally {\n    button.disabled = false;\n  }\n});'];
+DEMOS[12] = ['Một lát cắt của dự án', '<h1>Highland Hospital</h1><p>Chọn giờ tư vấn — dữ liệu minh hoạ.</p><form><label>Giờ khám <select><option>08:00</option><option>09:30</option><option>14:00</option></select></label><button>Xác nhận thử</button></form><p id="status" role="status"></p>', 'form { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 24px; background: #ccfbf1; border-radius: 16px; }', 'document.querySelector("form").addEventListener("submit", event => {\n  event.preventDefault();\n  const time = document.querySelector("select").value;\n  document.querySelector("#status").textContent = "Đã chọn " + time + ". Đây là demo, không đặt lịch thật.";\n});'];
+DEMOS[13] = ['Đặc tả thiết kế → component', '<h1>Design tokens</h1><article><h2>Tư vấn sức khoẻ</h2><p>Đối chiếu màu, khoảng cách, typography với đặc tả.</p><button>Hành động chính</button></article>', ':root { --brand: #0f766e; --space: 16px; --radius: 12px; } article { padding: calc(var(--space) * 2); border: 1px solid var(--brand); border-radius: var(--radius); } button { background: var(--brand); border-radius: var(--radius); }'];
+
+function documentFor(chapter) {
+  const [title, html, css, js = ''] = DEMOS[chapter];
+  const prettyHTML = html.replace(/></g, '>\n<');
+  const prettyCSS = css.replace(/ \{ /g, ' {\n  ').replace(/; /g, ';\n  ').replace(/ \}/g, '\n}').replace(/\} /g, '}\n').replace(/[ \t]+$/gm, '');
+  return '<!DOCTYPE html>\n<html lang="vi">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>' + title + '</title>\n<style>\n' +
+    'body {\n  font: 16px/1.6 system-ui, sans-serif;\n  margin: 24px;\n  color: #12312c;\n  background: #fff;\n}\n* { box-sizing: border-box; }\nh1 { font-size: clamp(1.4rem, 4vw, 2rem); }\nbutton, input, select {\n  font: inherit;\n  max-width: 100%;\n  padding: 10px 16px;\n  border: 1px solid #0f766e;\n  border-radius: 8px;\n}\nbutton { background: #0f766e; color: white; cursor: pointer; }\na { color: #0f766e; }\n' + prettyCSS + '\n</style>\n</head>\n<body>\n' + prettyHTML + (js ? '\n<script>\n' + js + '\n</script>' : '') + '\n</body>\n</html>';
+}
+
+function visualLesson(session, parsed) {
+  const source = documentFor(session.chapter);
+  const steps = parsed.sections.filter((s) => s.kind !== 'next');
+  return `<section class="visual-lab" id="hoc-truc-quan" aria-labelledby="visual-title">
+  <p class="kicker">Học bằng cách nhìn & thử</p><h2 id="visual-title">Bản đồ bài học</h2>
+  <ol class="visual-map">${steps.map((s, i) => `<li><a href="#${esc(s.id)}"><b>${String(i + 1).padStart(2, '0')}</b><span>${esc(s.title)}</span></a></li>`).join('')}</ol>
+  <h3>${esc(DEMOS[session.chapter][0])}</h3>
+  <p>Ví dụ bổ trợ dùng chung cho Chương ${session.chapter}. Nội dung và code riêng của bài nằm bên dưới. Không gọi API bên ngoài, không gửi dữ liệu thật.</p>
+  <div class="visual-lab__tools" role="group" aria-label="Cỡ màn hình xem trước"><button class="btn btn--sm" type="button" data-preview-width="360" aria-pressed="false">Mobile · 360px</button><button class="btn btn--sm" type="button" data-preview-width="full" aria-pressed="true">Desktop · vừa khung</button></div>
+  <iframe class="visual-lab__frame" title="Xem trước: ${esc(DEMOS[session.chapter][0])}" sandbox="allow-scripts allow-forms" referrerpolicy="no-referrer" srcdoc="${esc(source)}"></iframe>
+  <details class="visual-lab__source"><summary>Xem code có tô màu & sao chép</summary>${renderBlock({ type: 'code', lang: 'html', body: source })}</details>
+  <details class="visual-lab__editor"><summary>Sửa code và chạy thử trong khung</summary><label for="demo-code">HTML, CSS và JavaScript (chạy cách ly)</label><textarea id="demo-code" spellcheck="false" rows="16">${esc(source)}</textarea><button class="btn btn--primary" type="button" data-preview-run>Chạy code</button> <button class="btn" type="button" data-preview-reset>Khôi phục ví dụ</button><p data-preview-status role="status"></p></details>
+  </section>`;
+}
+
+module.exports = { visualLesson, documentFor, DEMOS };

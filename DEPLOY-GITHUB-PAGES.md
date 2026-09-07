@@ -1,5 +1,46 @@
 # Triển khai GitHub Pages — CSE391 K67 (site tiếng Việt)
 
+## Cập nhật 07/09/2026 — hiển thị & toàn bộ bài giảng
+
+Các phần bên dưới ghi lại lịch sử triển khai 5 bài đầu. Bản hiện tại mở **64 bài tiếng Việt / 13 chương / 70 trang**, search index **128 mục**.
+
+### Nguyên nhân đã xác định
+
+- `boot()` không gọi `initReveal()` trong khi CSS đặt `.reveal` ở `opacity: 0`: HTTP 200 nhưng nội dung vô hình.
+- Quy tắc `.sidebar` desktop nằm sau media query mobile đã ghi đè `fixed` thành `sticky`, khiến sidebar vẫn chiếm chỗ trong luồng bố cục và đẩy nội dung xuống dưới màn hình đầu.
+- Chỉ 5 nguồn Markdown được đưa vào `SESSIONS`, dù kho có đủ 64 bài.
+
+### Sửa và chống tái diễn
+
+- Nội dung mặc định hiện; chỉ bật hiệu ứng khi JS khởi tạo. Khởi tạo lỗi thì bỏ `has-js`. Áp dụng cho cả `.reveal` và `[data-reveal]`, có fallback không JS, không IntersectionObserver, reduced-motion và in.
+- Đặt override sidebar mobile sau CSS desktop. Kiểm tra cả vị trí tiêu đề trong viewport, không chỉ opacity.
+- `catalog.js` lấy toàn bộ nguồn tiếng Việt, giữ URL/ID tiến độ của 5 bài cũ. Chuyển liên kết Markdown sang HTML, điều hướng theo chương và bài trước/sau.
+- 64 bản đồ nội dung riêng theo bài, 13 ví dụ tương tác bổ trợ theo chương, khung preview cách ly, sửa/chạy/reset code, đổi bề rộng, tô màu và sao chép. **Không phải 64 demo được viết riêng**; nội dung và code gốc của 64 bài vẫn được giữ.
+- Quiz biên soạn trước đây vẫn dành cho 5 buổi đầu; không tự nhận rằng 59 bài mới có quiz riêng. Thời lượng đọc bài mới là ước tính theo số từ.
+
+### QA bắt buộc trước và sau publish
+
+Chạy trong thư mục gốc repo (Node >=22, Edge/Chrome cài sẵn; không cần npm install):
+
+```powershell
+node build/build.js
+node build/qa-check.js
+node build/check-css.js
+node build/check-render.js --local
+node build/check-live.js
+node build/check-render.js
+```
+
+`check-render.js --local` tự mở/đóng HTTP server ở 127.0.0.1:8123. Không cần thay BASE_URL sản xuất. Test dùng profile trình duyệt tạm, không chạm tiến độ người dùng. Có timeout CDP và cleanup trong `finally`. Có thể đặt `CDP_PORT` và `BROWSER_PATH` nếu cần.
+
+Ảnh và JSON đo thật nằm ở `.publish/render-qa/` (gitignored). Cổng render kiểm tra toàn bộ trang ở 1440px/380px, hiệu ứng khi cuộn thực, fallback, search, drawer, quiz, theme/tiến độ lưu lại và demo. Khi lỗi trả exit code 1; dùng `process.exitCode` để tránh lỗi abort của Node 24 trên Windows.
+
+Kết quả local sau sửa: **597/597 PASS**, **140 lượt render** (70 trang × 2 viewport), không khối ẩn, không tràn ngang. Kiểm tra trực quan ảnh mobile xác nhận H1 trong màn hình đầu. Static QA: **5.752 liên kết nội bộ, 0 gãy; 229/229 class có CSS; 0 biến CSS chưa định nghĩa**. Có kiểm tra checklist lưu sau tải lại, bàn phím, TOC và sao chép code.
+
+CLI điều phối Agent trong phiên VS Code này không khả dụng: `desktop_not_attached` (không có gateway của Accio Desktop). Không có Agent phụ nào được gọi qua CLI đó.
+
+---
+
 Runbook đưa 11 trang tĩnh trong `site/` lên GitHub Pages, repo **`hieutachi/cse391-k67-ai-bootcamp`**.
 URL sau khi xong: **`https://hieutachi.github.io/cse391-k67-ai-bootcamp/`**
 Chạy từng khối lệnh một trong **Windows PowerShell 5.1**. Khối nào báo lỗi thì dừng, đọc thông báo, sửa xong mới sang khối sau.

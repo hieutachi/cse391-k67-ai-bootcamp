@@ -100,12 +100,12 @@ function sidebar(root, active) {
   const link = (href, label, key) =>
     '<a class="nav__link' + (active === key ? ' is-active' : '') + '" href="' + root + href + '">' +
     '<span>' + esc(label) + '</span></a>';
-  const lessons = SESSIONS.map((s) =>
+  const lessons = CHAPTERS.map((c) => '<details class="nav__chapter"' + (active === 'home' && c.n === 1 || SESSIONS.some((s) => s.chapter === c.n && active === 'lesson-' + s.n) ? ' open' : '') + '><summary>Chương ' + c.n + ' · ' + esc(c.title) + '</summary>' + SESSIONS.filter((s) => s.chapter === c.n).map((s) =>
     '<a class="nav__link nav__link--lesson' + (active === 'lesson-' + s.n ? ' is-active' : '') + '" href="' + root + s.url + '" data-lesson-link="' + s.n + '">' +
     '<span class="nav__dot" data-dot="' + s.n + '">' + icon('check', 'ico ico--xs') + '</span>' +
     '<span class="nav__num">' + pad2(s.n) + '</span>' +
     '<span class="nav__label">' + esc(s.title) + '</span></a>'
-  ).join('');
+  ).join('') + '</details>').join('');
   return `<aside class="sidebar" id="sidebar" aria-label="Điều hướng khoá học">
   <div class="sidebar__inner">
     <p class="sidebar__eyebrow">${esc(COURSE.school)}</p>
@@ -113,7 +113,7 @@ function sidebar(root, active) {
       <p class="nav__title">Bắt đầu</p>
       ${link('index.html', 'Trang chủ', 'home')}
       ${link('gioi-thieu.html', 'Giới thiệu khoá học', 'about')}
-      <p class="nav__title">Chương 1 · 5 buổi đã phát hành</p>
+      <p class="nav__title">${SESSIONS.length} bài · ${CHAPTERS.length} chương</p>
       <div class="nav__lessons">${lessons}</div>
       <p class="nav__title">Tham khảo</p>
       ${link('lo-trinh.html', 'Lộ trình 8 tuần', 'roadmap')}
@@ -124,9 +124,9 @@ function sidebar(root, active) {
       <div class="progress-card">
         <div class="progress-card__top">
           <span class="progress-card__label">Tiến độ của bạn</span>
-          <strong class="progress-card__val" data-progress-count>0/5</strong>
+          <strong class="progress-card__val" data-progress-count>0/${SESSIONS.length}</strong>
         </div>
-        <span class="progress-bar" role="progressbar" aria-label="Số buổi đã hoàn thành" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" data-progressbar><i class="progress-bar__fill" data-progress-fill></i></span>
+        <span class="progress-bar" role="progressbar" aria-label="Số buổi đã hoàn thành" aria-valuemin="0" aria-valuemax="${SESSIONS.length}" aria-valuenow="0" data-progressbar><i class="progress-bar__fill" data-progress-fill></i></span>
         <button class="btn btn--ghost btn--sm" type="button" data-reset-progress>Đặt lại tiến độ</button>
       </div>
     </div>
@@ -240,7 +240,7 @@ function lessonCard(root, s, i) {
 }
 
 function lessonsHTML(root) {
-  return '<div class="grid grid--lessons">' + SESSIONS.map((s, i) => lessonCard(root, s, i)).join('') + '</div>';
+  return '<div class="grid grid--lessons">' + SESSIONS.filter((s) => s.chapter === 1).map((s, i) => lessonCard(root, s, i)).join('') + '</div><p><a class="btn btn--primary" href="' + root + 'lo-trinh.html">Khám phá đủ ' + SESSIONS.length + ' bài học →</a></p>';
 }
 
 function audienceHTML() {
@@ -283,7 +283,7 @@ function ctaHTML(root) {
   return `<section class="cta reveal">
   <div class="cta__box">
     <h2>Sẵn sàng bắt đầu?</h2>
-    <p>Năm buổi đầu đã có đầy đủ bài giảng, prompt mẫu và checklist. Chỉ cần một trình duyệt, một chat AI và VS Code.</p>
+    <p>${SESSIONS.length} bài giảng đã sẵn sàng, kèm bản đồ bài học và code minh hoạ trực tiếp. Chỉ cần một trình duyệt, một chat AI và VS Code.</p>
     <div class="cta__actions">
       <a class="btn btn--primary" href="${root}lessons/buoi-01.html" data-cta-start>Bắt đầu buổi 01</a>
       <a class="btn" href="${root}lo-trinh.html">Xem lộ trình 8 tuần</a>
@@ -342,7 +342,7 @@ function termsHTML(session) {
 function lessonNavHTML(root, prev, next, session) {
   const side = (l, dir) => (l
     ? `<a class="pn pn--${dir}" href="${root}${l.url}"><span class="pn__label">${dir === 'prev' ? 'Buổi trước' : 'Buổi tiếp theo'}</span><span class="pn__title">${esc(l.title)}</span></a>`
-    : `<span class="pn pn--${dir} pn--empty"><span class="pn__label">${dir === 'prev' ? 'Buổi trước' : 'Buổi tiếp theo'}</span><span class="pn__title">${session.n === 1 ? 'Bạn đang ở buổi mở đầu' : 'Sắp phát hành'}</span></span>`);
+    : `<span class="pn pn--${dir} pn--empty"><span class="pn__label">${dir === 'prev' ? 'Buổi trước' : 'Buổi tiếp theo'}</span><span class="pn__title">${session.n === 1 ? 'Bạn đang ở buổi mở đầu' : 'Bạn đã đến bài cuối khoá'}</span></span>`);
   return `<nav class="pn-wrap" aria-label="Điều hướng giữa các buổi học">${side(prev, 'prev')}${side(next, 'next')}</nav>`;
 }
 
@@ -366,7 +366,7 @@ function pageLesson(ctx) {
   }).join('\n');
 
   const goals = parsed.goalsSection
-    ? `<aside class="goals" data-reveal>
+    ? `<aside class="goals" id="${attr(parsed.goalsSection.id)}" data-reveal>
     <h2 class="goals__title">${icon('target', 'ico ico--sm')}<span>${esc(parsed.goalsSection.title)}</span></h2>
     <ul class="goals__list">${(parsed.objectives || []).map((o) => `<li>${esc(o)}</li>`).join('')}</ul>
   </aside>` : '';
@@ -386,7 +386,7 @@ function pageLesson(ctx) {
     <h1 class="lesson__title">${esc(parsed.title || session.title)}</h1>
     <p class="lesson__en">${esc(session.en)}</p>
     <ul class="lesson__meta">
-      <li>${icon('clock', 'ico ico--sm')}<span>${session.minutes} phút trên lớp</span></li>
+      ${session.minutes ? `<li>${icon('clock', 'ico ico--sm')}<span>${session.minutes} phút trên lớp</span></li>` : ''}
       <li>${icon('book', 'ico ico--sm')}<span>~${session.readMinutes} phút đọc</span></li>
       <li>${icon('spark', 'ico ico--sm')}<span>${esc(session.kind)}</span></li>
     </ul>
@@ -402,20 +402,21 @@ function pageLesson(ctx) {
   <div class="lesson__grid">
     <div class="lesson__body">
       ${goals}
+      ${require('./visuals').visualLesson(session, parsed)}
       ${parsed.leadHtml ? `<div class="prose prose--lead" data-reveal>${parsed.leadHtml}</div>` : ''}
       ${sections}
       ${session.highlight ? `<aside class="takeaway" data-reveal>
         <p class="takeaway__label">${icon('spark', 'ico ico--sm')}Điểm chốt</p>
         <p>${esc(session.highlight)}</p>
       </aside>` : ''}
-      ${termsHTML(session)}
+      ${session.terms.length ? termsHTML(session) : ''}
       ${quizHTML(session)}
       ${nextUp}
       ${lessonNavHTML(root, prev, next, session)}
     </div>
     <aside class="rail" aria-label="Công cụ hỗ trợ bài học">
       <div class="rail__inner">
-        ${tocHTML(parsed.toc)}
+        ${tocHTML([{ id: 'hoc-truc-quan', title: 'Bản đồ & code trực quan', children: [] }, ...parsed.toc])}
         ${(session.tasks || 0) > 0 ? `<div class="rail__box">
           <p class="rail__title">Tiến độ buổi học</p>
           <p class="rail__tasks"><span data-task-progress>0</span>/${session.tasks} đầu việc đã tick</p>
@@ -483,7 +484,7 @@ function pageHome(root) {
 </section>
 
 <section class="band band--alt" id="lo-trinh">
-  ${sectionHead({ kicker: '8 tuần · 12 chương', title: 'Lộ trình toàn khoá', text: 'Năm buổi đang xem nằm ở tuần 1. Các chương còn lại sẽ mở dần theo tiến độ lớp.' })}
+  ${sectionHead({ kicker: '8 tuần · 13 chương', title: 'Lộ trình toàn khoá', text: 'Toàn bộ 64 bài đã mở, từ nền tảng đến đồ án và module bổ trợ.' })}
   ${roadmapMiniHTML()}
   <p class="band__more"><a class="btn btn--ghost" href="${root}lo-trinh.html">Mở lộ trình chi tiết${icon('chevron', 'ico ico--sm')}</a></p>
 </section>
@@ -493,7 +494,7 @@ ${ctaHTML(root)}
   return layout({
     root, tpl: 'home', active: 'home',
     title: `${COURSE.title} — ${COURSE.tagline}`,
-    desc: `Khoá học frontend hiện đại dùng AI cho sinh viên CSE391 K67: ${SESSIONS.length} buổi đầu của Chương 1 đã phát hành, dự án Highland Hospital, HTML5 · CSS3 · JavaScript ES6+ · Bootstrap 5.`,
+    desc: `Khoá học frontend hiện đại dùng AI cho sinh viên CSE391 K67: ${SESSIONS.length} bài đã phát hành, dự án Highland Hospital, HTML5 · CSS3 · JavaScript ES6+ · Bootstrap 5.`,
     body,
   });
 }
@@ -509,8 +510,8 @@ const PHASES = [
 
 function chapterCard(root, c, i) {
   const live = !!c.published;
-  const lessons = SESSIONS.filter(() => live).map((s) =>
-    `<li><a href="${root}${s.url}"><span class="lp__n">${pad2(s.n)}</span><span>${esc(s.title)}</span><span class="lp__min">${s.minutes}′</span></a></li>`).join('');
+  const lessons = SESSIONS.filter((s) => live && s.chapter === c.n).map((s) =>
+    `<li><a href="${root}${s.url}"><span class="lp__n">${pad2(s.n)}</span><span>${esc(s.title)}</span><span class="lp__min">${s.readMinutes}′ đọc</span></a></li>`).join('');
   return `<article class="chapter${live ? ' chapter--live' : ''} reveal" id="ch-${c.n}" style="--d:${(i % 3) * 70}ms">
   <header class="chapter__head">
     <span class="chapter__icon">${icon(live ? c.icon : 'lock')}</span>
@@ -529,7 +530,7 @@ function pageRoadmap(root) {
 <section class="pagehead">
   <p class="kicker">Curriculum</p>
   <h1>Lộ trình 8 tuần · ${CHAPTERS.length} chương · ${COURSE.lessons} bài học</h1>
-  <p>Từ chỗ chưa biết gì tới một portfolio hoàn chỉnh, deploy được và đưa vào CV. Năm buổi đầu tiên đã phát hành, nằm ở Chương 1.</p>
+  <p>Toàn bộ ${SESSIONS.length} bài tiếng Việt đã mở. Mỗi bài có bản đồ nội dung, ví dụ code và phần xem trước để học bằng thực hành.</p>
   ${statsHTML()}
 </section>
 ${PHASES.map((p) => {
@@ -644,7 +645,7 @@ function pageAbout(root) {
 <section class="pagehead">
   <p class="kicker">About · ${esc(COURSE.cohort)}</p>
   <h1>${esc(COURSE.tagline)}</h1>
-  <p>Bootcamp 8 tuần dành cho sinh viên ${esc(COURSE.school)}: ${CHAPTERS.length} chương, ${COURSE.lessons} bài học, một dự án duy nhất xuyên suốt. Website này phát hành 5 buổi đầu.</p>
+  <p>Bootcamp 8 tuần dành cho sinh viên ${esc(COURSE.school)}: ${CHAPTERS.length} chương, ${COURSE.lessons} bài học, một dự án duy nhất xuyên suốt. Toàn bộ bài giảng tiếng Việt đã được phát hành.</p>
   ${statsHTML()}
 </section>
 <section class="band" data-reveal>
@@ -685,7 +686,7 @@ function page404(root) {
 <section class="pagehead pagehead--center">
   <p class="kicker">404</p>
   <h1>Trang này chưa được mở</h1>
-  <p>Có thể bạn vừa gõ một địa chỉ của buổi học chưa phát hành. Năm buổi đầu của Chương 1 luôn sẵn sàng.</p>
+  <p>Địa chỉ này không tồn tại. Bạn có thể tìm bài trong lộ trình ${SESSIONS.length} bài học hoặc dùng ô tìm kiếm.</p>
   <div class="hero__actions">
     <a class="btn btn--primary btn--lg" href="${root}index.html">Về trang chủ</a>
     <a class="btn btn--lg" href="${root}lo-trinh.html">Xem lộ trình</a>
@@ -694,7 +695,7 @@ function page404(root) {
   return layout({
     root, tpl: '404', active: '',
     title: `Không tìm thấy trang — ${COURSE.title}`,
-    desc: 'Trang bạn tìm không tồn tại trong bản phát hành 5 buổi đầu của khoá học.',
+    desc: 'Trang bạn tìm không tồn tại. Xem lộ trình đầy đủ của khoá học.',
     body,
   });
 }

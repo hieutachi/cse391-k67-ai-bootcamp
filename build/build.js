@@ -3,7 +3,7 @@
  * build.js — sinh toàn bộ website tĩnh vào thư mục `site/`.
  * Chạy: `node build/build.js` (không cần dependency nào).
  *
- * Đầu vào : 5 bài Markdown của Chương 1 trong `course-lessons/vi/01-welcome-and-ai-workflow/`
+ * Đầu vào : toàn bộ 64 bài Markdown trong `course-lessons/vi/` (13 chương).
  * Đầu ra  : site/index.html, gioi-thieu.html, lo-trinh.html, du-an.html, tu-dien.html, 404.html,
  *           lessons/buoi-0X.html, assets/js/search-index.js, sitemap.xml, robots.txt,
  *           site.webmanifest, .nojekyll
@@ -13,6 +13,7 @@ const fs = require('fs');
 const path = require('path');
 
 const config = require('./config');
+require('./catalog').expandCatalog(config);
 const { parseLesson } = require('./markdown');
 const T = require('./templates');
 
@@ -30,7 +31,7 @@ const write = (rel, content) => {
   return rel;
 };
 
-/** Đọc + parse 5 buổi, gắn thêm title / số đầu việc / nguồn để template và tìm kiếm dùng. */
+/** Đọc + parse danh mục, gắn title / số đầu việc / nguồn để template và tìm kiếm dùng. */
 function loadSessions() {
   return config.SESSIONS.map((s) => {
     const abs = path.join(ROOT, s.file);
@@ -116,6 +117,18 @@ function main() {
   console.log('\nCSE391 · build website tĩnh');
 
   const sessions = loadSessions();
+  // Markdown liên kết sang bài khác: đổi sang URL site, không để link .md bị 404.
+  const bySource = new Map(sessions.map((s) => [path.resolve(ROOT, s.file), s.url]));
+  sessions.forEach((s) => {
+    const rewrite = (html) => html.replace(/href="([^"#]+\.md)(#[^"]*)?"/g, (match, href) => {
+      if (/^https?:/.test(href)) return match;
+      const dest = path.resolve(ROOT, path.dirname(s.file), decodeURIComponent(href));
+      const url = bySource.get(dest);
+      return 'href="' + (url ? '../' + url : config.COURSE.repo + '/blob/main/' + path.relative(ROOT, dest).split(path.sep).join('/')) + '"';
+    });
+    s.parsed.leadHtml = rewrite(s.parsed.leadHtml);
+    [...s.parsed.sections, s.parsed.nextSection, s.parsed.goalsSection].filter(Boolean).forEach((sec) => { sec.html = rewrite(sec.html); });
+  });
   const pages = [];
   const emit = (rel, html) => {
     write(rel, html);

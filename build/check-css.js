@@ -23,3 +23,4 @@ const missing = [...used.keys()].filter((c) => !cssClasses.has(c)).sort();
 console.log('classes used: ' + used.size + ' | styled: ' + (used.size - missing.length));
 console.log('MISSING (' + missing.length + '):');
 missing.forEach((c) => console.log('  ' + c + '  <- ' + [...used.get(c)].join(', ')));
+process.exitCode = missing.length ? 1 : 0;
