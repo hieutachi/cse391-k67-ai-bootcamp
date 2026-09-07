@@ -81,7 +81,7 @@ const get = async (p) => {
   const js = await get("assets/js/main.js");
   check(js.status === 200 && /javascript/.test(js.type), "main.js → HTTP " + js.status + " " + js.type);
   check(
-    js.text.includes("__CSE391_SEARCH__") && js.text.includes("dataset.root") &&
+    js.text.includes("__CSE391_SEARCH__") && js.text.includes("getAttribute('data-root')") &&
     js.text.includes("stroke-dashoffset") && js.text.includes("cse391-k67-state-v1"),
     "main.js nối search index + data-root + progress ring + localStorage state"
   );
@@ -113,12 +113,10 @@ const get = async (p) => {
   check(nj.status === 200, ".nojekyll được phục vụ → HTTP " + nj.status);
 
   console.log("");
-  if (fails > 0) {
-    console.log(fails + " FAIL — " + BASE);
-    process.exit(1);
-  }
-  console.log("ALL PASS — " + BASE);
+  if (fails > 0) console.log(fails + " FAIL — " + BASE);
+  else console.log("ALL PASS — " + BASE);
+  process.exitCode = fails > 0 ? 1 : 0; // không gọi process.exit(): Node 24 trên Windows abort khi còn socket
 })().catch((err) => {
   console.log("FAIL  lỗi mạng/trình duyệt: " + (err && err.message ? err.message : err));
-  process.exit(1);
+  process.exitCode = 1;
 });

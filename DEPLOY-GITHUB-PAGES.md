@@ -48,7 +48,7 @@ git --version                                        # git version 2.50.x (có s
 | Rác đang tracked | `.DS_Store`, `course-lessons/.DS_Store` ⇒ dọn ở §2.2 |
 | `.gitignore` | chưa tồn tại (`Test-Path .gitignore` → `False`) |
 | Trạng thái phía client | `main.js` dùng `localStorage` 2 khoá: `cse391-theme` (nền sáng/tối) và `cse391-k67-state-v1` (tiến độ + quiz) ⇒ deploy không làm mất dữ liệu người học |
-| Search index | `assets/js/search-index.js` mở đầu bằng `window.__CSE391_SEARCH__ = [...]` (field `t/k/u/x`); `main.js` đọc biến toàn cục đó + `dataset.root` |
+| Search index | `assets/js/search-index.js` mở đầu bằng `window.__CSE391_SEARCH__ = [...]` (field `t/k/u/x`); `main.js` đọc biến toàn cục đó + `getAttribute('data-root')` |
 
 ## 2. Chuẩn bị commit (một lần, chưa push)
 
@@ -267,7 +267,7 @@ node build/check-live.js $URL
 PASS  index.html → HTTP 200 | title ok | vi ok | relative assets ok | /site/ = 0 | marker = 0
       ... (đủ 11 trang)
 PASS  main.css → HTTP 200 text/css | ngoặc cân bằng | có :root/--brand/--radius
-PASS  main.js → HTTP 200 | đọc window.__CSE391_SEARCH__ + dataset.root + stroke-dashoffset
+PASS  main.js → HTTP 200 | đọc window.__CSE391_SEARCH__ + getAttribute('data-root') + stroke-dashoffset
 PASS  search-index.js → HTTP 200 | 69 mục | 0 URL tuyệt đối | 0 URL chỉ tới file không tồn tại
 PASS  sitemap có 11/11 <loc> | mọi <loc> dùng đúng BASE
 PASS  robots.txt trỏ sitemap đúng domain
@@ -389,7 +389,7 @@ $LASTEXITCODE                            # 0 = ALL PASS, 1 = có FAIL
 | 12 request trang | `` (root), `index.html`, `gioi-thieu.html`, `lo-trinh.html`, `du-an.html`, `tu-dien.html`, `404.html`, 5 lesson → HTTP 200, `text/html`, có `<title>`, có cụm “Điều hướng khoá học” (bằng chứng UTF-8 + tiếng Việt không bị lỗi font/encoding), có `assets/css/main.css` (`../assets/...` với lesson), có `assets/js/main.js` |
 | Toàn bộ trang | không còn `href="/site/…"` (sai vị trí tương đối), không còn `href="/…"` root-relative, không còn marker build (`TODO`, `FIXME`, `{{X}}`) |
 | `main.css` | 200 + `text/css`; ngoặc `{}` cân bằng (721/721 bản hiện tại); có `:root`, `--brand`, `[data-theme` |
-| `main.js` | 200 + `application/javascript`; còn nối `__CSE391_SEARCH__`, `dataset.root`, `stroke-dashoffset`, `cse391-k67-state-v1` |
+| `main.js` | 200 + `application/javascript`; còn nối `__CSE391_SEARCH__`, `getAttribute('data-root')`, `stroke-dashoffset`, `cse391-k67-state-v1` |
 | `search-index.js` | 200; đủ **69** mục (`"u":`); không có `"u":"/"` root-relative |
 | `sitemap.xml` | 200; đủ **11** `<loc>`; mọi `<loc>` bắt đầu bằng BASE đang test |
 | `robots.txt` | 200; dòng `Sitemap:` trúng BASE |
