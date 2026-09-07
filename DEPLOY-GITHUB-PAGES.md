@@ -252,7 +252,7 @@ foreach ($p in $paths) {
 }
 ```
 
-Kỳ vọng: 16/16 trả `200`. Content-type thông dụng của Pages: `.html` → `text/html; charset=utf-8`, `.css` → `text/css`, `.js` → `application/javascript`, `.svg` → `image/svg+xml`, `.xml` → `application/xml`, `.txt` → `text/plain`, `.webmanifest` → `application/manifest+json`.
+Kỳ vọng: 16/16 trả `200`. Content-type **đo được thật** trên production: `.html` → `text/html; charset=utf-8`, `.css` → `text/css; charset=utf-8`, `.js` → `application/javascript; charset=utf-8`, `.svg` → `image/svg+xml`, `.xml` → `application/xml`, `.txt`/`robots.txt` → `text/plain`, `.webmanifest` → `application/manifest+json`. `check-live.js` so khớp bằng `includes` nên không nhạy với hậu tố `; charset`.
 
 ### 7.2 Kiểm tra **nội dung** bằng Node (bắt buộc, không dùng `Get-Content`)
 
@@ -292,6 +292,21 @@ Bật DevTools → Network (Disable cache) + Console (0 lỗi):
 9. Mở `.../khong-co-trang-nay` ⇒ hiện **404 tuỳ biến** có “Về trang chủ”, “Xem lộ trình”, search vẫn dùng được.
 10. `chrome://dino` offline test không bắt buộc; in trang (`Ctrl+P`) phải giữ được nội dung chính.
 
+
+### 7.4 So byte-đối-byte local ↔ production (xác nhận đúng bản mình build)
+
+Tạo `build/tmp-compare.js` (mẫu `build/tmp-*.js` đã được ignore) đọc `site/` rồi `fetch` từng file, so `Buffer.equals`. Kết quả thật của lần deploy này:
+
+```
+SAME  index.html                 local=29267 live=29267
+SAME  tu-dien.html               local=34408 live=34408
+SAME  lessons/buoi-05.html       local=37281 live=37281
+DIFF  assets/css/main.css        local=76563 live=75679   ← đúng 884 byte = 884 dòng CRLF
+DIFF  assets/js/main.js          local=27170 live=26471   ← đúng 699 byte = 699 dòng CRLF
+SAME  search-index.js / sitemap.xml / robots.txt / site.webmanifest / 404.html / favicon.svg
+```
+
+`git ls-files --eol` giải thích khác biệt: `i/lf w/crlf` cho `main.css` và `main.js` — git chuẩn hoá CRLF→LF khi commit (`core.autocrlf`), Pages phục vụ bản LF. **Lệch chỉ ở line ending, không phải nội dung**, nên không cần xử lý gì; nếu muốn hết cảnh báo thì `git config core.autocrlf input`.
 
 ## 8. Vòng cập nhật về sau
 
@@ -489,4 +504,9 @@ Ba phát hiện thêm trong lần chạy thật (đã ghi vào §10.1 để khô
 - Trong lesson có chuỗi `http://127.0.0.1:5500` xuất hiện **như văn bản** (ví dụ Live Server trong bài) — không phải link asset, không cần sửa.
 
 Mượn ý cho vòng cập nhật: sau khi sửa `build/` hoặc `site/`, chỉ cần 5 lệnh (build → QA → commit → split/`branch -f` → push `--force`), `gh-pages` sẽ tự rebuild; không cần gọi lại `POST /pages`.
+
+Hai lưu ý rút ra từ lúc chạy thật:
+- Mạng tới GitHub có thể chập chờn (`Failed to connect to github.com port 443`, exit 128) trong khi `ls-remote` vẫn được ⇒ **bọc push bằng vòng retry** (đã dùng: `for($i=1;$i -le 4;$i++){ cmd /c 'git push deploy main 2>&1' | Out-Null; if($LASTEXITCODE -eq 0){break}; Start-Sleep 6 }`).
+- `git push`/`git subtree` ghi tiến trình ra **stderr**, PowerShell 5.1 biến nó thành `NativeCommandError` ⇒ bọc lệnh git trong `cmd /c '... 2>&1'` rồi kiểm tra `$LASTEXITCODE`, đừng pipe thẳng vào pipeline.
+- Sau deploy, chạy thêm so byte §7.4 để chắc chắn production đúng bản local (kết quả: khớp, chỉ khác line ending của `main.css`/`main.js` do `core.autocrlf`).
 
