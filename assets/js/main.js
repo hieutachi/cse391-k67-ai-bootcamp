@@ -138,7 +138,7 @@
   // Nhờ CSS chỉ ẩn khi có html.has-js, nếu hàm này không chạy được thì nội dung
   // vẫn hiển thị — site không bao giờ trắng.
   function initReveal() {
-    var items = qa('.reveal');
+    var items = qa('.reveal, [data-reveal]');
     document.documentElement.classList.add('has-js');
     if (!items.length) return;
 
@@ -735,6 +735,7 @@
     safe('search', initSearch);
     safe('glossary', initGlossary);
     safe('copy', initCopy);
+    safe('visual-lab', initVisualLab);
     safe('toc', initToc);
     safe('render-progress', renderProgress);
     safe('render-tasks', renderTasks);
@@ -750,6 +751,32 @@
     document.addEventListener('DOMContentLoaded', boot);
   } else {
     boot();
+  }
+
+  function initVisualLab() {
+    qa('.visual-lab').forEach(function (lab) {
+      var frame = q('iframe', lab), editor = q('textarea', lab);
+      var original = editor.value;
+      // Preview có origin riêng; CSP chặn mạng và tài nguyên ngoài cho code sửa.
+      var policy = '<meta http-equiv="Content-Security-Policy" content="default-src &apos;none&apos;; script-src &apos;unsafe-inline&apos;; style-src &apos;unsafe-inline&apos;; img-src data:; form-action &apos;none&apos;;">';
+      function run(source) { frame.srcdoc = policy + source; }
+      run(original);
+      qa('[data-preview-width]', lab).forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          frame.style.width = btn.getAttribute('data-preview-width') === 'full' ? '100%' : '360px';
+          qa('[data-preview-width]', lab).forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        });
+      });
+      q('[data-preview-run]', lab).addEventListener('click', function () {
+        run(editor.value);
+        q('[data-preview-status]', lab).textContent = 'Đã chạy lại code trong khung xem trước.';
+      });
+      q('[data-preview-reset]', lab).addEventListener('click', function () {
+        editor.value = original;
+        run(original);
+        q('[data-preview-status]', lab).textContent = 'Đã khôi phục ví dụ ban đầu.';
+      });
+    });
   }
 
 
