@@ -6,3 +6,6 @@ desktop.ini
 node_modules/
 npm-debug.log*
 .publish/
+
+# script test tạm thời, không publish
+build/tmp-*.js

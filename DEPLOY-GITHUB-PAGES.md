@@ -155,7 +155,7 @@ git add site; git commit -m "chore(site): sitemap + robots tro URL Pages"
 |---|---|
 | Số thẻ `<base href>` trong 11 file HTML | **0** |
 | `href`/`src` bắt đầu bằng `/` (root-relative) | **0** |
-| Chuỗi `../assets/`, `../index.html` | **55 lần**, chỉ trong 5 file `lessons/*.html`, chỉ trong `href=`/`src=` (không có trong JS) |
+| Chuỗi `../` trong `href=`/`src=` | **123 lần**, tập trung ở 5 file `lessons/*.html` (24–25 lần/file); **0 lần** ở 6 trang gốc. Riêng `../assets/` = **20** (4/file lesson) |
 | `data-root` trên `<body>` | `""` ở 6 trang gốc (kể cả `404.html`), `"../"` ở 5 trang lesson |
 | Marker tiếng Việt “Điều hướng khoá học” | có mặt ở **cả 11/11** file HTML |
 | `site.webmanifest` | `"start_url": "./index.html"`, icon `"./assets/img/favicon.svg"` ⇒ không có đường dẫn tuyệt đối |
@@ -218,6 +218,7 @@ gh api "repos/$OWNER/$REPO/pages" --jq '{status: .status, url: .html_url, branch
 ```
 
 `POST` trả `422 … cannot be enabled on this repository` ⇒ repo đang private: `gh repo edit "$OWNER/$REPO" --visibility public` rồi POST lại.
+`POST` trả **`409 GitHub Pages is already enabled`** ⇒ **bình thường**: chỉ cần push nhánh tên `gh-pages` là GitHub tự bật Pages ở chế độ legacy root (`/`). Chuyển sang đọc cấu hình bằng `gh api` ở bước kế để xác nhận `source.branch = gh-pages`, `source.path = "/"`.
 `POST` trả `404 Not Found` ⇒ sai `$OWNER/$REPO`, kiểm tra bằng `gh repo view`.
 
 ### 6.4 Chờ build xong
@@ -348,6 +349,9 @@ Dữ liệu tiến độ của người học nằm trong `localStorage` trình 
 - `site/` là artifact đã commit ⇒ mọi lần sửa `build/` phải nhớ build lại (quên build = push nội dung cũ mà không lỗi). Điều kiện `git status --short` sạch ở §2.5/§8.A là thói quen bắt buộc.
 - `gh-pages` bị force-push mỗi lần ⇒ không thể xem “ai sửa gì” trên nhánh đó; lịch sử thật nằm ở `main`.
 - Pages phục vụ tĩnh: không có backend, nên tiến độ/quiz chỉ lưu máy người học (thiết kế sẵn như vậy).
+- `site/assets/img/` **chỉ có `favicon.svg`**: không có `og-cover`/`hero-illustration`, template không khai báo `og:image` ⇒ link chia lên Facebook/Slack chỉ hiện title + description. Muốn đẹp: thêm `assets/img/og-cover.png` (1200×630) vào `build/templates.js` rồi build lại §3.
+- `$URLtu-dien` (không đuôi `.html`) vẫn trả 200 vì Pages tự map, nhưng `$URLlessons/` trả 404 (không có `index.html` trong thư mục con) ⇒ vô hại, sitemap và internal link đều ghi rõ `.html`.
+- Chuỗi `http://127.0.0.1:5500` xuất hiện trong lesson chỉ là **văn bản hướng dẫn** (cổng Live Server), không phải đường dẫn asset.
 
 **10.2 Nâng cấp lên GitHub Actions (khi nào cần)**
 Chỉ khi muốn “push `main` → tự build + tự deploy, không commit `site/` nữa”. Việc cần làm, đúng thứ tự:
@@ -382,7 +386,7 @@ node build/check-live.js "https://$OWNER.github.io/$REPO/"
 $LASTEXITCODE                            # 0 = ALL PASS, 1 = có FAIL
 ```
 
-27 kiểm tra nó thực hiện:
+29 kiểm tra nó thực hiện:
 
 | Nhóm | Nội dung |
 |---|---|
@@ -401,6 +405,57 @@ $LASTEXITCODE                            # 0 = ALL PASS, 1 = có FAIL
 Chạy ở mạng chậm: mỗi request là `fetch` tuần tự, tổng 25 request ⇒ hết 5–15 giây là bình thường.
 Muốn test tính logic của script mà chưa publish: build tạm ra `http://127.0.0.1:8123/` bằng `build/tmp-server.js` (không commit file này), chạy `node build/check-live.js http://127.0.0.1:8123/`, sau đó **build lại bằng BASE thật** trước khi commit.
 
+### 11.1 Mock GitHub Pages bằng Node (dùng để test `check-live.js` TRƯỚC khi publish)
+
+Tạo `build/tmp-server.js` (cố ý **không commit**, đã nằm trong `.gitignore` theo mẫu `build/tmp-*.js`):
+
+```js
+// build/tmp-server.js — mock GitHub Pages cục bộ để test build/check-live.js. KHÔNG commit.
+//   node build/tmp-server.js 8123
+"use strict";
+const http = require("http");
+const fs = require("fs");
+const path = require("path");
+
+const PORT = Number(process.argv[2] || 8123);
+const ROOT = path.join(__dirname, "..", "site");
+const MIME = {
+  ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "application/javascript",
+  ".svg": "image/svg+xml", ".xml": "application/xml", ".txt": "text/plain",
+  ".webmanifest": "application/manifest+json", ".json": "application/json",
+};
+
+http.createServer((req, res) => {
+  const rel = decodeURIComponent(req.url.split("?")[0]);
+  let file = path.join(ROOT, rel === "/" ? "index.html" : rel);
+  if (!file.startsWith(ROOT)) { res.writeHead(403).end(); return; }
+  if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, "index.html");
+  if (!fs.existsSync(file)) {
+    res.writeHead(404, { "content-type": MIME[".html"] })
+       .end(fs.readFileSync(path.join(ROOT, "404.html")));
+    return;
+  }
+  res.writeHead(200, { "content-type": MIME[path.extname(file)] || "application/octet-stream" });
+  fs.createReadStream(file).pipe(res);
+}).listen(PORT, "127.0.0.1", () => console.log("mock pages on http://127.0.0.1:" + PORT + "/"));
+```
+
+Chạy (build tạm theo BASE local → test → build lại bằng BASE thật):
+
+```powershell
+Set-Location -LiteralPath $ROOT
+$env:CSE391_BASE_URL = 'http://127.0.0.1:8123/'
+node build/build.js | Out-Null
+$pr = Start-Process -FilePath node -ArgumentList 'build/tmp-server.js','8123' -PassThru -WindowStyle Hidden
+Start-Sleep -Seconds 2
+node build/check-live.js 'http://127.0.0.1:8123/'; 'EXITCODE=' + $LASTEXITCODE
+Stop-Process -Id $pr.Id -Force
+Remove-Item Env:CSE391_BASE_URL
+node build/build.js            # build lại bằng BASE_URL thật (hieutachi.github.io)
+```
+
+Kết quả thật của vòng test này: **29/29 PASS, exit 0** trên local, và cũng chính nó bắt được 2 lỗi của check-live (`dataset.root` không tồn tại → phải dùng `getAttribute('data-root')`; `process.exit()` làm Node 24 trên Windows abort với `EXITCODE=-1073740791` → dùng `process.exitCode`).
+
 ## 12. Tóm tắt 8 lệnh (khi đã hiểu các mục trên)
 
 ```powershell
@@ -415,4 +470,23 @@ git subtree split --prefix site -b gh-pages; git push deploy gh-pages:gh-pages
 gh api repos/hieutachi/cse391-k67-ai-bootcamp/pages --jq .status   # lặp tới khi ra: built
 node build/check-live.js https://hieutachi.github.io/cse391-k67-ai-bootcamp/
 ```
+
+## 13. Nhật ký deploy đã thực hiện (7/9/2026)
+
+| Bước | Lệnh đã chạy | Kết quả thật |
+|---|---|---|
+| Chuẩn bị | tạo `.gitignore`; `git rm --cached .DS_Store course-lessons/.DS_Store`; đổi `BASE_URL` dòng 24 `build/build.js` | `git ls-files \| Select-String DS_Store` → 0 dòng |
+| Build + QA | `node build/build.js`; `node --check`; `qa-check`; `check-css` | `11 trang · 5 buổi · 0 đầu việc · 49 thuật ngữ`; `search items: 69 \| bad urls: 0`; `pages: 11 \| local hrefs: 264 \| broken: 0`; `classes used: 222 \| styled: 222` |
+| Commit `main` | `git add .gitignore build site README.md DEPLOY-GITHUB-PAGES.md`; `git commit` | `5180f69` → `git ls-files site` = **19**; bản sửa check-live: `78d7ee2` |
+| Repo + push | `gh repo create hieutachi/cse391-k67-ai-bootcamp --public --description 'CSE391 K67 - ...'`; `git remote add deploy ...`; `git push -u deploy main` | `https://github.com/hieutachi/cse391-k67-ai-bootcamp` · PUBLIC · default `main`; `refs/heads/main 78d7ee2` |
+| Split + push | `git subtree split --prefix site -b gh-pages`; `git push deploy gh-pages:gh-pages` | `Created branch 'gh-pages'` → `90f4851`; `git ls-tree --name-only gh-pages` = 12 mục gốc; `git ls-tree -r` = **19 file** |
+| Bật Pages | `POST repos/.../pages` → **409 already enabled** (GitHub tự bật khi push nhánh `gh-pages`); `GET .../pages` | `status: built`, `source: {gh-pages, /}`, `build_type: legacy`, `https_enforced: true`, `html_url: https://hieutachi.github.io/cse391-k67-ai-bootcamp/` |
+| Verify | `node build/check-live.js <URL>` | **29/29 PASS**, exit 0 (12 request trang, 3 aggregate, 3 CSS, 2 main.js, 3 search-index, 2 sitemap, robots, 404, webmanifest, .nojekyll) |
+
+Ba phát hiện thêm trong lần chạy thật (đã ghi vào §10.1 để không bị coi là lỗi):
+- Chỉ có **`assets/img/favicon.svg`** là ảnh được dùng (không có `og-cover.svg`/`hero-illustration.svg`), `og:image` không được khai báo ⇒ sitemap/Pages không còn dangling link nào.
+- URL không đuôi vẫn chạy: `$URLtu-dien` → 200 (Pages tự map `.html`), nhưng `$URLlessons/` → 404 vì không có `index.html` trong thư mục con. Nếu muốn gọn, thêm redirect thủ công ở `404.html` hoặc luôn link đủ `index.html`.
+- Trong lesson có chuỗi `http://127.0.0.1:5500` xuất hiện **như văn bản** (ví dụ Live Server trong bài) — không phải link asset, không cần sửa.
+
+Mượn ý cho vòng cập nhật: sau khi sửa `build/` hoặc `site/`, chỉ cần 5 lệnh (build → QA → commit → split/`branch -f` → push `--force`), `gh-pages` sẽ tự rebuild; không cần gọi lại `POST /pages`.
 
