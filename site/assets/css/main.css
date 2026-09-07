@@ -406,7 +406,8 @@ pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
 [data-theme="dark"] .toast { background: #d7fff5; color: #06231e; }
 
 /* ------------------------------------------------------------------ motion */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity .55s var(--ease), transform .55s var(--ease); transition-delay: var(--d, 0ms); }
+[data-reveal] { transition: opacity .55s var(--ease), transform .55s var(--ease); transition-delay: var(--d, 0ms); }
+html.has-js [data-reveal]:not(.is-visible) { opacity: 0; transform: translateY(16px); }
 [data-reveal].is-visible { opacity: 1; transform: none; }
 @keyframes fade-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 :focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 4px; }
@@ -785,8 +786,17 @@ pre code { background: none; color: inherit; padding: 0; font-size: inherit; }
 .search__none { padding: 1.2rem .9rem; color: var(--muted); font-size: .9rem; list-style: none; }
 
 /* --------------------------------------------------------------- utilities */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity .55s var(--ease), transform .55s var(--ease); transition-delay: var(--d, 0ms); }
+/* .reveal chỉ được ẩn khi main.js đã nạp xong và tự chịu trách nhiệm hiện lại
+   (html.has-js). JS lỗi/chặn/trình đọc không chạy script → nội dung vẫn hiển thị. */
+.reveal { transition: opacity .55s var(--ease), transform .55s var(--ease); transition-delay: var(--d, 0ms); }
+html.has-js .reveal:not(.is-visible) { opacity: 0; transform: translateY(16px); }
 .reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.has-js .reveal:not(.is-visible), html.has-js [data-reveal]:not(.is-visible) { opacity: 1; transform: none; }
+}
+@media print {
+  .reveal, [data-reveal], html.has-js .reveal:not(.is-visible), html.has-js [data-reveal]:not(.is-visible) { opacity: 1 !important; transform: none !important; }
+}
 @media (min-width: 881px) { .topbar__menu { display: none; } }
 .btn[disabled] { opacity: .55; cursor: not-allowed; transform: none; }
 [data-to-top] { align-self: flex-start; }
