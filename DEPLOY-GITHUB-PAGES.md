@@ -37,6 +37,14 @@ node build/check-render.js
 
 Kết quả local sau sửa: **597/597 PASS**, **140 lượt render** (70 trang × 2 viewport), không khối ẩn, không tràn ngang. Kiểm tra trực quan ảnh mobile xác nhận H1 trong màn hình đầu. Static QA: **5.752 liên kết nội bộ, 0 gãy; 229/229 class có CSS; 0 biến CSS chưa định nghĩa**. Có kiểm tra checklist lưu sau tải lại, bàn phím, TOC và sao chép code.
 
+**Đã xác nhận trên production ngày 07/09/2026:**
+
+- Source commit: `601c164` (bản sửa hiển thị khẩn cấp trước đó: `2da1434`).
+- Nhánh Pages: `bbcf95f35e520412d7ab7319372c8f86c6291f9e`, API Pages báo `built` đúng commit này.
+- `check-live.js`: **88 PASS / 0 FAIL**; tất cả 64 URL bài học, sitemap 70 trang, search 128 mục, assets và custom 404 đúng.
+- `check-render.js` trên URL thật: **597/597 PASS / 0 FAIL**, 70 trang × desktop/mobile; ảnh được xem lại bằng mắt.
+- Giữ nguyên remote `origin` của giảng viên, chỉ push vào `deploy`. Không force-push; cập nhật `gh-pages` fast-forward.
+
 CLI điều phối Agent trong phiên VS Code này không khả dụng: `desktop_not_attached` (không có gateway của Accio Desktop). Không có Agent phụ nào được gọi qua CLI đó.
 
 ---
